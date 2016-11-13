@@ -1,0 +1,82 @@
+.. -*- coding: utf-8 -*-
+.. -*- restructuredtext -*-
+
+.. rubric:: Known issues
+
+:testing:
+
+   * Because of unknown reason the execution of :literal:`nosetests`
+     fails for each :literal:`tox` environment wich has following
+     constellation: Sphinx 1.2 and any Python 3
+     (:literal:`py{33,34,35}-sphinx1.2`). In a single Python 3 virtual
+     environment all is fine.
+
+   * Improfe the unit tests. The current implementation in a single file
+     is too simple and inflexible for further tasks. Have a look to the
+     Sphinx project and take the best from there.
+
+   * The integration of Travis-CI is not yet completed and may fail.
+
+:deployment:
+
+   * The release process is completely untested.
+
+:documentation:
+
+   * There is no list of supported Sphinx extensions. A automatically
+     representation should be prefered. A appropriate functionality
+     should being found.
+
+   * The chapter *Compatibility Matrix* is insufficient. The mapping from
+     Sphinx extensions to Sphinx versions is missing. A automatically
+     representation should be prefered.
+
+   * There are certainly many spelling mistakes.
+
+.. rubric:: Planned features
+
+:implementation:
+
+  * Provide a differentiated requirement management for all supported Sphinx
+    extensions dependent on used versions of Python and Sphinx.
+
+  * Provide a transparent image conversion process from native SVG graphics
+    to spezific image formats dependent on used Sphinx writer backend, for
+    examples PDF for LaTeX and PNG for HTML.
+
+  * Provide some new Pybtex style formatter to support more (mostly non
+    standardized) BibTeX field types.
+
+  * Provide and deploy aditional CSS files to fix selected but faulty HTML
+    templates. Maybe we will or have to cooperate with other projects, for
+    example :literal:`sphinxcontrib-ansi`.
+
+  * Provide new Sphinx roles to link directly to GitHub and/or BitBucket
+    issue tracker.
+
+:documentation:
+
+   * The documentation has to split into different parts: *User's Manual*,
+     *Programmer's Manual*, *Regulatory Affairs*, and a *Sphinx Cheat Sheet*.
+
+.. rubric:: Wishlist
+
+:implementation:
+
+   * Provide an specific LaTeX style template or extended the existent to
+     support the needs of technical documentations, for example: reference
+     or document numbers, project numbers, customized footer / header.
+
+   * Provide harmonized handling for list of tables / figures / equations in
+     its own sections or chapters between HTML and LaTeX.
+
+   * Provide a list of todo section similar to the current implementation of
+     the bibliography section in LaTeX.
+
+   * Provide a option to influence the footnote handling in LaTeX, for example
+     change all footnotes to endnotes. Endnotes should have same manner as the
+     bibliography, placed in a separate section or chapter.
+
+   * Support the Sphinx extension :literal:`sphinxcontrib-traceables`.
+
+   * Support the Sphinx extension :literal:`sphinxcontrib-traceability`.

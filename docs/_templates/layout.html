@@ -1,0 +1,13 @@
+{% extends "!layout.html" %}
+
+{% block linktags %}
+  {{ super() }}
+{% endblock %}
+
+{% block menu %}
+  {{ super() }}
+  {%- if hasdoc('genindex') %}
+  <li><a href="{{ pathto('py-modindex') }}">{{ _('Python Module Index') }}</a></li>
+  <li><a href="{{ pathto('genindex') }}">{{ _('Index') }}</a></li>
+  {%- endif %}
+{% endblock %}

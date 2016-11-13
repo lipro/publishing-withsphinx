@@ -1,0 +1,22 @@
+# -*- coding: utf-8 -*-
+
+# general things to ignore
+.py*env*
+.eggs/
+.egg
+_build/
+_dist/
+**/autosummary/*.rst
+*.egg-info/
+*.py[cod]
+__pycache__/
+*.so
+*.bak
+*.old
+*.swp
+*~
+
+# due to using tox and pytest
+.tox/
+.cache
+.coverage
