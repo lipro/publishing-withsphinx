@@ -10,5 +10,6 @@ cache:
   directories:
     - $HOME/.cache/pip
 install:
+  - pip install docutils
   - pip install tox-travis
 script: tox
