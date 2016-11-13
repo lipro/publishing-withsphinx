@@ -3,6 +3,10 @@ sudo: false
 addons:
   apt_packages:
     - "enchant"
+    - "texlive-xetex"
+    - "texlive-generic-extra"
+    - "texlive-latex-extra"
+    - "texlive-fonts-extra"
 language: python
 python:
   - "2.7"
