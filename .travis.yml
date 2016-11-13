@@ -3,6 +3,7 @@ sudo: false
 addons:
   apt_packages:
     - "enchant"
+    - "pgf"
     - "texlive-base"
     - "texlive-generic-recommended"
     - "texlive-generic-extra"
