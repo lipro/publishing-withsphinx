@@ -1,17 +1,21 @@
 # -*- coding: utf-8 -*-
-sudo: false
+sudo: true
+dist: precise
 addons:
-  apt_packages:
-    - "enchant"
-    - "pgf"
-    - "texlive-base"
-    - "texlive-generic-recommended"
-    - "texlive-generic-extra"
-    - "texlive-latex-recommended"
-    - "texlive-latex-extra"
-    - "texlive-fonts-recommended"
-    - "texlive-fonts-extra"
-    - "texlive-xetex"
+  apt:
+    sources:
+      - sourceline: 'ppa:texlive-backports/ppa'
+    packages:
+      - "enchant"
+      - "pgf"
+      - "texlive-base"
+      - "texlive-generic-recommended"
+      - "texlive-generic-extra"
+      - "texlive-latex-recommended"
+      - "texlive-latex-extra"
+      - "texlive-fonts-recommended"
+      - "texlive-fonts-extra"
+      - "texlive-xetex"
 language: python
 python:
   - "2.7"
