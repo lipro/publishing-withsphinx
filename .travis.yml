@@ -8,6 +8,7 @@ addons:
     packages:
       - "enchant"
       - "pgf"
+      - "pdf2svg"
       - "texlive-base"
       - "texlive-generic-recommended"
       - "texlive-generic-extra"
