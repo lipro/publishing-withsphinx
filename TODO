@@ -15,6 +15,9 @@
      is too simple and inflexible for further tasks. Have a look to the
      Sphinx project and take the best from there.
 
+   * #1: Avoid the deployment of copied DejaVuSans font in
+     :literal:`tests/docs/basic/samples/DejaVuSans.ttf`.
+
    * The integration of Travis-CI is not yet completed and may fail.
 
 :deployment:

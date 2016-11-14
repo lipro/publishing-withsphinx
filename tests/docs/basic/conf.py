@@ -95,7 +95,7 @@ needs_extensions = {
 
 # Fontpath for blockdiag (truetype font), The default is None.
 # blockdiag_fontpath = os.path.abspath('../../tools/sphinx/themes/sphinxdoc-ext/static/dejavusans_book_macroman/DejaVuSans-webfont.ttf')
-blockdiag_fontpath = os.path.abspath('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')
+blockdiag_fontpath = os.path.abspath('./samples/DejaVuSans.ttf')
 
 # Fontmap for blockdiag (maps fontfamily name to truetype font).
 # The default is None.
