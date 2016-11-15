@@ -22,7 +22,7 @@ Publishing with Sphinx
 
 .. index:: ! Issues
 
-:Main Issues: .. todo:: add link to issue tracker
+:Main Issues: - Issue Tracker: https://github.com/lipro/publishing-withsphinx/issues
               .. include:: ../TODO
 
 .. toctree::
