@@ -17,7 +17,7 @@ More information is available here:
 
 - |notyet| Documentation: https://publishing-withsphinx.readthedocs.org/en/latest
 - |notyet| Download: https://pypi.python.org/pypi/publishing-withsphinx
-- |notyet| Development: https://github.com/lipro/publishing-withsphinx
+- Development: https://github.com/lipro/publishing-withsphinx
 
 .. |notyet|     replace:: **(NOT YET)**
 
