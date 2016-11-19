@@ -293,14 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxcontrib.bibtex
-        p = path(app.outdir / 'bibliography.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
-        self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
-
         # sphinxcontrib.blockdiag
         p = path(app.outdir / 'blockdiag.txt')
         self.assertTrue(p.isfile())
@@ -433,14 +425,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.bibtex
-        p = path(app.outdir / 'bibliography.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
-        self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
-
         # sphinxcontrib.blockdiag
         p = path(app.outdir / 'blockdiag.html')
         self.assertTrue(p.isfile())
@@ -548,10 +532,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.bibtex
-        self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
-        self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
-
         # sphinxcontrib.blockdiag
         self.assertRegex(r, '<svg\s+.*\s+xmlns="http:\/\/www.w3.org\/2000\/svg"')
         self.assertRegex(r, '<title>blockdiag<\/title>')
@@ -634,10 +614,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # sphinxcontrib.bibtex
-        self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
-        self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
 
         # sphinxcontrib.blockdiag
         self.assertRegex(r, '\\\\.*includegraphics\{.*blockdiag-.*\\..*\}')
@@ -747,14 +723,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # sphinxcontrib.bibtex
-        p = path(app.outdir / 'bibliography.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
-        self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
 
         # sphinxcontrib.blockdiag
         p = path(app.outdir / 'blockdiag.fjson')
