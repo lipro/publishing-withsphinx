@@ -293,17 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxarg.ext / sphinxcontrib.autoprogram
-        p = path(app.outdir / 'argparse.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '\s*usage:\s+cmdargs\s+\[-h\]\s+\{apply,game\}\s+\.\.\.')
-        self.assertRegex(r, '\s*usage:\s+cmdargs\s+game\s+\[-h\]\s+'
-                            '\[--opt\s+\{rock,paper,scissors\}\]\s+\{rock,paper,scissors\}')
-        self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
-        self.assertRegex(r, 'Undocumented')
-
         # sphinxcontrib.bibtex
         p = path(app.outdir / 'bibliography.txt')
         self.assertTrue(p.isfile())
@@ -444,14 +433,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxarg.ext / sphinxcontrib.autoprogram
-        p = path(app.outdir / 'argparse.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
-        self.assertRegex(r, 'Undocumented')
-
         # sphinxcontrib.bibtex
         p = path(app.outdir / 'bibliography.html')
         self.assertTrue(p.isfile())
@@ -567,10 +548,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxarg.ext / sphinxcontrib.autoprogram
-        self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
-        self.assertRegex(r, 'Undocumented')
-
         # sphinxcontrib.bibtex
         self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
         self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
@@ -657,10 +634,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # sphinxarg.ext / sphinxcontrib.autoprogram
-        self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
-        self.assertRegex(r, 'Undocumented')
 
         # sphinxcontrib.bibtex
         self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
@@ -774,14 +747,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # sphinxarg.ext / sphinxcontrib.autoprogram
-        p = path(app.outdir / 'argparse.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
-        self.assertRegex(r, 'Undocumented')
 
         # sphinxcontrib.bibtex
         p = path(app.outdir / 'bibliography.fjson')
