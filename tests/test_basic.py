@@ -293,9 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxcontrib.tikz
-        self.assertNotRegex(r, 'A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.')
-
     @with_html_app
     def test_build_html(self, app, status, warning):
         '''
@@ -381,14 +378,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.tikz
-        p = path(app.outdir / 'tikz.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<img\s+src=".*images\/tikz-.*\.svg"\s+alt="\[transform\s+shape,')
-        self.assertRegex(r, 'A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.')
-
     @with_singlehtml_app
     def test_build_singlehtml(self, app, status, warning):
         '''
@@ -439,10 +428,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.tikz
-        self.assertRegex(r, '<img\s+src=".*images\/tikz-.*\.svg"\s+alt="\[transform\s+shape,')
-        self.assertRegex(r, 'A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.')
-
     @with_latex_app
     def test_build_latex(self, app, status, warning):
         '''
@@ -490,12 +475,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # sphinxcontrib.tikz
-        self.assertRegex(r, '\\\\begin\{figure\}\[.*\]\\\\centering\\\\begin\{tikzpicture\}')
-        self.assertRegex(r, '\[transform\s+shape,')
-        self.assertRegex(r, '\\\\end\{tikzpicture\}\\\\caption\{A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.\}'
-                            '\\\\end\{figure\}')
 
     @with_json_app
     def test_build_json(self, app, status, warning):
@@ -578,14 +557,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # sphinxcontrib.tikz
-        p = path(app.outdir / 'tikz.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<img\s+src=\\\\".*images\/tikz-.*\.svg\\\\"\s+alt=\\\\"\[transform\s+shape,.*'
-                            'A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.')
 
 
 if __name__ == "__main__":
