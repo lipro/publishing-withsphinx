@@ -304,13 +304,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
         self.assertRegex(r, 'Undocumented')
 
-        # sphinxcontrib.ansi
-        p = path(app.outdir / 'ansi.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '\s*This\s+is\s+a\s+ANSI\s+control\s+sequence\.')
-
         # sphinxcontrib.bibtex
         p = path(app.outdir / 'bibliography.txt')
         self.assertTrue(p.isfile())
@@ -459,14 +452,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
         self.assertRegex(r, 'Undocumented')
 
-        # sphinxcontrib.ansi
-        p = path(app.outdir / 'ansi.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'This\s+is\s+a\s+<span\s+class="ansi-red\s+ansi-bold">'
-                            'ANSI<\/span>\s+control\s+sequence\.')
-
         # sphinxcontrib.bibtex
         p = path(app.outdir / 'bibliography.html')
         self.assertTrue(p.isfile())
@@ -586,10 +571,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
         self.assertRegex(r, 'Undocumented')
 
-        # FIXME: sphinxcontrib.ansi
-        self.assertNotRegex(r, 'This\s+is\s+a\s+<span\s+class="ansi-red\s+ansi-bold">'
-                               'ANSI<\/span>\s+control\s+sequence\.')
-
         # sphinxcontrib.bibtex
         self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
         self.assertRegex(r, 'http:\/\/www\.amazon\.com\/dp\/1497448689')
@@ -680,8 +661,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinxarg.ext / sphinxcontrib.autoprogram
         self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
         self.assertRegex(r, 'Undocumented')
-
-        # TODO: sphinxcontrib.ansi
 
         # sphinxcontrib.bibtex
         self.assertRegex(r, 'Software-\s*Dokumentation\s+mit\s+Sphinx')
@@ -803,14 +782,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Execute\s+provision\s+script,\s+collect\s+all\s+resources\s+and\s+apply\s+them\.')
         self.assertRegex(r, 'Undocumented')
-
-        # FIXME: sphinxcontrib.ansi
-        p = path(app.outdir / 'ansi.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertNotRegex(r, 'This\s+is\s+a\s+<span\s+class=\\\\"ansi-red\s+ansi-bold\\\\">'
-                               'ANSI<\/span>\s+control\s+sequence\.')
 
         # sphinxcontrib.bibtex
         p = path(app.outdir / 'bibliography.fjson')
