@@ -293,13 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxcontrib.blockdiag
-        p = path(app.outdir / 'blockdiag.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '[image]\s*[image]')
-
         # sphinxcontrib.email
         p = path(app.outdir / 'email.txt')
         self.assertTrue(p.isfile())
@@ -425,14 +418,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.blockdiag
-        p = path(app.outdir / 'blockdiag.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<svg\s+.*\s+xmlns="http:\/\/www.w3.org\/2000\/svg"')
-        self.assertRegex(r, '<title>blockdiag<\/title>')
-
         # sphinxcontrib.email
         p = path(app.outdir / 'email.html')
         self.assertTrue(p.isfile())
@@ -532,10 +517,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.blockdiag
-        self.assertRegex(r, '<svg\s+.*\s+xmlns="http:\/\/www.w3.org\/2000\/svg"')
-        self.assertRegex(r, '<title>blockdiag<\/title>')
-
         # sphinxcontrib.email
         self.assertRegex(r, 'A\s+Bc\s+&lt;.*href="mailto:a&#37;&#52;&#48;bc&#46;de".*a.*bc.*de.*&gt;')
 
@@ -614,9 +595,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # sphinxcontrib.blockdiag
-        self.assertRegex(r, '\\\\.*includegraphics\{.*blockdiag-.*\\..*\}')
 
         # sphinxcontrib.email
         self.assertRegex(r, 'A\s+Bc\s+.*\\\\href\{mailto:a@bc\.de\}\{a@bc\.de\}')
@@ -723,14 +701,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # sphinxcontrib.blockdiag
-        p = path(app.outdir / 'blockdiag.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<svg\s+.*\s+xmlns=\\\\"http:\/\/www.w3.org\/2000\/svg\\\\"\s+.*'
-                            '<title>blockdiag<\/title>')
 
         # sphinxcontrib.email
         p = path(app.outdir / 'email.fjson')
