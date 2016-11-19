@@ -293,15 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxcontrib.programoutput
-        p = path(app.outdir / 'programoutput.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '\s*\$\s+cat\s+ansi\.rst')
-        self.assertRegex(r, '\s*\.\.\s+ansi-block::')
-        self.assertRegex(r, '\s*This\s+is\s+a\s+ANSI\s+control\s+sequence\.')
-
         # sphinxcontrib.tikz
         self.assertNotRegex(r, 'A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.')
 
@@ -390,16 +381,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.programoutput
-        p = path(app.outdir / 'programoutput.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '\s*\$\s+cat\s+ansi\.rst')
-        self.assertRegex(r, '\s*\.\.\s+ansi-block::')
-        self.assertRegex(r, '\s*This\s+is\s+a\s+<span\s+class="ansi-red\s+ansi-bold">'
-                            'ANSI<\/span>\s+control\s+sequence\.')
-
         # sphinxcontrib.tikz
         p = path(app.outdir / 'tikz.html')
         self.assertTrue(p.isfile())
@@ -458,13 +439,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # FIXME: sphinxcontrib.programoutput
-        self.assertRegex(r, '\s*\$\s+cat\s+ansi\.rst')
-        self.assertRegex(r, '\s*\.\.\s+ansi-block::')
-        self.assertRegex(r, '\s*This\s+is\s+a\s+ANSI\s+control\s+sequence\.')
-        self.assertNotRegex(r, '\s*This\s+is\s+a\s+<span\s+class="ansi-red\s+ansi-bold">'
-                               'ANSI<\/span>\s+control\s+sequence\.')
-
         # sphinxcontrib.tikz
         self.assertRegex(r, '<img\s+src=".*images\/tikz-.*\.svg"\s+alt="\[transform\s+shape,')
         self.assertRegex(r, 'A\s+new\s+year\s+is\s+coming\s+soon\s+\.\.\.')
@@ -516,8 +490,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # TODO: sphinxcontrib.programoutput
 
         # sphinxcontrib.tikz
         self.assertRegex(r, '\\\\begin\{figure\}\[.*\]\\\\centering\\\\begin\{tikzpicture\}')
@@ -606,17 +578,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # FIXME: sphinxcontrib.programoutput
-        p = path(app.outdir / 'programoutput.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '\$\s+cat\s+ansi\.rst.*'
-                            '\.\.\s+ansi-block::.*'
-                            '\s*This\s+is\s+a\s+ANSI\s+control\s+sequence\.')
-        self.assertNotRegex(r, 'This\s+is\s+a\s+<span\s+class=\\\\"ansi-red\s+ansi-bold\\\\">'
-                               'ANSI<\/span>\s+control\s+sequence\.')
 
         # sphinxcontrib.tikz
         p = path(app.outdir / 'tikz.fjson')
