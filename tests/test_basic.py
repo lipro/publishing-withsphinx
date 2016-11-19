@@ -293,17 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxcontrib.inlinesyntaxhighlight
-        p = path(app.outdir / 'inlinesyntaxhighlight.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'This\s+is\s+a\s+address:\s+"40h"')
-        self.assertRegex(r, 'This\s+is\s+a\s+code:\s+"0C"')
-        self.assertRegex(r, 'This\s+is\s+a\s+port:\s+"20"')
-        self.assertRegex(r, 'This\s+is\s+a\s+console\s+output:\s+"ERROR:\s+not\s+found\."')
-        self.assertRegex(r, 'This\s+is\s+a\s+assembler\s+mnemonic:\s+"NOP"')
-
         # sphinxcontrib.programoutput
         p = path(app.outdir / 'programoutput.txt')
         self.assertTrue(p.isfile())
@@ -401,18 +390,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.inlinesyntaxhighlight
-        p = path(app.outdir / 'inlinesyntaxhighlight.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+address:\s+.*\s+class=".*hexdump.*".*40h.*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+code:\s+.*\s+class=".*hexdump.*".*0C.*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+port:\s+.*\s+class=".*hexdump.*".*20.*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+console\s+output:\s+.*\s+class=".*console.*".*'
-                            'ERROR:\s+not\s+found\..*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+assembler\s+mnemonic:\s+.*\s+class=".*nasm.*".*NOP.*<\/p>')
-
         # sphinxcontrib.programoutput
         p = path(app.outdir / 'programoutput.html')
         self.assertTrue(p.isfile())
@@ -481,15 +458,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.inlinesyntaxhighlight
-        self.assertRegex(r, '<p>This\s+is\s+a\s+address:\s+.*\s+class=".*hexdump.*".*40h.*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+code:\s+.*\s+class=".*hexdump.*".*0C.*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+port:\s+.*\s+class=".*hexdump.*".*20.*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+console\s+output:\s+.*\s+class=".*console.*".*'
-                            'ERROR:\s+not\s+found\..*<\/p>')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+assembler\s+mnemonic:\s+.*\s+class=".*nasm.*".*'
-                            'NOP.*<\/p>')
-
         # FIXME: sphinxcontrib.programoutput
         self.assertRegex(r, '\s*\$\s+cat\s+ansi\.rst')
         self.assertRegex(r, '\s*\.\.\s+ansi-block::')
@@ -548,13 +516,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # sphinxcontrib.inlinesyntaxhighlight
-        self.assertRegex(r, 'This\s+is\s+a\s+address:\s+\\\\.*code\{40h\}')
-        self.assertRegex(r, 'This\s+is\s+a\s+code:\s+\\\\.*code\{0C\}')
-        self.assertRegex(r, 'This\s+is\s+a\s+port:\s+\\\\.*code\{20\}')
-        self.assertRegex(r, 'This\s+is\s+a\s+console\s+output:\s+\\\\.*code\{ERROR:\s+not\s+found\.\}')
-        self.assertRegex(r, 'This\s+is\s+a\s+assembler\s+mnemonic:\s+\\\\.*code\{NOP\}')
 
         # TODO: sphinxcontrib.programoutput
 
@@ -645,19 +606,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # sphinxcontrib.inlinesyntaxhighlight
-        p = path(app.outdir / 'inlinesyntaxhighlight.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<p>This\s+is\s+a\s+address:\s+.*\s+class=\\\\".*hexdump.*\\\\".*40h.*<\/p>.*'
-                            '<p>This\s+is\s+a\s+code:\s+.*\s+class=\\\\".*hexdump.*\\\\".*0C.*<\/p>.*'
-                            '<p>This\s+is\s+a\s+port:\s+.*\s+class=\\\\".*hexdump.*\\\\".*20.*<\/p>.*'
-                            '<p>This\s+is\s+a\s+console\s+output:\s+.*\s+class=\\\\".*console.*\\\\".*'
-                            'ERROR:\s+not\s+found\..*<\/p>.*'
-                            '<p>This\s+is\s+a\s+assembler\s+mnemonic:\s+.*\s+class=\\\\".*nasm.*\\\\".*'
-                            'NOP.*<\/p>')
 
         # FIXME: sphinxcontrib.programoutput
         p = path(app.outdir / 'programoutput.fjson')
