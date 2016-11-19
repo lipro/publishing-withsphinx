@@ -293,13 +293,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, 'Todo:\s+Something to do\.')
 
-        # sphinxcontrib.email
-        p = path(app.outdir / 'email.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'A\s+Bc\s+<a@bc.de>')
-
         # sphinxcontrib.embedly
         p = path(app.outdir / 'embedly.txt')
         self.assertTrue(p.isfile())
@@ -418,13 +411,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.email
-        p = path(app.outdir / 'email.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'A\s+Bc\s+&lt;.*href="mailto:a&#37;&#52;&#48;bc&#46;de".*a.*bc.*de.*&gt;')
-
         # sphinxcontrib.embedly
         p = path(app.outdir / 'embedly.html')
         self.assertTrue(p.isfile())
@@ -517,9 +503,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
-        # sphinxcontrib.email
-        self.assertRegex(r, 'A\s+Bc\s+&lt;.*href="mailto:a&#37;&#52;&#48;bc&#46;de".*a.*bc.*de.*&gt;')
-
         # sphinxcontrib.embedly
         self.assertRegex(r, '<a\s+href="http:\/\/www\.montypython\.com\/"\s+.*>')
         self.assertRegex(r, '<a\s+href="http:\/\/www\.montypython\.net\/sounds\/lob\/16done\.wav"\s+.*>')
@@ -595,9 +578,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
-
-        # sphinxcontrib.email
-        self.assertRegex(r, 'A\s+Bc\s+.*\\\\href\{mailto:a@bc\.de\}\{a@bc\.de\}')
 
         # sphinxcontrib.embedly
         self.assertRegex(r, 'Monty\s+Python\s+.*http:\/\/www\.montypython\.com\/')
@@ -701,13 +681,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
 
         r = p.read_text(encoding='utf-8')
         self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
-
-        # sphinxcontrib.email
-        p = path(app.outdir / 'email.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'A\s+Bc\s+&lt;.*href=\\\\"mailto:a&#37;&#52;&#48;bc&#46;de\\\\".*a.*bc.*de.*&gt;')
 
         # sphinxcontrib.embedly
         p = path(app.outdir / 'embedly.fjson')
