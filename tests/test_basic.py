@@ -225,19 +225,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         '''
         app.builder.build_all()
 
-        # sphinx.ext.autodoc
-        p = path(app.outdir / 'autodoc.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'A\s+pypi\s+demonstration\s+vehicle\.')
-        self.assertRegex(r, 'class\s+an_example_pypi_project\.useful_1\.MyPublicClass')
-        self.assertRegex(r, 'an_example_pypi_project\.useful_1\.public_fn_with_googley_docstring')
-        self.assertRegex(r, 'an_example_pypi_project\.useful_1\.public_fn_with_sphinxy_docstring')
-        self.assertRegex(r, 'an_example_pypi_project\.useful_2\.public_fn_with_sphinxy_docstring')
-        self.assertRegex(r, 'an_example_pypi_project\.useful_2\._private_fn_with_docstring')
-        self.assertRegex(r, 'class\s+an_example_pypi_project\.useful_2\.MyPublicClass')
-
         # sphinx.ext.autosummary
         p = path(app.outdir / 'autosummary.txt')
         self.assertTrue(p.isfile())
@@ -299,25 +286,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build html from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.autodoc
-        p = path(app.outdir / 'autodoc.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'A\s+pypi\s+demonstration\s+vehicle\.')
-        self.assertRegex(r, 'class\s+.*<(code|tt).*>an_example_pypi_project\.useful_1\.<\/(code|tt)>'
-                            '<(code|tt).*>MyPublicClass<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_1\.<\/(code|tt)>'
-                            '<(code|tt).*>public_fn_with_googley_docstring<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_1\.<\/(code|tt)>'
-                            '<(code|tt).*>public_fn_with_sphinxy_docstring<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_2\.<\/(code|tt)>'
-                            '<(code|tt).*>public_fn_with_sphinxy_docstring<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_2\.<\/(code|tt)>'
-                            '<(code|tt).*>_private_fn_with_docstring<\/(code|tt)>')
-        self.assertRegex(r, 'class\s+.*<(code|tt).*>an_example_pypi_project\.useful_2\.<\/(code|tt)>'
-                            '<(code|tt).*>MyPublicClass<\/(code|tt)>')
 
         # sphinx.ext.autosummary
         p = path(app.outdir / 'autosummary.html')
@@ -482,25 +450,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build json from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.autodoc
-        p = path(app.outdir / 'autodoc.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'A\s+pypi\s+demonstration\s+vehicle\.')
-        self.assertRegex(r, 'class\s+.*<(code|tt).*>an_example_pypi_project\.useful_1\.<\/(code|tt)>'
-                            '<(code|tt).*>MyPublicClass<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_1\.<\/(code|tt)>'
-                            '<(code|tt).*>public_fn_with_googley_docstring<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_1\.<\/(code|tt)>'
-                            '<(code|tt).*>public_fn_with_sphinxy_docstring<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_2\.<\/(code|tt)>'
-                            '<(code|tt).*>public_fn_with_sphinxy_docstring<\/(code|tt)>')
-        self.assertRegex(r, '<(code|tt).*>an_example_pypi_project\.useful_2\.<\/(code|tt)>'
-                            '<(code|tt).*>_private_fn_with_docstring<\/(code|tt)>')
-        self.assertRegex(r, 'class\s+.*<(code|tt).*>an_example_pypi_project\.useful_2\.<\/(code|tt)>'
-                            '<(code|tt).*>MyPublicClass<\/(code|tt)>')
 
         # sphinx.ext.autosummary
         p = path(app.outdir / 'autosummary.fjson')
