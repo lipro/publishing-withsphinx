@@ -225,18 +225,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         '''
         app.builder.build_all()
 
-        # sphinx.ext.extlinks
-        p = path(app.outdir / 'extlinks.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Datasheet\s+Archive\s+\(IDXF\):\s+Scans-048\/DSAGER000371')
-        self.assertNotRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/scans\/'
-                               'Scans-048\/DSAGER000371\.pdf.*')
-        self.assertRegex(r, 'Datasheet\s+Archive\s+\(MAIN\):\s+Datasheets-AE\/DSA5GERT0000353')
-        self.assertNotRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/distributors\/'
-                               'Datasheets-AE\/DSA5GERT0000353\.pdf.*')
-
         # sphinx.ext.mathjax
         p = path(app.outdir / 'mathjax.txt')
         self.assertTrue(p.isfile())
@@ -257,18 +245,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build html from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.extlinks
-        p = path(app.outdir / 'extlinks.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/scans\/'
-                            'Scans-048\/DSAGER000371\.pdf.*'
-                            'Datasheet\s+Archive\s+\(IDXF\):\s+Scans-048\/DSAGER000371')
-        self.assertRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/distributors\/'
-                            'Datasheets-AE\/DSA5GERT0000353\.pdf.*'
-                            'Datasheet\s+Archive\s+\(MAIN\):\s+Datasheets-AE\/DSA5GERT0000353')
 
         # sphinx.ext.mathjax
         p = path(app.outdir / 'mathjax.html')
@@ -302,14 +278,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # fetch content
         r = p.read_text(encoding='utf-8')
 
-        # sphinx.ext.extlinks
-        self.assertRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/scans\/'
-                            'Scans-048\/DSAGER000371\.pdf.*'
-                            'Datasheet\s+Archive\s+\(IDXF\):\s+Scans-048\/DSAGER000371')
-        self.assertRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/distributors\/'
-                            'Datasheets-AE\/DSA5GERT0000353\.pdf.*'
-                            'Datasheet\s+Archive\s+\(MAIN\):\s+Datasheets-AE\/DSA5GERT0000353')
-
         # sphinx.ext.mathjax
         self.assertRegex(r, '<script\s+type="text\/javascript"\s+'
                             'src="http.*:\/\/cdn.mathjax.org\/mathjax\/latest\/MathJax\.js\?'
@@ -334,14 +302,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # fetch content
         r = p.read_text(encoding='utf-8')
 
-        # sphinx.ext.extlinks
-        self.assertRegex(r, '\\\\href\{http:\/\/datasheet\.datasheetarchive\.com\/originals\/scans\/'
-                            'Scans-048\/DSAGER000371\.pdf\}\{'
-                            'Datasheet\s+Archive\s+\(IDXF\):\s+Scans-048\/DSAGER000371\}')
-        self.assertRegex(r, '\\\\href\{http:\/\/datasheet\.datasheetarchive\.com\/originals\/distributors\/'
-                            'Datasheets-AE\/DSA5GERT0000353\.pdf\}\{'
-                            'Datasheet\s+Archive\s+\(MAIN\):\s+Datasheets-AE\/DSA5GERT0000353\}')
-
         # sphinx.ext.mathjax
         self.assertRegex(r, 'Since\s+Pythagoras,\s+we\s+know\s+that\s+.*a\^2\s+\+\s+b\^2\s+=\s+c\^2.*\.')
 
@@ -354,18 +314,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build json from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.extlinks
-        p = path(app.outdir / 'extlinks.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/scans\/'
-                            'Scans-048\/DSAGER000371\.pdf.*'
-                            'Datasheet\s+Archive\s+\(IDXF\):\s+Scans-048\/DSAGER000371')
-        self.assertRegex(r, 'http:\/\/datasheet\.datasheetarchive\.com\/originals\/distributors\/'
-                            'Datasheets-AE\/DSA5GERT0000353\.pdf.*'
-                            'Datasheet\s+Archive\s+\(MAIN\):\s+Datasheets-AE\/DSA5GERT0000353')
 
         # sphinx.ext.mathjax
         p = path(app.outdir / 'mathjax.fjson')
