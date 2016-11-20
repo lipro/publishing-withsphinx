@@ -9,4 +9,4 @@ master_doc = 'index'
 latex_documents = [(master_doc, 'index.tex', 'project', 'author', 'manual')]
 
 # FIXME: avoid local copy of DejaVuSans core font
-blockdiag_fontpath = os.path.abspath('./_static/DejaVuSans.ttf')
+blockdiag_fontpath = os.path.abspath('../_static/DejaVuSans.ttf')
