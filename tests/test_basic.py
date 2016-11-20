@@ -225,26 +225,12 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         '''
         app.builder.build_all()
 
-        # sphinx.ext.todo
-        p = path(app.outdir / 'todo.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Todo:\s+Something to do\.')
-
     @with_html_app
     def test_build_html(self, app, status, warning):
         '''
         FUNCTIONAL TEST: can build html from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.todo
-        p = path(app.outdir / 'todo.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
     @with_singlehtml_app
     def test_build_singlehtml(self, app, status, warning):
@@ -258,10 +244,7 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         self.assertTrue(p.isfile())
 
         # fetch content
-        r = p.read_text(encoding='utf-8')
-
-        # sphinx.ext.todo
-        self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
+        # r = p.read_text(encoding='utf-8')
 
     @with_latex_app
     def test_build_latex(self, app, status, warning):
@@ -275,10 +258,7 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         self.assertTrue(p.isfile())
 
         # fetch content
-        r = p.read_text(encoding='utf-8')
-
-        # sphinx.ext.todo
-        self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
+        # r = p.read_text(encoding='utf-8')
 
     @with_json_app
     def test_build_json(self, app, status, warning):
@@ -286,13 +266,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build json from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.todo
-        p = path(app.outdir / 'todo.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<p\s+class=\\\\"first\s+admonition-title\\\\">Todo<\/p>')
 
 
 if __name__ == "__main__":
