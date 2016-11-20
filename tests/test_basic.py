@@ -225,13 +225,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         '''
         app.builder.build_all()
 
-        # sphinx.ext.mathjax
-        p = path(app.outdir / 'mathjax.txt')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, 'Since\s+Pythagoras,\s+we\s+know\s+that\s+a\^2\s+\+\s+b\^2\s+=\s+c\^2\.')
-
         # sphinx.ext.todo
         p = path(app.outdir / 'todo.txt')
         self.assertTrue(p.isfile())
@@ -245,17 +238,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build html from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.mathjax
-        p = path(app.outdir / 'mathjax.html')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<script\s+type="text\/javascript"\s+'
-                            'src="http.*:\/\/cdn.mathjax.org\/mathjax\/latest\/MathJax\.js\?'
-                            'config=TeX-AMS-MML_HTMLorMML"><\/script>')
-        self.assertRegex(r, '<p>Since\s+Pythagoras,\s+we\s+know\s+that\s+<span\s+class="math">'
-                            '\\\\\(a\^2\s+\+\s+b\^2\s+=\s+c\^2\\\\\)<\/span>\.<\/p>')
 
         # sphinx.ext.todo
         p = path(app.outdir / 'todo.html')
@@ -278,13 +260,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # fetch content
         r = p.read_text(encoding='utf-8')
 
-        # sphinx.ext.mathjax
-        self.assertRegex(r, '<script\s+type="text\/javascript"\s+'
-                            'src="http.*:\/\/cdn.mathjax.org\/mathjax\/latest\/MathJax\.js\?'
-                            'config=TeX-AMS-MML_HTMLorMML"><\/script>')
-        self.assertRegex(r, '<p>Since\s+Pythagoras,\s+we\s+know\s+that\s+<span\s+class="math">'
-                            '\\\\\(a\^2\s+\+\s+b\^2\s+=\s+c\^2\\\\\)<\/span>\.<\/p>')
-
         # sphinx.ext.todo
         self.assertRegex(r, '<p\s+class="first\s+admonition-title">Todo<\/p>')
 
@@ -302,9 +277,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         # fetch content
         r = p.read_text(encoding='utf-8')
 
-        # sphinx.ext.mathjax
-        self.assertRegex(r, 'Since\s+Pythagoras,\s+we\s+know\s+that\s+.*a\^2\s+\+\s+b\^2\s+=\s+c\^2.*\.')
-
         # sphinx.ext.todo
         self.assertRegex(r, '\\\\begin\{notice\}\{note\}\{Todo\}')
 
@@ -314,14 +286,6 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         FUNCTIONAL TEST: can build json from documentation
         '''
         app.builder.build_all()
-
-        # sphinx.ext.mathjax
-        p = path(app.outdir / 'mathjax.fjson')
-        self.assertTrue(p.isfile())
-
-        r = p.read_text(encoding='utf-8')
-        self.assertRegex(r, '<p>Since\s+Pythagoras,\s+we\s+know\s+that\s+<span\s+class=\\\\"math\\\\">'
-                            '\\\\\\\\\(a\^2\s+\+\s+b\^2\s+=\s+c\^2\\\\\\\\\)<\/span>\.<\/p>')
 
         # sphinx.ext.todo
         p = path(app.outdir / 'todo.fjson')
