@@ -176,16 +176,7 @@ class TestSphinxcontribPublishingBasicHTML(unittest.TestCase):
         self.assertTrue(p.isfile())
 
         # fetch content
-        r = p.read_text(encoding='utf-8')
-
-        # validate content
-        self.assertRegex(r, 'Document:\s+autodoc')
-        self.assertRegex(r, 'Document:\s+doctest')
-        self.assertNotRegex(r, '0\s+tests')
-        self.assertRegex(r, '[1-9][0-9]*\s+tests')
-        self.assertRegex(r, '0\s+failures\s+in\s+tests')
-        self.assertRegex(r, '0\s+failures\s+in\s+setup\s+code')
-        self.assertRegex(r, '0\s+failures\s+in\s+cleanup\s+code')
+        # r = p.read_text(encoding='utf-8')
 
     @with_coverage_app
     def test_build_coverage(self, app, status, warning):
