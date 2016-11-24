@@ -25,14 +25,23 @@
 #
 
 '''
-test_sphinx_contrib_bibtex
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. traceable:: VFY-SPHINXCONTRIB-BIBTEX
+   :title: Verify sphinxcontrib-bibtex
+   :category: SysVerify
+   :parents: IMP-SPHINXCONTRIB-BIBTEX
+   :verification_type: functional
+   :verification_method: ci-test
 
 This module contains basic functional tests of the sphinxcontrib.bibtex
 extension as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2016 by Li-Pro.Net, see AUTHORS.
 :license: MIT, see LICENSE for details.
+
+.. traceable-graph::
+   :tags: VFY-SPHINXCONTRIB-BIBTEX
+   :relationships: parents:2, children
+   :caption: Traces to the system requirement VFY-SPHINXCONTRIB-BIBTEX
 '''
 
 from __future__ import absolute_import
@@ -48,7 +57,12 @@ class TestCaseSphinxContribBibTeX(util.TestCasePublishingSphinx):
     )
     def test_build_html(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinxcontrib.bibtex: can build html
+        .. traceable:: TST-SPHINXCONTRIB-BIBTEX-HTML
+           :title: Test sphinxcontrib-bibtex can build html
+           :category: SysTest
+           :parents: VFY-SPHINXCONTRIB-BIBTEX
+           :verification_type: functional
+           :verification_method: ci-test
         '''
         app.builder.build_update()
         print(status.getvalue())
@@ -77,7 +91,12 @@ class TestCaseSphinxContribBibTeX(util.TestCasePublishingSphinx):
     )
     def test_build_latex(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinxcontrib.bibtex: can build latex
+        .. traceable:: TST-SPHINXCONTRIB-BIBTEX-LATEX
+           :title: Test sphinxcontrib-bibtex can build latex
+           :category: SysTest
+           :parents: VFY-SPHINXCONTRIB-BIBTEX
+           :verification_type: functional
+           :verification_method: ci-test
         '''
         app.builder.build_update()
         print(status.getvalue())
@@ -107,7 +126,12 @@ class TestCaseSphinxContribBibTeX(util.TestCasePublishingSphinx):
     )
     def test_build_text(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinxcontrib.bibtex: can build text
+        .. traceable:: TST-SPHINXCONTRIB-BIBTEX-TEXT
+           :title: Test sphinxcontrib-bibtex can build text
+           :category: SysTest
+           :parents: VFY-SPHINXCONTRIB-BIBTEX
+           :verification_type: functional
+           :verification_method: ci-test
         '''
         app.builder.build_update()
         print(status.getvalue())

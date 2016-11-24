@@ -3,9 +3,9 @@
 
 .. _development:
 
-===========
+******************************************************************************
 Development
-===========
+******************************************************************************
 
 .. index:: ! Development
    single: Compatibility Matrix; Development
@@ -25,7 +25,7 @@ you want to contribute to it. Which is welcome, btw.
 
 
 Getting started
-===============
+==============================================================================
 
 .. index:: ! Getting started
 
@@ -47,7 +47,7 @@ parallel including a functioning Virtual Environment on a recent Ubuntu LTS
 standard Linux system.
 
 Python 2 and 3 on Ubuntu 12.04 (and onwards LTS)
-------------------------------------------------
+------------------------------------------------------------------------------
 
 .. index:: Python
 .. index:: Install
@@ -65,7 +65,7 @@ maintainig a dedicated
 available in the PPA for Ubuntu 16.04 and down to Ubuntu 12.04.
 
 Python 3 Installation
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 3; Install
@@ -91,7 +91,7 @@ Install all versions of Python 3:
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
 Python 3.5 Virtual Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 3; Virtual Environment
@@ -118,7 +118,7 @@ Upgrade :program:`pip` and install required packages:
    required Python packages.
 
 Python 2 Installation
-^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 2; Install
@@ -141,7 +141,7 @@ Install all versions of Python 2:
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
 Python 2.7 Virtual Environment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 2; Virtual Environment
@@ -171,7 +171,7 @@ Upgrade :program:`pip` and install required packages:
 .. _building:
 
 Building
-========
+==============================================================================
 
 .. index:: ! Building
 
@@ -205,7 +205,7 @@ Build Sphinx documentation:
 .. _testing:
 
 Testing
-=======
+==============================================================================
 
 .. index:: ! Testing
 
@@ -222,7 +222,7 @@ tools, which are used automatically.
 .. _releasing:
 
 Releasing
-=========
+==============================================================================
 
 .. index:: ! Releasing
 

@@ -7,20 +7,12 @@ addons:
       - sourceline: 'ppa:texlive-backports/ppa'
     packages:
       - "enchant"
-      - "pgf"
+      - "graphviz"
       - "pdf2svg"
-      - "texlive-base"
-      - "texlive-generic-recommended"
-      - "texlive-generic-extra"
-      - "texlive-latex-recommended"
-      - "texlive-latex-extra"
-      - "texlive-fonts-recommended"
-      - "texlive-fonts-extra"
-      - "texlive-xetex"
+      - "texlive-full"
 language: python
 python:
   - "2.7"
-  - "3.3"
   - "3.4"
   - "3.5"
 cache:

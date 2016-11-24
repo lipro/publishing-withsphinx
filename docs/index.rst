@@ -1,11 +1,11 @@
 .. -*- coding: utf-8 -*-
 .. -*- restructuredtext -*-
 
-.. _publishing-withsphinx:
+.. _publishing-withsphinx-documentation:
 
-**********************
+******************************************************************************
 Publishing with Sphinx
-**********************
+******************************************************************************
 
 .. index:: ! publishing-withsphinx (project)
    pair: publishing-withsphinx (project); About
@@ -23,28 +23,62 @@ Publishing with Sphinx
 .. index:: ! Issues
 
 :Main Issues: - Issue Tracker: https://github.com/lipro/publishing-withsphinx/issues
+
               .. include:: ../TODO
 
+.. raw:: latex
+
+   \part{User's Manual}
+
 .. toctree::
-   :caption: Content
-   :name: masterdoc
+   :caption: User's Manual
+   :name: umtoc
    :maxdepth: 2
    :numbered:
-   :hidden:
 
-   prerequisites
-   devel
-   api
-   compatibility
+   users-manual/prerequisites
+
+.. raw:: latex
+
+   \part{Programmer's Manual}
+
+.. toctree::
+   :caption: Programmer's Manual
+   :name: pmtoc
+   :maxdepth: 2
+   :numbered:
+
+   programmers-manual/devel
+   programmers-manual/api
+   programmers-manual/compatibility
+
+.. raw:: latex
+
+   \part{Regulatory Affairs}
+
+.. toctree::
+   :caption: Regulatory Affairs
+   :name: ratoc
+   :maxdepth: 2
+   :numbered:
+
+   regulatory-affairs/strs
+   regulatory-affairs/syrs
+   regulatory-affairs/syds
+   regulatory-affairs/dvvp
+
+.. raw:: latex
+
+   \part{Appendix}
 
 .. toctree::
    :caption: Appendix
-   :name: appendix
+   :name: axtoc
    :maxdepth: 1
-   :hidden:
+   :numbered:
 
-   changes
-   authors
-   licensing
-   todo
-   bibliography
+   appendix/changes
+   appendix/authors
+   appendix/licensing
+   appendix/todo
+   appendix/bibliography

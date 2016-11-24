@@ -3,9 +3,9 @@
 
 .. _prerequisites:
 
-===============================
+******************************************************************************
 Prerequisites and Configuration
-===============================
+******************************************************************************
 
 .. index::
    pair: Prerequisites; Configuration
@@ -21,7 +21,7 @@ how to configure Sphinx to use it.
 
 
 Prerequisites
-=============
+==============================================================================
 
 .. index:: ! Prerequisites
 
@@ -37,7 +37,7 @@ C. LaTeX with the :literal:`tikz` package and native PDF support
 
 
 Install
-=======
+==============================================================================
 
 .. index:: ! Install
 
@@ -56,7 +56,7 @@ To install the package from source archive:
 
 
 Configure Sphinx
-================
+==============================================================================
 
 .. index:: ! Configuration
 
