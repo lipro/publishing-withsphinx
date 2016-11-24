@@ -15,4 +15,4 @@ Features added
 Bugs fixed
 ----------
 
-
+* #2: Improve the unit tests, split off all test cases into separate files.
