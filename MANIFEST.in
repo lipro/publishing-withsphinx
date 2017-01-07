@@ -5,12 +5,14 @@ include CHANGES
 include LICENSE
 include TODO
 include tox.ini
-recursive-include docs/_templates *.html
-recursive-include docs *.bat
-recursive-include docs *.bibtex
-recursive-include docs *.py
-recursive-include docs *.rst
+recursive-include docs conf.py
 recursive-include docs Makefile
+recursive-include docs make.bat
+recursive-include docs *.bibtex
+recursive-include docs *.rst
+recursive-include docs *.rsti
+recursive-include docs/_templates *.html
+recursive-include docs/_templates *.tex
 recursive-include tests *.bibtex
 recursive-include tests *.py
 recursive-include tests *.rst

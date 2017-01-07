@@ -5,20 +5,21 @@
 
 :testing:
 
-   * Because of unknown reason the execution of :literal:`nosetests`
+   * #1: Avoid the deployment of copied DejaVuSans font in
+     :literal:`tests/docs/basic/samples/DejaVuSans.ttf`.
+
+   * #3: Because of unknown reason the execution of :literal:`nosetests`
      fails for each :literal:`tox` environment wich has following
      constellation: Sphinx 1.2 and any Python 3
      (:literal:`py{33,34,35}-sphinx1.2`). In a single Python 3 virtual
      environment all is fine.
 
-   * Improfe the unit tests. The current implementation in a single file
-     is too simple and inflexible for further tasks. Have a look to the
-     Sphinx project and take the best from there.
-
-   * #1: Avoid the deployment of copied DejaVuSans font in
-     :literal:`tests/docs/basic/samples/DejaVuSans.ttf`.
-
-   * The integration of Travis-CI is not yet completed and may fail.
+   * Because of unknown reason the current state of documentation can only
+     build inside a Python 2.7 run-time environment. In any Python 3
+     environment the used :literal:`sphinxcontrib.traceables` extension
+     runs into a :literal:`TypeError: can't pickle generator objects` when
+     parse the directive :literal:`traceable-list` in combination with the
+     option :literal:`:attributes:`.
 
 :deployment:
 
@@ -26,13 +27,18 @@
 
 :documentation:
 
-   * There is no list of supported Sphinx extensions. A automatically
+   * #4: There is no list of supported Sphinx extensions. A automatically
      representation should be prefered. A appropriate functionality
      should being found.
 
-   * The chapter *Compatibility Matrix* is insufficient. The mapping from
+   * #5: The chapter *Compatibility Matrix* is insufficient. The mapping from
      Sphinx extensions to Sphinx versions is missing. A automatically
      representation should be prefered.
+
+   * The current state of documentation can only build inside a Python 2.7
+     run-time environment, because the dependent sphinxcontrib.traceables
+     extansion has a bug in the directive :literal:`traceable-list` in
+     combination
 
    * There are certainly many spelling mistakes.
 
@@ -59,7 +65,7 @@
 
 :documentation:
 
-   * The documentation has to split into different parts: *User's Manual*,
+   * #7: The documentation has to split into different parts: *User's Manual*,
      *Programmer's Manual*, *Regulatory Affairs*, and a *Sphinx Cheat Sheet*.
 
 .. rubric:: Wishlist

@@ -1,0 +1,89 @@
+.. -*- coding: utf-8 -*-
+.. -*- restructuredtext -*-
+
+.. common global text blocks:
+
+.. |section_being_continued| replace::
+   :emphasis:`Further details for this section are yet to be written.`
+
+.. |implementation_being_continued| replace::
+   :emphasis:`Further details for this implementation are yet to be written.`
+
+.. |requirement_being_continued| replace::
+   :emphasis:`Further details for this requirement are yet to be written.`
+
+.. |user_needs_being_continued| replace::
+   :emphasis:`Further details for this user needs are yet to be written.`
+
+.. |scenario_being_continued| replace::
+   :emphasis:`Further details for this scenario are yet to be written.`
+
+.. |functionality_being_continued| replace::
+   :emphasis:`Further details for this functionality are yet to be written.`
+
+.. |usability_being_continued| replace::
+   :emphasis:`Further details for this usability are yet to be written.`
+
+.. |verification_being_continued| replace::
+   :emphasis:`Further details for this verification are yet to be written.`
+
+.. |documentation_being_continued| replace::
+   :emphasis:`Further details for this documentation are yet to be written.`
+
+.. common global external references:
+
+.. |publishing-withsphinx|     replace:: `publishing-withsphinx`_
+.. |publishing-withsphinx_dsc| replace:: |publishing-withsphinx| (publishing extension for |Sphinx|)
+.. _publishing-withsphinx: https://github.com/lipro/publishing-withsphinx
+
+.. |sphinxcontrib-bibtex|     replace:: `sphinxcontrib-bibtex`_
+.. |sphinxcontrib-bibtex_dsc| replace:: |sphinxcontrib-bibtex| (BibTeX style citations for |Sphinx|)
+.. _sphinxcontrib-bibtex: https://github.com/mcmtroffaes/sphinxcontrib-bibtex
+
+.. |reStructuredText|     replace:: `reStructuredText`_
+.. |reStructuredText_dsc| replace:: |reStructuredText| (Markup Syntax and Parser Component of |Docutils_dsc|)
+.. _reStructuredText: http://docutils.sourceforge.net/rst.html
+
+.. |Docutils|     replace:: `Docutils`_
+.. |Docutils_dsc| replace:: |Docutils| text processing system
+.. _Docutils: http://docutils.sourceforge.net/
+
+.. |Sphinx|     replace:: `Sphinx`_
+.. |Sphinx_dsc| replace:: |Sphinx| documentation engine
+.. _Sphinx: http://sphinx-doc.org/
+
+.. |Travis-CI|     replace:: `Travis-CI`_
+.. |Travis-CI_dsc| replace:: |Travis-CI| online service for continuous integration
+.. _Travis-CI: http://travis-ci.org/
+
+.. |nose|     replace:: `nose`_
+.. |nose_dsc| replace:: |nose| (extends unittest)
+.. _nose: http://nose.readthedocs.io/en/latest/
+
+.. |nose2|     replace:: `nose2`_
+.. |nose2_dsc| replace:: |nose2| (extends unittest)
+.. _nose2: http://nose2.readthedocs.io
+
+.. |coverage|     replace:: `coverage`_
+.. |coverage_dsc| replace:: |coverage| (measuring code coverage)
+.. _coverage: http://coverage.readthedocs.io
+
+.. |tox|     replace:: `tox`_
+.. |tox_dsc| replace:: |tox| (automate and standardize testing)
+.. _tox: http://tox.readthedocs.io
+
+.. common global abbreviations and references to a term in a glossary:
+
+.. |reST| replace::
+   :abbr:`reST (reStructuredText)`
+
+.. |BibTeX| replace::
+   :abbr:`BibTeX (Bibliography for TeX)`
+
+.. |OpsCon| replace::
+   :abbr:`OpsCon (Operational Concept)`
+
+.. |StRS| replace:: :ref:`strs`
+.. |SyRS| replace:: :ref:`syrs`
+.. |SyDS| replace:: :ref:`syds`
+.. |DVVP| replace:: :ref:`dvvp`

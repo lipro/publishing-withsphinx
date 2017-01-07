@@ -12,7 +12,9 @@ Incompatible changes
 Features added
 --------------
 
+* #7: Split documentation into different parts.
+
 Bugs fixed
 ----------
 
-
+* #2: Improve the unit tests, split off all test cases into separate files.

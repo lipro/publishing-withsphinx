@@ -2,13 +2,26 @@
 #
 # publishing-withsphinx documentation build configuration file
 #
+# the monkey patch to suppress the image nonlocal uri warning comes from:
+# http://stackoverflow.com/questions/12772927/
+#
 
-# import os
-# import sys
+import os
+import sys
+
+import sphinx.environment
+from docutils.utils import get_source_line
 
 from pkg_resources import get_distribution  # to get the raw metadata content
 from email import message_from_string       # to parse it using email.Parser
 from webob.multidict import MultiDict       # to convert it to a MultiDict
+
+
+def _warn_node(self, msg, node, **kwargs):
+    if not msg.startswith('nonlocal image URI found:'):
+        self._warnfunc(msg, '%s:%s' % get_source_line(node), **kwargs)
+
+sphinx.environment.BuildEnvironment.warn_node = _warn_node
 
 try:
     pkg_metadata = get_distribution('publishing-withsphinx').get_metadata('METADATA')
@@ -18,7 +31,8 @@ except:
 pkg_messages = message_from_string(pkg_metadata)
 prj_metadata = MultiDict(pkg_messages)
 
-# sys.path.insert(0, os.path.abspath('.'))
+sys.path.insert(0, os.path.abspath('..'))        # fount local util modules
+sys.path.insert(0, os.path.abspath('../tests'))  # found local test modules
 
 # -- General configuration ------------------------------------------------
 
@@ -60,10 +74,13 @@ exclude_patterns = [
     '.DS_Store',
 ]
 pygments_style = 'sphinx'
+rst_prolog = '''
+.. include:: <isoamsa.txt>
+'''
 rst_epilog = ('''
 .. |summary| replace:: %s
-.. include:: global.rst
-''') % (summary)
+.. include:: /%s/global.rsti
+''') % (summary, os.path.abspath('.'))
 
 # General extension behaviors.
 todo_include_todos = True
@@ -72,6 +89,9 @@ autodoc_default_flags = [
     'members',
     'no-undoc-members',
 ]
+tikz_transparent = True
+tikz_proc_suite = 'pdf2svg'
+tikz_tikzlibraries = 'arrows,matrix,calendar,folding'
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -93,9 +113,8 @@ htmlhelp_basename = 'publishing-withsphinxdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 
-latex_custom = r'''
-\usepackage[bottom]{footmisc}
-'''
+f = open('_templates/preamble.tex', 'r+')
+latex_custom = f.read()
 
 latex_elements = {
     'papersize': 'a4paper',
@@ -106,10 +125,8 @@ latex_elements = {
 
 latex_documents = [
     (master_doc, 'publishing-withsphinx.tex', 'Publishing with Sphinx',
-     author, 'manual'),
+     author, 'manual', False),
 ]
-
-latex_use_parts = False
 
 # -- Options for manual page output ---------------------------------------
 
