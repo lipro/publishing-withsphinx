@@ -44,7 +44,7 @@
 
   * The current state of documentation can only build inside a Python 2.7
     run-time environment, because the dependent sphinxcontrib.traceables
-    extansion has a bug in the directive :literal:`traceable-list` in
+    extension has a bug in the directive :literal:`traceable-list` in
     combination
 
   * There are certainly many spelling mistakes.
