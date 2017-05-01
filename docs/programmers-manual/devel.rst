@@ -202,6 +202,16 @@ Build Sphinx documentation:
 
       python setup.py build_sphinx
 
+   Within any virtual Python 3.x runtime environment you will run into a
+   well known build issue within the :literal:`sphinxcontrib.traceables`
+   extension. See main issue tracker or file :literal:`TODO` for more
+   details.
+
+Cleanup all build artefacts:
+   .. code-block:: bash
+
+      python setup.py distclean
+
 
 .. _testing:
 
