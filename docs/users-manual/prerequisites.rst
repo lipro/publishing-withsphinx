@@ -28,7 +28,7 @@ Prerequisites
 This extension relies on some software packages being installed on your
 computer:
 
-A. Python 2.7 or 3.5
+A. Python 2.7 or 3.6
 
 B. Sphinx 1.2 or greater
 
