@@ -19,7 +19,7 @@ needs_extensions = {
     'sphinx.ext.ifconfig':                      '1.2',  # NOQA
     'sphinx.ext.mathjax':                       '1.2',  # NOQA
     'sphinx.ext.todo':                          '1.2',  # NOQA
-#   'sphinxarg.ext':                            '0.1',  # NOQA
+#   'sphinxarg.ext':                            '0.2',  # NOQA
 #   'sphinxcontrib.ansi':                       '0.6',  # NOQA
 #   'sphinxcontrib.autoprogram':                '0.1',  # NOQA
 #   'sphinxcontrib.bibtex':                     '0.3',  # NOQA
