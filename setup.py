@@ -57,7 +57,7 @@ _INSTALL_REQUIRES = [
     'Sphinx>=1.2.0,<=1.4.9999',
     'sphinx-argparse>=0.2.0,<=0.2.0',
     'sphinxcontrib-ansi>=0.6.dev0',
-    'sphinxcontrib-bibtex>=0.3.4,<=0.3.4',
+    'sphinxcontrib-bibtex>=0.3.5,<=0.3.5',
     'sphinxcontrib-blockdiag>=1.5.5,<=1.5.5',
     'sphinxcontrib-email>=0.2.dev0',
     'sphinxcontrib-embedly>=0.2.0,<=0.2.0',
