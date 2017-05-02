@@ -28,7 +28,7 @@ needs_extensions = {
 #   'sphinxcontrib.embedly':                    '0.2',  # NOQA
 #   'sphinxcontrib.inlinesyntaxhighlight':      '0.2',  # NOQA
 #   'sphinxcontrib.programoutput':              '0.10',  # NOQA
-#   'sphinxcontrib.spelling':                   '2.2',  # NOQA
+#   'sphinxcontrib.spelling':                   '2.3',  # NOQA
 #   'sphinxcontrib.tikz':                       '0.4',  # NOQA
 }
 
