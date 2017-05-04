@@ -128,6 +128,8 @@ latex_documents = [
      author, 'manual', False),
 ]
 
+latex_engine = 'xelatex'
+
 # -- Options for manual page output ---------------------------------------
 
 man_pages = [
