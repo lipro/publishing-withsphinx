@@ -65,7 +65,7 @@ _INSTALL_REQUIRES = [
     'sphinxcontrib-programoutput>=0.8.0,<=0.10.0',
     'sphinxcontrib-spelling>=2.3.0,<=2.3.0',
     'sphinxcontrib-tikz>=0.4.2,<=0.4.4',
-    'reportlab>=3.3.0,<=3.3.9999',
+    'reportlab>=3.4.0,<=3.4.9999',
 ]
 
 _DEPENDENCY_LINKS = [
