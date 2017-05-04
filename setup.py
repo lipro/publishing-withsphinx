@@ -79,7 +79,7 @@ _EXTRAS_REQUIRE_DEV = [
     'sphinxcontrib-traceability>=0.1.2,<=0.1.2',
     'sphinx-rtd-theme>=0.1.6,<=0.1.9',
     'check-manifest>=0.35.0,<=0.35.9999',
-    'webob>=1.6.2,<=1.6.2',
+    'webob>=1.7.2,<=1.7.2',
     'wheel>=0.29.0,<=0.29.0',
 ]
 
