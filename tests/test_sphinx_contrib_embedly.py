@@ -86,7 +86,7 @@ class TestCaseSphinxContribEmbedly(util.TestCasePublishingSphinx):
     @util.with_latex_app(
         testroot='contrib-embedly',
         confoverrides={
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
         },
     )
@@ -121,7 +121,7 @@ class TestCaseSphinxContribEmbedly(util.TestCasePublishingSphinx):
     @util.with_text_app(
         testroot='contrib-embedly',
         confoverrides={
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
         },
     )
