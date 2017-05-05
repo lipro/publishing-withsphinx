@@ -57,7 +57,7 @@ environments:
    \begin{minipage}[t]{0.65\textwidth}
 
 .. traceable-graph::
-    :tags: sphinx1.2, sphinx1.3, sphinx1.4
+    :tags: sphinx1.2, sphinx1.3, sphinx1.4, sphinx1.5
     :caption: Traces of the tox test environments
     :relationships: children
 
@@ -75,6 +75,17 @@ Tox test environments
 
 
 The compatibility matrix is an result of the following tox test environments:
+
+.. traceable:: py27-sphinx1.5
+   :title: Python 2.7 with Sphinx 1.5
+   :category: compatibility-matrix
+   :parents: py27
+
+   .. command-output:: tox --showconfig -e py27-sphinx1.5
+
+.. raw:: latex
+
+   \newpage
 
 .. traceable:: py27-sphinx1.4
    :title: Python 2.7 with Sphinx 1.4
@@ -106,6 +117,17 @@ The compatibility matrix is an result of the following tox test environments:
    .. command-output:: tox --showconfig -e py27-sphinx1.2
 
 .. ----------------------------------------------------------------------------
+
+.. raw:: latex
+
+   \newpage
+
+.. traceable:: py36-sphinx1.5
+   :title: Python 3.6 with Sphinx 1.5
+   :category: compatibility-matrix
+   :parents: py36
+
+   .. command-output:: tox --showconfig -e py36-sphinx1.5
 
 .. raw:: latex
 
@@ -146,6 +168,17 @@ The compatibility matrix is an result of the following tox test environments:
 
    \newpage
 
+.. traceable:: py35-sphinx1.5
+   :title: Python 3.5 with Sphinx 1.5
+   :category: compatibility-matrix
+   :parents: py35
+
+   .. command-output:: tox --showconfig -e py35-sphinx1.5
+
+.. raw:: latex
+
+   \newpage
+
 .. traceable:: py35-sphinx1.4
    :title: Python 3.5 with Sphinx 1.4
    :category: compatibility-matrix
@@ -176,6 +209,17 @@ The compatibility matrix is an result of the following tox test environments:
    .. command-output:: tox --showconfig -e py35-sphinx1.2
 
 .. ----------------------------------------------------------------------------
+
+.. raw:: latex
+
+   \newpage
+
+.. traceable:: py34-sphinx1.5
+   :title: Python 3.4 with Sphinx 1.5
+   :category: compatibility-matrix
+   :parents: py34
+
+   .. command-output:: tox --showconfig -e py34-sphinx1.5
 
 .. raw:: latex
 
@@ -213,6 +257,12 @@ The compatibility matrix is an result of the following tox test environments:
 .. ----------------------------------------------------------------------------
 .. --- hidden traceable items for Sphinx compatibility
 .. ----------------------------------------------------------------------------
+
+.. traceable:: sphinx1.5
+   :title: Sphinx 1.5
+   :category: compatibility-sphinx
+   :sibling: REQ-WORKSON-SP15
+   :format: hidden
 
 .. traceable:: sphinx1.4
    :title: Sphinx 1.4

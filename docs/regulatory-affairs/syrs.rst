@@ -181,6 +181,31 @@ Sphinx versions.
 Sphinx Version Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. traceable:: REQ-WORKSON-SP15
+   :title: Sphinx version 1.5.x can be used to write documentation
+   :category: SysReq
+   :parents: STRQ-EXTSETUP
+   :sibling: REQ-TESTS-CI
+   :requirement_type: configuration-sphinx
+   :verification_method: ci-test
+
+.. .. index::
+      single: Sphinx; Sphinx 1.x; REQ-WORKSON-SP15
+
+It must be possible to install this |publishing-withsphinx| extension in a
+Sphinx 1.5.x environment and write documentation with this version of Sphinx.
+
+Refer to the prerequisites [#sp15-pr]_ of the Sphinx 1.5 documentation builder:
+
+   "Sphinx needs at least Python 2.7 or Python 3.4 to run, ..."
+
+.. traceable-graph::
+   :tags: REQ-WORKSON-SP15
+   :relationships: parents:2, children:1
+   :caption: Traces to the system requirement REQ-WORKSON-SP15
+
+.. ----------------------------------------------------------------------------
+
 .. traceable:: REQ-WORKSON-SP14
    :title: Sphinx version 1.4.x can be used to write documentation
    :category: SysReq
@@ -564,3 +589,6 @@ List of system requirements
 
 .. [#sp14-pr] :traceable:`REQ-WORKSON-SP14` prerequisites:
               http://www.sphinx-doc.org/en/1.4/intro.html#prerequisites
+
+.. [#sp15-pr] :traceable:`REQ-WORKSON-SP15` prerequisites:
+              http://www.sphinx-doc.org/en/1.5/intro.html#prerequisites
