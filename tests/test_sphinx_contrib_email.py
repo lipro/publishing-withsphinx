@@ -93,7 +93,8 @@ class TestCaseSphinxContribEmail(util.TestCasePublishingSphinx):
         # check email encryption
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' 'A Bc .textless\{\}.href\{mailto:a@bc\.de\}\{a@bc\.de\}.textgreater\{\}'
+            '(?ms)' 'A Bc .textless\{\}' + re.escape(self.get_latex_href()) +
+                    '\{mailto:a@bc\.de\}\{a@bc\.de\}.textgreater\{\}'
         )
         self.assertRegex(c, r)
 
