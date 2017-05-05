@@ -441,7 +441,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         app.builder.build_all()
 
         # check file
-        for f in [
+        for f in filter(self.can_found_this_qthelp_file, [
                 'index.qhcp',
                 'index.qhp',
                 'index.html',
@@ -479,7 +479,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/index.html',
                 'test-ext-todo/foo.html',
                 'test-ext-todo/bar.html',
-        ]:
+        ]):
             p = util.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)

@@ -45,6 +45,7 @@ import sys
 
 from sphinx_testing import with_app
 from sphinx_testing.path import path
+from sphinx_testing.util import sphinx_version
 
 import logging
 import logging.handlers
@@ -261,6 +262,13 @@ class TestCasePublishingSphinx(unittest.TestCase):
         '''
         self.logger.removeHandler(self.handler)
         self.handler.close()
+
+    @classmethod
+    def can_found_this_qthelp_file(self, file):
+        if not sphinx_version < '1.5' and file == 'search.html':
+            return False
+        else:
+            return True
 
 
 # Logging already provides a BufferingHandler() [1]_ class which allows you
