@@ -115,8 +115,8 @@ class TestCaseSphinxContribArgParse(util.TestCasePublishingSphinx):
         # check CLI program documentation
         r = re.compile(
             '(?ms)' 'usage: cmdargs \[-h\] \{apply,game\} \.\.\.'
-            '.*'    'usage: cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
-            '.*'    'usage: cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
+            '.*'           'cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
+            '.*'           'cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
         )
         self.assertRegex(c, r)
 

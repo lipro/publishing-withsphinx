@@ -43,6 +43,9 @@ from tests import util
 
 class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
 
+    # TODO: Evaluate the specific option 'programoutput_use_ansi'
+    #       when programoutput will support the Sphinx extension
+    #       sphinxcontrib-ansi again.
     @util.with_html_app(
         testroot='contrib-programoutput',
         confoverrides={
@@ -64,16 +67,31 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(c)
 
         # check program output documentation
+        #
+        # TODO: Remove ANSI code sequencies when programoutput will
+        #       support the Sphinx extension sphinxcontrib-ansi again.
+        #
+        # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
+        #
+        #   '.*'    'This is a ANSI control sequence\.'
+        #
+        # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
+        #
+        #   '.*'    'This is a \x1b\[31;1mANSI\x1b\[0m control sequence\.'
+        #
         r = re.compile(
             '(?ms)' 'cat.*ansi.*rst'
             '.*'    '\.\. ansi-block::'
-            '.*'    'This is a ANSI control sequence\.'
+            '.*'    'This is a (|\x1b\[31;1m)ANSI(|\x1b\[0m) control sequence\.'
             '.*'    'python --help'
             '.*'    'usage: python'
             '.*'    'Options and arguments'
         )
         self.assertRegex(c, r)
 
+    # TODO: Evaluate the specific option 'programoutput_use_ansi'
+    #       when programoutput will support the Sphinx extension
+    #       sphinxcontrib-ansi again.
     @util.with_latex_app(
         testroot='contrib-programoutput',
         confoverrides={
@@ -95,17 +113,32 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(c)
 
         # check program output documentation
+        #
+        # TODO: Remove ANSI code sequencies when programoutput will
+        #       support the Sphinx extension sphinxcontrib-ansi again.
+        #
+        # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
+        #
+        #   '.*'    'This is a ANSI control sequence\.'
+        #
+        # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
+        #
+        #   '.*'    'This is a \x1b\[31;1mANSI\x1b\[0m control sequence\.'
+        #
         # TODO: add support for latex backend of this extention
         r = re.compile(
             '(?ms)' 'cat.*ansi.*rst'
             '.*'    '\.\. ansi.*block::'
-            '.*'    'This is a ANSI control sequence\.'
+            '.*'    'This is a (|\x1b\[31;1m)ANSI(|\x1b\[0m) control sequence\.'
             '.*'    'python .*help'
             '.*'    'usage: python'
             '.*'    'Options and arguments'
         )
         self.assertRegex(c, r)
 
+    # TODO: Evaluate the specific option 'programoutput_use_ansi'
+    #       when programoutput will support the Sphinx extension
+    #       sphinxcontrib-ansi again.
     @util.with_text_app(
         testroot='contrib-programoutput',
         confoverrides={
@@ -127,10 +160,22 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(c)
 
         # check program output documentation
+        #
+        # TODO: Remove ANSI code sequencies when programoutput will
+        #       support the Sphinx extension sphinxcontrib-ansi again.
+        #
+        # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
+        #
+        #   '.*'    'This is a ANSI control sequence\.'
+        #
+        # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
+        #
+        #   '.*'    'This is a \x1b\[31;1mANSI\x1b\[0m control sequence\.'
+        #
         r = re.compile(
             '(?ms)' 'cat.*ansi.*rst'
             '.*'    '\.\. ansi-block::'
-            '.*'    'This is a ANSI control sequence\.'
+            '.*'    'This is a (|\x1b\[31;1m)ANSI(|\x1b\[0m) control sequence\.'
             '.*'    'python --help'
             '.*'    'usage: python'
             '.*'    'Options and arguments'
