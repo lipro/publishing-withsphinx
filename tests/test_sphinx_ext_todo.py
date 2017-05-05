@@ -94,12 +94,12 @@ class TestCaseSphinxExtTodo(util.TestCasePublishingSphinx):
 
         # check todolist
         r = re.compile(
-            '(?ms)' '.begin\{notice\}\{note\}\{Todo\}'
+            '(?ms)' '.begin\{' + self.get_latex_admonition() + '\}\{note\}\{Todo\}'
             '.*'    'todo in bar'
-            '.*'    '.end\{notice\}'
-            '.*'    '.begin\{notice\}\{note\}\{Todo\}'
+            '.*'    '.end\{' + self.get_latex_admonition() + '\}'
+            '.*'    '.begin\{' + self.get_latex_admonition() + '\}\{note\}\{Todo\}'
             '.*'    'todo in foo'
-            '.*'    '.end\{notice\}'
+            '.*'    '.end\{' + self.get_latex_admonition() + '\}'
         )
         self.assertRegex(c, r)
 
