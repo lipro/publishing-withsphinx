@@ -9,6 +9,10 @@
     because in my eyes it's a kind of "spyware" and not usable without an
     chargeable account. There is no way to use the embed.ly API without
     valid (payed) API key. All the tests fail with error: code 403.
+  * Move the backport of :literal:`app.config.latex_engine` from
+    Sphinx 1.5 into the :literal:`publishing-withsphinx` implementation
+    to be compatible to all Sphinx versions down to 1.2 without the
+    need to expand any single :literal:`conf.py` file.
 
 :testing:
 
