@@ -30,7 +30,7 @@ Getting started
 .. index:: ! Getting started
 
 To get started with the development, you will need a proper Python 2.7 or
-Python 3.5 runtime environment. Installing Python is generally easy, and
+Python 3.6 runtime environment. Installing Python is generally easy, and
 nowadays many Linux and UNIX distributions include a recent Python.
 
 For development of this module it is recommended to use a Python Virtual
@@ -87,21 +87,22 @@ Install all versions of Python 3:
       sudo apt-get install python3.3 python3.3-dev
       sudo apt-get install python3.4 python3.4-dev python3.4-venv
       sudo apt-get install python3.5 python3.5-dev python3.5-venv
+      sudo apt-get install python3.6 python3.6-dev python3.6-venv
 
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
-Python 3.5 Virtual Environment
+Python 3.6 Virtual Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 3; Virtual Environment
    single: Virtual Environment; Python 3
 
-Activate Python 3.5 Virtual Environment:
+Activate Python 3.6 Virtual Environment:
    .. code-block:: bash
 
-      python3.5 -m venv .py35env
-      source .py35env/bin/activate
+      python3.6 -m venv .py36env
+      source .py36env/bin/activate
 
    See: https://wiki.ubuntuusers.de/virtualenv/#venv-aus-Python-3
 
@@ -114,7 +115,7 @@ Upgrade :program:`pip` and install required packages:
       pip install --upgrade pip
       pip install --process-dependency-links -e .[dev,test]
 
-   Within the virtual Python 3.5 runtime environment upgrade and install all
+   Within the virtual Python 3.6 runtime environment upgrade and install all
    required Python packages.
 
 Python 2 Installation
@@ -184,6 +185,7 @@ Create a built (binary) distribution:
    .. code-block:: bash
 
       python setup.py bdist
+      python setup.py bdist_wheel
 
 Perform some checks on the package:
    .. code-block:: bash
@@ -196,10 +198,32 @@ Run unit tests using nosetests or after in-place build:
       python setup.py nosetests
       python setup.py test
 
+Run a specific colection of unit tests using nosetests:
+   .. code-block:: bash
+
+      python setup.py nosetests \
+        --tests tests/test_module_meta.py:TestPublishingWithSphinxMetaData
+
+Run a specific unit test using nosetests:
+   .. code-block:: bash
+
+      python setup.py nosetests \
+        --tests tests/test_sphinx_ext_todo.py:TestCaseSphinxExtTodo.test_build_text
+
 Build Sphinx documentation:
    .. code-block:: bash
 
       python setup.py build_sphinx
+
+   Within any virtual Python 3.x runtime environment you will run into a
+   well known build issue within the :literal:`sphinxcontrib.traceables`
+   extension. See main issue tracker or file :literal:`TODO` for more
+   details.
+
+Cleanup all build artefacts:
+   .. code-block:: bash
+
+      python setup.py distclean
 
 
 .. _testing:
