@@ -197,6 +197,18 @@ Run unit tests using nosetests or after in-place build:
       python setup.py nosetests
       python setup.py test
 
+Run a specific colection of unit tests using nosetests:
+   .. code-block:: bash
+
+      python setup.py nosetests \
+        --tests tests/test_module_meta.py:TestPublishingWithSphinxMetaData
+
+Run a specific unit test using nosetests:
+   .. code-block:: bash
+
+      python setup.py nosetests \
+        --tests tests/test_sphinx_ext_todo.py:TestCaseSphinxExtTodo.test_build_text
+
 Build Sphinx documentation:
    .. code-block:: bash
 
