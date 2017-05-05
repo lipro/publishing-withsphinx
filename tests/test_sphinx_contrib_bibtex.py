@@ -111,13 +111,13 @@ class TestCaseSphinxContribBibTeX(util.TestCasePublishingSphinx):
         # check BibTeX entry
         # FIXME: avoid \xa0 as whitespace character: 'Jan\xa0Ulrich'
         r = re.compile(
-            '(?ms)' '.begin\{thebibliography\}\{HB14\}'
-            '.*'    '.bibitem\[HB14\]\{HB14\}'
+            '(?ms)' '.begin\{' + self.get_latex_thebibliography() + '\}\{HB14\}'
+            '.*'    '.bibitem\[HB14\]\{' + re.escape(self.get_latex_idescape('HB14')) + '\}'
             '.*'    'Jan.*Ulrich Hasecke and Georg Brandl'
             '.*'    'Software-\s*Dokumentation mit Sphinx'
             '.*'    'ISBN 1497448689'
             '.*'    '..*\{http://www\.amazon\.com/dp/1497448689\}'
-            '.*'    '.end\{thebibliography\}'
+            '.*'    '.end\{' + self.get_latex_thebibliography() + '\}'
         )
         self.assertRegex(c, r)
 
