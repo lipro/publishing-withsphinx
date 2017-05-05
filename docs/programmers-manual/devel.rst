@@ -185,6 +185,7 @@ Create a built (binary) distribution:
    .. code-block:: bash
 
       python setup.py bdist
+      python setup.py bdist_wheel
 
 Perform some checks on the package:
    .. code-block:: bash
