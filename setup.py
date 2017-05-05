@@ -32,13 +32,20 @@ See:
     https://github.com/pypa/sampleproject
 '''
 
+# Common OS support
+import os
+
 # Always prefer setuptools over distutils
 from setuptools import setup, find_packages, Command
-from os import system
+
+# To expand distutil's clean command
+from pkg_resources import safe_name, to_filename
+from distutils.command.clean import clean as _clean
+from distutils.dir_util import remove_tree
+from distutils import log
 
 # To use a consistent encoding
 from codecs import open
-from os import path
 
 # To enforce right Python version
 from sys import version_info
@@ -48,17 +55,17 @@ import publishing.withsphinx as pubwsphinx
 
 _INSTALL_REQUIRES = [
     'Sphinx>=1.2.0,<=1.4.9999',
-    'sphinx-argparse>=0.1.15,<=0.1.15',
+    'sphinx-argparse>=0.2.0,<=0.2.0',
     'sphinxcontrib-ansi>=0.6.dev0',
-    'sphinxcontrib-bibtex>=0.3.4,<=0.3.4',
+    'sphinxcontrib-bibtex>=0.3.5,<=0.3.5',
     'sphinxcontrib-blockdiag>=1.5.5,<=1.5.5',
     'sphinxcontrib-email>=0.2.dev0',
     'sphinxcontrib-embedly>=0.2.0,<=0.2.0',
     'sphinxcontrib-inlinesyntaxhighlight>=0.2.0,<=0.2.0',
-    'sphinxcontrib-programoutput>=0.8.0,<=0.8.0',
-    'sphinxcontrib-spelling>=2.2.0,<=2.2.0',
-    'sphinxcontrib-tikz>=0.4.2,<=0.4.2',
-    'reportlab>=3.3.0,<=3.3.9999',
+    'sphinxcontrib-programoutput>=0.8.0,<=0.10.0',
+    'sphinxcontrib-spelling>=2.3.0,<=2.3.0',
+    'sphinxcontrib-tikz>=0.4.2,<=0.4.4',
+    'reportlab>=3.4.0,<=3.4.9999',
 ]
 
 _DEPENDENCY_LINKS = [
@@ -70,20 +77,20 @@ _DEPENDENCY_LINKS = [
 _EXTRAS_REQUIRE_DEV = [
     'sphinxcontrib-traceables>=0.1.5.dev0',
     'sphinxcontrib-traceability>=0.1.2,<=0.1.2',
-    'sphinx-rtd-theme>=0.1.6,<=0.1.9',
-    'check-manifest>=0.34.0,<=0.34.9999',
-    'webob>=1.6.2,<=1.6.2',
+    'sphinx-rtd-theme>=0.2.4,<=0.2.4',
+    'check-manifest>=0.35.0,<=0.35.9999',
+    'webob>=1.7.2,<=1.7.2',
     'wheel>=0.29.0,<=0.29.0',
 ]
 
 _EXTRAS_REQUIRE_TEST = [
-    'sphinx-testing>=0.5.2,<=0.7.1',
-    'tox>=2.0.0,<=2.4.1',
+    'sphinx-testing>=0.7.1,<=0.7.1',
+    'tox>=2.0.0,<=2.7.0',
     'nose>=1.3.7,<=1.3.7',
     'mock>=2.0.0,<=2.0.0',
-    'coverage>=4.2.0,<=4.2.9999',
+    'coverage>=4.3.0,<=4.3.9999',
     'coveralls>=1.1.0,<=1.1.9999',
-    'flake8>=3.0.4,<=3.0.4',
+    'flake8>=3.3.0,<=3.3.0',
 ]
 
 _EXTRAS_REQUIRE = {
@@ -103,31 +110,117 @@ else:
     _INSTALL_REQUIRES.append('sphinxcontrib-autoprogram>=0.1.2,<=0.1.3')
 
 # Get project path absolut
-_HERE = path.abspath(path.dirname(__file__))
+_HERE = os.path.abspath(os.path.dirname(__file__))
 
 # Get the long description from the README file
-with open(path.join(_HERE, 'README.rst'), encoding='utf-8') as f:
+with open(os.path.join(_HERE, 'README.rst'), encoding='utf-8') as f:
     _README = f.read()
 
 
-# clean command within setup.py by jathanism
-# See: http://stackoverflow.com/questions/3779915/
-class clean(Command):
-    '''Custom clean command to tidy up the project root.'''
-    description = "tidy up the project root"
-    user_options = []
+class RemoveEggInfo(Command):
+    description = "remove a distribution's .egg-info directory"
+    user_options = [
+        ('egg-base=', 'e', "directory containing .egg-info directories"
+                           " (default: top of the source tree)")
+    ]
+    boolean_options = []
 
     def initialize_options(self):
         '''init options'''
-        pass
+        self.egg_name = None
+        self.egg_base = None
+        self.egg_info = None
 
     def finalize_options(self):
         '''finalize options'''
-        pass
+        self.egg_name = safe_name(self.distribution.get_name())
+        self.set_undefined_options('egg_info',
+                                   ('egg_base', 'egg_base'))
+
+        if self.egg_base is None:
+            dirs = self.distribution.package_dir
+            self.egg_base = (dirs or {}).get('', os.curdir)
+
+        self.ensure_dirname('egg_base')
+        self.egg_info = to_filename(self.egg_name) + '.egg-info'
+        if self.egg_base != os.curdir:
+            self.egg_info = os.path.join(self.egg_base, self.egg_info)
 
     def run(self):
         '''runner'''
-        system('rm -vrf ./_build ./_dist ./*.egg-info')
+        if os.path.exists(self.egg_info):
+            remove_tree(self.egg_info, dry_run=self.dry_run)
+        else:
+            log.warn("'%s' does not exist -- can't clean it",
+                     self.egg_info)
+
+
+class CleanDoc(Command):
+    description = 'Clean Sphinx documentation'
+    user_options = [
+        ('build-dir=', None, 'Build directory')
+    ]
+    boolean_options = []
+
+    def initialize_options(self):
+        '''init options'''
+        self.build_dir = None
+
+    def finalize_options(self):
+        '''finalize options'''
+        self.set_undefined_options('build_sphinx',
+                                   ('build_dir', 'build_dir'))
+
+    def run(self):
+        '''runner'''
+        if os.path.exists(self.build_dir):
+            remove_tree(self.build_dir, dry_run=self.dry_run)
+        else:
+            log.warn("'%s' does not exist -- can't clean it",
+                     self.build_dir)
+
+
+class Clean(_clean):
+    description = _clean.description
+    user_options = _clean.user_options + [
+        ('pyc', 'f',
+         "remove any .pyc files left around in the directory tree")
+    ]
+    boolean_options = _clean.boolean_options + ['pyc']
+
+    def initialize_options(self):
+        '''init options'''
+        _clean.initialize_options(self)
+        self.pyc = None
+
+    def finalize_options(self):
+        '''finalize options'''
+        _clean.finalize_options(self)
+
+    def remove_file(self, name, verbose=1, dry_run=0):
+        '''remove file by name'''
+        if verbose >= 1:
+            log.info("removing '%s' (if it is a file)", name)
+        if dry_run:
+            return
+        if os.path.isfile(name):
+            os.remove(name)
+
+    def run(self):
+        '''runner'''
+        _clean.run(self)
+
+        if self.pyc:
+            for package in find_packages():
+                cwd = os.path.join(os.getcwd(), package)
+                for root, dirs, files in os.walk(cwd, topdown=False):
+                    if root.endswith('__pycache__') and os.path.exists(root):
+                        remove_tree(root, dry_run=self.dry_run)
+                    else:
+                        for name in files:
+                            if name.endswith('.pyc'):
+                                self.remove_file(os.path.join(root, name),
+                                                 dry_run=self.dry_run)
 
 
 setup(
@@ -241,6 +334,8 @@ setup(
 
     # ... Other setup options
     cmdclass={
-        'clean': clean,
+        'remove_egg_info': RemoveEggInfo,
+        'clean_sphinx': CleanDoc,
+        'clean': Clean,
     }
 )
