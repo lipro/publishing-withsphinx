@@ -278,6 +278,13 @@ class TestCasePublishingSphinx(unittest.TestCase):
             return '\sphinxhref'
 
     @classmethod
+    def get_latex_verbatim(self):
+        if sphinx_version < '1.5':
+            return 'Verbatim'
+        else:
+            return 'sphinxVerbatim'
+
+    @classmethod
     def get_latex_admonition(self):
         if sphinx_version < '1.5':
             return 'notice'

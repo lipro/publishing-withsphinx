@@ -95,9 +95,9 @@ class TestCaseSphinxContribAnsi(util.TestCasePublishingSphinx):
         # check ANSI text block
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' '.begin\{Verbatim\}\[commandchars=...\{.\}\]'
+            '(?ms)' '.begin\{' + self.get_latex_verbatim() + '\}\[commandchars=...\{.\}\]'
             '.*'    'This.*is.*a.*ANSI.*control.*sequence.*\.'
-            '.*'    '.end\{Verbatim\}'
+            '.*'    '.end\{' + self.get_latex_verbatim() + '\}'
         )
         self.assertRegex(c, r)
 
