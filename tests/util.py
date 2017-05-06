@@ -273,37 +273,37 @@ class TestCasePublishingSphinx(unittest.TestCase):
     @classmethod
     def get_latex_href(self):
         if sphinx_version < '1.5.4':
-            return '\href'
+            return r'\href'
         else:
-            return '\sphinxhref'
+            return r'\sphinxhref'
 
     @classmethod
     def get_latex_verbatim(self):
         if sphinx_version < '1.5':
-            return 'Verbatim'
+            return r'Verbatim'
         else:
-            return 'sphinxVerbatim'
+            return r'sphinxVerbatim'
 
     @classmethod
     def get_latex_admonition(self):
         if sphinx_version < '1.5':
-            return 'notice'
+            return r'notice'
         else:
-            return 'sphinxadmonition'
+            return r'sphinxadmonition'
 
     @classmethod
     def get_latex_thebibliography(self):
         if sphinx_version < '1.5':
-            return 'thebibliography'
+            return r'thebibliography'
         else:
-            return 'sphinxthebibliography'
+            return r'sphinxthebibliography'
 
     @classmethod
     def get_latex_idescape(self, id):
         if sphinx_version < '1.5.1':
             return id
         else:
-            return '\detokenize{' + id + '}'
+            return r'\detokenize{' + id + r'}'
 
 
 # Logging already provides a BufferingHandler() [1]_ class which allows you
