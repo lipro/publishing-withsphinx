@@ -66,7 +66,7 @@ class TestCaseSphinxExtMathJax(util.TestCasePublishingSphinx):
         # check mathematic equastions
         r = re.compile(
             '(?ms)' '<h2>Test math extensions <span class="math">.\(E = m c\^2.\)</span>.*</h2>'
-            '.*'    '<div class="math">'
+            '.*'    '<div class="math".*>'
             '.*'    '.\[a\^2\+b\^2=c\^2.\]</div>'
             '.*'    '<p>Inline <span class="math">.\(E=mc\^2.\)</span></p>'
         )
