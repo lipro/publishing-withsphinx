@@ -66,20 +66,30 @@ class TestCaseSphinxContribEmbedly(util.TestCasePublishingSphinx):
 
         # check embedly block
         r = re.compile(
-            '(?ms)' '<a href="http://www\.montypython\.com/" title="'
-            '.*'    '">Monty Python Official Site</a>'
-            '.*'    '<a href="http://www\.montypython\.net/sounds/lob/16done\.wav" title="'
-            '.*'    '">http://www\.montypython\.net/sounds/lob/16done\.wav</a>'
-            '.*'    '<img width=".*"'
-            '.*'    'height=".*"'
-            '.*'    'alt=".*"'
-            '.*'    'src="https://i\.embed\.ly/'
-            '.*'    'url=http%3A%2F%2Fwww\.montypython\.com%2Fhimg%2F_0\.png&key='
-            '.*'    '/>'
-            '.*'    '<iframe class="embedly-embed" src="https://cdn\.embedly\.com/'
-            '.*'    'url=http%3A%2F%2Fwww\.youtube\.com%2Fwatch%3Fv%3DM_eYSuPKP3Y'
-            '.*'    '&key='
-            '.*'    '</iframe>'
+            '(?ms)' +
+            re.escape(r'<h2>Website<a class="headerlink" href="#website"') + '.*' + re.escape(r'</a></h2>') + '.*' +
+            re.escape(r'<a href="http://www.montypython.com/" title="') +
+            re.escape(r"The official online home for all things Monty Python. Pages of everything you'll ever ") +
+            re.escape(r'need to know about Monty Python and their movies, TV shows, books, live stage shows, ') +
+            re.escape(r'apps and latest projects, as well as exclusive videos, news and a Fanwall where all your ') +
+            re.escape(r'#montypython content will live.">Monty Python Official Site</a>') + '.*' +
+            re.escape(r'<h2>Audio<a class="headerlink" href="#audio"') + '.*' + re.escape(r'</a></h2>') + '.*' +
+            re.escape(r'<a href="http://www.montypython.net/sounds/lob/16done.wav" title="">') +
+            re.escape(r'http://www.montypython.net/sounds/lob/16done.wav</a>') + '.*' +
+            re.escape(r'<h2>Image<a class="headerlink" href="#image"') + '.*' + re.escape(r'</a></h2>') + '.*' +
+            re.escape(r'<img width="660"') + '.*' + re.escape(r'height="273"') + '.*' + re.escape(r'alt=""') + '.*' +
+            re.escape(r'src="https://i.embed.ly/1/image') + '.*' +
+            re.escape(r'?url=http%3A%2F%2Fwww.montypython.com%2Fhimg%2F_0.png') + '.*' + re.escape(r'&key=') + '.*' +
+            re.escape(r'/>') + '.*' + re.escape(r'<h2>Youtube<a class="headerlink" href="#youtube"') + '.*' +
+            re.escape(r'</a></h2>') + '.*' + re.escape(r'<iframe class="embedly-embed"') + '.*' +
+            re.escape(r'src="https://cdn.embedly.com/widgets/media.html?') + '.*' +
+            re.escape(r'url=http%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DM_eYSuPKP3Y') + '.*' +
+            re.escape(r'&image=https%3A%2F%2Fi.ytimg.com%2Fvi%2FM_eYSuPKP3Y%2Fhqdefault.jpg') + '.*' +
+            re.escape(r'&key=') + '.*' + re.escape(r'&type=text%2Fhtml') + '.*' +
+            re.escape(r'&schema=youtube') + '.*' + re.escape(r'width="854"') + '.*' +
+            re.escape(r'height="480"') + '.*' + re.escape(r'scrolling="no"') + '.*' +
+            re.escape(r'frameborder="0"') + '.*' + re.escape(r'allowfullscreen') + '.*' +
+            re.escape(r'></iframe>')
         )
         self.assertRegex(c, r)
 
@@ -107,14 +117,19 @@ class TestCaseSphinxContribEmbedly(util.TestCasePublishingSphinx):
         # check embedly block
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' '..*{Monty Python .textless\{\}'
-                    'http://www\.montypython\.com/.textgreater\{\}\}'
-            '.*'    '..*\{Monty Python .textless\{\}'
-                    'http://www\.montypython\.net/sounds/lob/16done.wav.textgreater\{\}\}'
-            '.*'    '..*\{Monty Python .textless\{\}'
-                    'http://www.montypython.com/himg/._0\.png.textgreater\{\}\}'
-            '.*'    'Monty Python\'s ..*\{SPAM .textless\{\}'
-                    'http://www\.youtube\.com/watch\?v=M._eYSuPKP3Y.textgreater\{\}\}'
+            '(?ms)' +
+            re.escape(r'\chapter{Website}') + '.*' +
+            re.escape(self.get_latex_titleref() + r'{Monty Python \textless{}') +
+            re.escape(r'http://www.montypython.com/\textgreater{}}') + '.*' +
+            re.escape(r'\chapter{Audio}') + '.*' +
+            re.escape(self.get_latex_titleref() + r'{Monty Python \textless{}') +
+            re.escape(r'http://www.montypython.net/sounds/lob/16done.wav\textgreater{}}') + '.*' +
+            re.escape(r'\chapter{Image}') + '.*' +
+            re.escape(self.get_latex_titleref() + r'{Monty Python \textless{}') +
+            re.escape(r'http://www.montypython.com/himg/\_0.png\textgreater{}}') + '.*' +
+            re.escape(r'\chapter{Youtube}') + '.*' +
+            re.escape(self.get_latex_titleref() + r'{SPAM \textless{}') +
+            re.escape(r'http://www.youtube.com/watch?v=M\_eYSuPKP3Y\textgreater{}}')
         )
         self.assertRegex(c, r)
 
@@ -142,10 +157,15 @@ class TestCaseSphinxContribEmbedly(util.TestCasePublishingSphinx):
         # check embedly block
         # TODO: add support for text backend of this extention
         r = re.compile(
-            '(?ms)' 'Monty Python <http://www.montypython\.com/>'
-            '.*'    'Monty Python <http://www.montypython\.net/sounds/lob/16done\.wav>'
-            '.*'    'Monty Python <http://www.montypython\.com/himg/_0\.png>'
-            '.*'    'Monty Python.* .*SPAM <http://www\.youtube\.com/watch\?v=M_eYSuPKP3Y>'
+            '(?ms)' +
+            re.escape(r'Website') + '.*' +
+            re.escape(r'*Monty Python <http://www.montypython.com/>*') + '.*' +
+            re.escape(r'Audio') + '.*' +
+            re.escape(r'*Monty Python <http://www.montypython.net/sounds/lob/16done.wav>*') + '.*' +
+            re.escape(r'Image') + '.*' +
+            re.escape(r'*Monty Python <http://www.montypython.com/himg/_0.png>*') + '.*' +
+            re.escape(r'Youtube') + '.*' +
+            re.escape(r"Monty Python's *SPAM <http://www.youtube.com/watch?v=M_eYSuPKP3Y>*")
         )
         self.assertRegex(c, r)
 

@@ -67,8 +67,11 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
 
         # check blockdiag graphic
         r = re.compile(
-            '(?ms)' '<div><img height=".*" src="_images/blockdiag-.*\.png" width=".*" /></div>'
-            '.*'    '<div><img height=".*" src="_images/blockdiag-.*\.png" width=".*" /></div>'
+            '(?ms)' +
+            re.escape(r'<div><img ') + '.*' + re.escape(r'src="_images/blockdiag-') + '.*' +
+            re.escape(r'.png"') + '.*' + re.escape(r' /></div>') + '.*' +
+            re.escape(r'<div><img ') + '.*' + re.escape(r'src="_images/blockdiag-') + '.*' +
+            re.escape(r'.png"') + '.*' + re.escape(r' /></div>')
         )
         self.assertRegex(c, r)
 
@@ -96,20 +99,25 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
 
         # check blockdiag graphic
         r = re.compile(
-            '(?ms)' '<div><svg height=".*" viewBox=".*" width=".*" '
-                    'xmlns="http://www\.w3\.org/2000/svg" '
-                    'xmlns:inkspace="http://www\.inkscape\.org/namespaces/inkscape" '
-                    'xmlns:xlink="http://www\.w3\.org/1999/xlink">'
-            '.*'    '<title>blockdiag<.title>'
-            '.*'    '</svg>'
-            '.*'    '</div>'
-            '.*'    '<div><svg height=".*" viewBox=".*" width=".*" '
-                    'xmlns="http://www\.w3\.org/2000/svg" '
-                    'xmlns:inkspace="http://www\.inkscape\.org/namespaces/inkscape" '
-                    'xmlns:xlink="http://www\.w3\.org/1999/xlink">'
-            '.*'    '<title>blockdiag<.title>'
-            '.*'    '</svg>'
-            '.*'    '</div>'
+            '(?ms)' +
+            re.escape(r'<div><svg ') + '.*' +
+            re.escape(r'xmlns="http://www.w3.org/2000/svg"') + '.*' +
+            re.escape(r'xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape"') + '.*' +
+            re.escape(r'xmlns:xlink="http://www.w3.org/1999/xlink">') + '.*' +
+            re.escape(r'<title>blockdiag</title>') + '.*' +
+            re.escape(r'<text ') + '.*' + re.escape(r'>A</text>') + '.*' +
+            re.escape(r'<text ') + '.*' + re.escape(r'>B</text>') + '.*' +
+            re.escape(r'</svg>') + '.*' + re.escape(r'</div>') + '.*' +
+            re.escape(r'<div><svg ') + '.*' +
+            re.escape(r'xmlns="http://www.w3.org/2000/svg"') + '.*' +
+            re.escape(r'xmlns:inkspace="http://www.inkscape.org/namespaces/inkscape"') + '.*' +
+            re.escape(r'xmlns:xlink="http://www.w3.org/1999/xlink">') + '.*' +
+            re.escape(r'<title>blockdiag</title>') + '.*' +
+            re.escape(r'<text ') + '.*' + re.escape(r'>A</text>') + '.*' +
+            re.escape(r'<text ') + '.*' + re.escape(r'>B</text>') + '.*' +
+            re.escape(r'<text ') + '.*' + re.escape(r'>C</text>') + '.*' +
+            re.escape(r'<text ') + '.*' + re.escape(r'>D</text>') + '.*' +
+            re.escape(r'</svg>') + '.*' + re.escape(r'</div>')
         )
         self.assertRegex(c, r)
 
@@ -138,8 +146,11 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         # check blockdiag graphic
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' '..*includegraphics\{.*blockdiag-.*\.png\}'
-            '.*'    '..*includegraphics\{.*blockdiag-.*\.png\}'
+            '(?ms)' +
+            re.escape(self.get_latex_includegraphics()) + '.*' +
+            re.escape(r'{blockdiag-') + '.*' + re.escape(r'.png}') + '.*' +
+            re.escape(self.get_latex_includegraphics()) + '.*' +
+            re.escape(r'{blockdiag-') + '.*' + re.escape(r'.png}')
         )
         self.assertRegex(c, r)
 
@@ -168,8 +179,11 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         # check blockdiag graphic
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' '..*includegraphics\{.*blockdiag-.*\.pdf\}'
-            '.*'    '..*includegraphics\{.*blockdiag-.*\.pdf\}'
+            '(?ms)' +
+            re.escape(self.get_latex_includegraphics()) + '.*' +
+            re.escape(r'{blockdiag-') + '.*' + re.escape(r'.pdf}') + '.*' +
+            re.escape(self.get_latex_includegraphics()) + '.*' +
+            re.escape(r'{blockdiag-') + '.*' + re.escape(r'.pdf}')
         )
         self.assertRegex(c, r)
 
@@ -197,7 +211,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         # check blockdiag graphic
         # TODO: add support for text backend of this extention
         r = re.compile(
-            '(?ms)' '\[image\]\s*\[image\]'
+            '(?ms)' + re.escape(r'[image][image]')
         )
         self.assertRegex(c, r)
 

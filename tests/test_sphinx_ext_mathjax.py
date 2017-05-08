@@ -65,10 +65,11 @@ class TestCaseSphinxExtMathJax(util.TestCasePublishingSphinx):
 
         # check mathematic equastions
         r = re.compile(
-            '(?ms)' '<h2>Test math extensions <span class="math">.\(E = m c\^2.\)</span>.*</h2>'
-            '.*'    '<div class="math".*>'
-            '.*'    '.\[a\^2\+b\^2=c\^2.\]</div>'
-            '.*'    '<p>Inline <span class="math">.\(E=mc\^2.\)</span></p>'
+            '(?ms)' +
+            re.escape(r'<h2>Test math extensions <span class="math">\(E = m c^2\)</span>') +
+            re.escape(r'<a class="headerlink"') + '.*' + re.escape(r'</a></h2>') + '.*' +
+            re.escape(r'<div class="math"') + '.*' + re.escape(r'\[a^2+b^2=c^2\]</div>') + '.*' +
+            re.escape(r'<p>Inline <span class="math">\(E=mc^2\)</span></p>')
         )
         self.assertRegex(c, r)
 
@@ -94,9 +95,11 @@ class TestCaseSphinxExtMathJax(util.TestCasePublishingSphinx):
 
         # check mathematic equastions
         r = re.compile(
-            '(?ms)' '.chapter\{Test math extensions .*.\(E = m c\^2.*.\)\}'
-            '.*'    '.begin\{split\}a\^2\+b\^2=c\^2.end\{split\}'
-            '.*'    'Inline .\(E=mc\^2.\)'
+            '(?ms)' +
+            re.escape(r'\chapter{Test math extensions ' + self.get_latex_protect()) +
+            re.escape(r'\(E = m c^2' + self.get_latex_protect() + r'\)}') + '.*' +
+            re.escape(r'\begin{split}a^2 + b^2 = c^2\end{split}') + '.*' +
+            re.escape(r'Inline \(E=mc^2\)')
         )
         self.assertRegex(c, r)
 
@@ -122,9 +125,9 @@ class TestCaseSphinxExtMathJax(util.TestCasePublishingSphinx):
 
         # check mathematic equastions
         r = re.compile(
-            '(?ms)' 'Test math extensions E = m c\^2'
-            '.*'    'a\^2\+b\^2=c\^2'
-            '.*'    'Inline E=mc\^2'
+            '(?ms)' +
+            re.escape(r'Test math extensions E = m c^2') + '.*' +
+            re.escape(r'a^2+b^2=c^2') + '.*' + re.escape(r'Inline E=mc^2')
         )
         self.assertRegex(c, r)
 

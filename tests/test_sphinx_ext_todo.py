@@ -65,10 +65,17 @@ class TestCaseSphinxExtTodo(util.TestCasePublishingSphinx):
 
         # check todolist
         r = re.compile(
-            '(?ms)' '<p class="first admonition-title">Todo</p>'
-            '.*'    '<p class="last">todo in bar</p>'
-            '.*'    '<p class="first admonition-title">Todo</p>'
-            '.*'    '<p class="last">todo in foo</p>'
+            '(?ms)' +
+            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
+            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
+            re.escape(r'<p class="last">todo in bar</p>') + '.*' +
+            re.escape(r'</div>') + '.*' +
+            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>') + '.*' +
+            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
+            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
+            re.escape(r'<p class="last">todo in foo</p>') + '.*' +
+            re.escape(r'</div>') + '.*' +
+            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>')
         )
         self.assertRegex(c, r)
 
@@ -94,12 +101,11 @@ class TestCaseSphinxExtTodo(util.TestCasePublishingSphinx):
 
         # check todolist
         r = re.compile(
-            '(?ms)' '.begin\{' + self.get_latex_admonition() + '\}\{note\}\{Todo\}'
-            '.*'    'todo in bar'
-            '.*'    '.end\{' + self.get_latex_admonition() + '\}'
-            '.*'    '.begin\{' + self.get_latex_admonition() + '\}\{note\}\{Todo\}'
-            '.*'    'todo in foo'
-            '.*'    '.end\{' + self.get_latex_admonition() + '\}'
+            '(?ms)' +
+            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
+            re.escape(r'todo in bar') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
+            re.escape(r'todo in foo') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
         )
         self.assertRegex(c, r)
 
@@ -125,8 +131,7 @@ class TestCaseSphinxExtTodo(util.TestCasePublishingSphinx):
 
         # check todolist
         r = re.compile(
-            '(?ms)' 'Todo: todo in bar'
-            '.*'    'Todo: todo in foo'
+            '(?ms)' + re.escape(r'Todo: todo in bar') + '.*' + re.escape(r'Todo: todo in foo')
         )
         self.assertRegex(c, r)
 

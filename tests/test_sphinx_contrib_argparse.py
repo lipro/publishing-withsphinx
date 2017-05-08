@@ -62,11 +62,16 @@ class TestCaseSphinxContribArgParse(util.TestCasePublishingSphinx):
 
         # check CLI program documentation
         r = re.compile(
-            '(?ms)' 'usage.* .*cmdargs.* .*apply.*game.* '
-            # '.*'    'usage.* .*cmdargs.* .*apply.* .*tree.* .*dry.* .*force.* .*path.*'
-            '.*'    'Execute provision script, collect all resources and apply them\.'
-            # '.*'    'usage.* .*cmdargs.* .*game.* .*opt.* .*rock.*paper.*scissors.* .*rock.*paper.*scissors.*'
-            '.*'    'Undocumented'
+            '(?ms)' +
+            re.escape(r'<pre') + '.*' + re.escape(r'usage') + '.*' + re.escape(r'cmdargs') + '.*' +
+            re.escape(r'apply') + '.*' + re.escape(r'game') + '.*' + re.escape(r'</pre>') + '.*' +
+            re.escape(r'<pre') + '.*' + re.escape(r'cmdargs') + '.*' + re.escape(r'apply') + '.*' +
+            re.escape(r'tree') + '.*' + re.escape(r'dry') + '.*' + re.escape(r'force') + '.*' +
+            re.escape(r'path') + '.*' + re.escape(r'</pre>') + '.*' +
+            re.escape(r'<pre') + '.*' + re.escape(r'cmdargs') + '.*' + re.escape(r'game') + '.*' +
+            re.escape(r'opt') + '.*' + re.escape(r'rock') + '.*' + re.escape(r'paper') + '.*' +
+            re.escape(r'scissors') + '.*' + re.escape(r'rock') + '.*' + re.escape(r'paper') + '.*' +
+            re.escape(r'scissors') + '.*' + re.escape(r'</pre>')
         )
         self.assertRegex(c, r)
 
@@ -89,9 +94,19 @@ class TestCaseSphinxContribArgParse(util.TestCasePublishingSphinx):
 
         # check CLI program documentation
         r = re.compile(
-            '(?ms)' 'usage.* .*cmdargs.* .*apply.*game.* '
-            '.*'    'usage.* .*cmdargs.* .*apply.* .*tree.* .*dry.* .*force.* .*path.*'
-            '.*'    'usage.* .*cmdargs.* .*game.* .*opt.* .*rock.*paper.*scissors.* .*rock.*paper.*scissors.*'
+            '(?ms)' +
+            re.escape(r'\begin{' + self.get_latex_verbatim(alltt=True) + r'}') + '.*' +
+            re.escape(r'usage') + '.*' + re.escape(r'cmdargs') + '.*' + re.escape(r'apply') + '.*' +
+            re.escape(r'game') + '.*' + re.escape(r'\end{' + self.get_latex_verbatim(alltt=True) + r'}') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_verbatim(alltt=True) + r'}') + '.*' +
+            re.escape(r'cmdargs') + '.*' + re.escape(r'apply') + '.*' + re.escape(r'tree') + '.*' +
+            re.escape(r'dry') + '.*' + re.escape(r'force') + '.*' + re.escape(r'path') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim(alltt=True) + r'}') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_verbatim(alltt=True) + r'}') + '.*' +
+            re.escape(r'cmdargs') + '.*' + re.escape(r'game') + '.*' + re.escape(r'opt') + '.*' +
+            re.escape(r'rock') + '.*' + re.escape(r'paper') + '.*' + re.escape(r'scissors') + '.*' +
+            re.escape(r'rock') + '.*' + re.escape(r'paper') + '.*' + re.escape(r'scissors') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim(alltt=True) + r'}')
         )
         self.assertRegex(c, r)
 
@@ -114,9 +129,10 @@ class TestCaseSphinxContribArgParse(util.TestCasePublishingSphinx):
 
         # check CLI program documentation
         r = re.compile(
-            '(?ms)' 'usage: cmdargs \[-h\] \{apply,game\} \.\.\.'
-            '.*'           'cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
-            '.*'           'cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
+            '(?ms)' +
+            re.escape(r'usage: cmdargs [-h] {apply,game} ...') + '.*' +
+            re.escape(r'cmdargs apply [-h] [-r] [--tree] [--dry] [--force] path') + '.*' +
+            re.escape(r'cmdargs game [-h] [--opt {rock,paper,scissors}] {rock,paper,scissors}')
         )
         self.assertRegex(c, r)
 
