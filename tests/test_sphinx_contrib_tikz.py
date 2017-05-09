@@ -67,12 +67,13 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
 
         # check TikZ figure
         r = re.compile(
-            '(?ms)' '<div class="figure">'
-            '.*'    '<p><img src="_images/tikz-.*\.png" alt="\[transform shape,'
-            '.*'    '\]'
-            '.*'    '.tikzfoldingdodecahedron\['
-            '.*'    '\];" /></p>'
-            '.*'    '<p class="caption">A new year is coming soon \.\.\.</p></div>'
+            '(?ms)' +
+            re.escape(r'<div class="figure">') + '.*' +
+            re.escape(r'<p><img src="_images/tikz-') + '.*' +
+            re.escape(r'.png" alt="[transform shape,') + '.*' + re.escape(r']') + '.*' +
+            re.escape(r'\sffamily\tiny') + '.*' +
+            re.escape(r'\tikzfoldingdodecahedron[') + '.*' + re.escape(r'];" /></p>') + '.*' +
+            re.escape(r'<p class="caption">A new year is coming soon ...</p></div>')
         )
         self.assertRegex(c, r)
 
@@ -100,12 +101,13 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
 
         # check TikZ figure
         r = re.compile(
-            '(?ms)' '<div class="figure">'
-            '.*'    '<p><img src="_images/tikz-.*\.svg" alt="\[transform shape,'
-            '.*'    '\]'
-            '.*'    '.tikzfoldingdodecahedron\['
-            '.*'    '\];" /></p>'
-            '.*'    '<p class="caption">A new year is coming soon \.\.\.</p></div>'
+            '(?ms)' +
+            re.escape(r'<div class="figure">') + '.*' +
+            re.escape(r'<p><img src="_images/tikz-') + '.*' +
+            re.escape(r'.svg" alt="[transform shape,') + '.*' + re.escape(r']') + '.*' +
+            re.escape(r'\sffamily\tiny') + '.*' +
+            re.escape(r'\tikzfoldingdodecahedron[') + '.*' + re.escape(r'];" /></p>') + '.*' +
+            re.escape(r'<p class="caption">A new year is coming soon ...</p></div>')
         )
         self.assertRegex(c, r)
 
@@ -133,12 +135,12 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
 
         # check TikZ figure
         r = re.compile(
-            '(?ms)' '.begin\{figure\}\[.*\].centering.begin\{tikzpicture\}'
-            '.*'    '\[transform shape,'
-            '.*'    '\]'
-            '.*'    '.tikzfoldingdodecahedron\['
-            '.*'    '\]'
-            '.*'    '.end\{tikzpicture\}.caption\{A new year is coming soon \.\.\.\}.end\{figure\}'
+            '(?ms)' +
+            re.escape(r'\begin{figure}[htp]\centering\begin{tikzpicture}') + '.*' +
+            re.escape(r'[transform shape,') + '.*' + re.escape(r']') + '.*' +
+            re.escape(r'\sffamily\tiny') + '.*' +
+            re.escape(r'\tikzfoldingdodecahedron[') + '.*' + re.escape(r']') + '.*' +
+            re.escape(r'\end{tikzpicture}\caption{A new year is coming soon ...}\end{figure}')
         )
         self.assertRegex(c, r)
 
@@ -167,7 +169,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         # check TikZ figure
         # TODO: add support for text backend of this extention
         r = re.compile(
-            '(?ms)' 'A new year is coming soon \.\.\.'
+            '(?ms)' + re.escape(r'A new year is coming soon ...')
         )
         self.assertNotRegex(c, r)
 

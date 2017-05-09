@@ -45,6 +45,7 @@ import sys
 
 from sphinx_testing import with_app
 from sphinx_testing.path import path
+from sphinx_testing.util import sphinx_version
 
 import logging
 import logging.handlers
@@ -261,6 +262,121 @@ class TestCasePublishingSphinx(unittest.TestCase):
         '''
         self.logger.removeHandler(self.handler)
         self.handler.close()
+
+    @classmethod
+    def is_sphinx_coverage_not_affected(self):
+        if sphinx_version < '1.4':
+            return False
+        else:
+            return True
+
+    @classmethod
+    def can_found_this_qthelp_file(self, file):
+        if not sphinx_version < '1.5' and file == 'search.html':
+            return False
+        else:
+            return True
+
+    @classmethod
+    def get_html_code(self, args='', close=False):
+        if sphinx_version < '1.3':
+            code = r'tt'
+        else:
+            code = r'code'
+        if close:
+            return r'</' + code + '>'
+        else:
+            return r'<' + code + args + '>'
+
+    @classmethod
+    def get_latex_admonition(self):
+        if sphinx_version < '1.5':
+            return r'notice'
+        else:
+            return r'sphinxadmonition'
+
+    @classmethod
+    def get_latex_bfcode(self):
+        if sphinx_version < '1.4.5':
+            return r'\bfcode'
+        else:
+            return r'\sphinxbfcode'
+
+    @classmethod
+    def get_latex_code(self):
+        if sphinx_version < '1.4.5':
+            return r'\code'
+        else:
+            return r'\sphinxcode'
+
+    @classmethod
+    def get_latex_href(self):
+        if sphinx_version < '1.5.4':
+            return r'\href'
+        else:
+            return r'\sphinxhref'
+
+    @classmethod
+    def get_latex_includegraphics(self):
+        if sphinx_version < '1.4.5':
+            return r'\includegraphics'
+        else:
+            return r'\sphinxincludegraphics'
+
+    @classmethod
+    def get_latex_idescape(self, id):
+        if sphinx_version < '1.5.1':
+            return id
+        else:
+            return r'\detokenize{' + id + r'}'
+
+    @classmethod
+    def get_latex_protect(self):
+        if sphinx_version < '1.3.4':
+            return r''
+        else:
+            return r'\protect'
+
+    @classmethod
+    def get_latex_strong(self):
+        if sphinx_version < '1.4.5':
+            return r'\strong'
+        else:
+            return r'\sphinxstrong'
+
+    @classmethod
+    def get_latex_titleref(self):
+        if sphinx_version < '1.4':
+            return r'\emph'
+        elif sphinx_version < '1.4.5':
+            return r'\titleref'
+        else:
+            return r'\sphinxtitleref'
+
+    @classmethod
+    def get_latex_thebibliography(self):
+        if sphinx_version < '1.5':
+            return r'thebibliography'
+        else:
+            return r'sphinxthebibliography'
+
+    @classmethod
+    def get_latex_url(self):
+        if sphinx_version < '1.4.5':
+            return r'\href'
+        elif sphinx_version < '1.5.4':
+            return r'\url'
+        else:
+            return r'\sphinxurl'
+
+    @classmethod
+    def get_latex_verbatim(self, alltt=False):
+        if alltt and sphinx_version < '1.3':
+            return r'alltt'
+        elif sphinx_version < '1.5':
+            return r'Verbatim'
+        else:
+            return r'sphinxVerbatim'
 
 
 # Logging already provides a BufferingHandler() [1]_ class which allows you

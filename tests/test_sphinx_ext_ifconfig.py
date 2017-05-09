@@ -62,12 +62,12 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check content
         r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'<p>spam</p>')
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' 'egg'
+            '(?ms)' + re.escape(r'<p>egg</p>')
         )
         self.assertNotRegex(c, r)
 
@@ -94,12 +94,12 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'<p>spam</p>')
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' 'egg'
+            '(?ms)' + re.escape(r'<p>egg</p>')
         )
         self.assertNotRegex(c, r)
 
@@ -126,14 +126,14 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'egg'
-        )
-        self.assertRegex(c, r)
-
-        r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'<p>spam</p>')
         )
         self.assertNotRegex(c, r)
+
+        r = re.compile(
+            '(?ms)' + re.escape(r'<p>egg</p>')
+        )
+        self.assertRegex(c, r)
 
     @util.with_html_app(
         testroot='ext-ifconfig',
@@ -158,8 +158,7 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
-            '.*'    'egg'
+            '(?ms)' + re.escape(r'<p>spam</p>') + '.*' + re.escape(r'<p>egg</p>')
         )
         self.assertRegex(c, r)
 
@@ -186,8 +185,7 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
-            '.*'    'egg'
+            '(?ms)' + re.escape(r'<p>spam</p>') + '.*' + re.escape(r'<p>egg</p>')
         )
         self.assertNotRegex(c, r)
 
@@ -210,12 +208,12 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check content
         r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'spam')
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' 'egg'
+            '(?ms)' + re.escape(r'egg')
         )
         self.assertNotRegex(c, r)
 
@@ -242,12 +240,12 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'spam')
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' 'egg'
+            '(?ms)' + re.escape(r'egg')
         )
         self.assertNotRegex(c, r)
 
@@ -272,16 +270,16 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check external links
         r = re.compile(
-            '(?ms)' 'egg'
-        )
-        self.assertRegex(c, r)
-
-        r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'spam')
         )
         self.assertNotRegex(c, r)
+
+        # check external links
+        r = re.compile(
+            '(?ms)' + re.escape(r'egg')
+        )
+        self.assertRegex(c, r)
 
     @util.with_latex_app(
         testroot='ext-ifconfig',
@@ -306,8 +304,7 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
-            '.*'    'egg'
+            '(?ms)' + re.escape(r'spam') + '.*' + re.escape(r'egg')
         )
         self.assertRegex(c, r)
 
@@ -334,8 +331,7 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
-            '.*'    'egg'
+            '(?ms)' + re.escape(r'spam') + '.*' + re.escape(r'egg')
         )
         self.assertNotRegex(c, r)
 
@@ -358,12 +354,12 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check content
         r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'spam')
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' 'egg'
+            '(?ms)' + re.escape(r'egg')
         )
         self.assertNotRegex(c, r)
 
@@ -390,12 +386,12 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'spam')
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' 'egg'
+            '(?ms)' + re.escape(r'egg')
         )
         self.assertNotRegex(c, r)
 
@@ -422,14 +418,14 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'egg'
-        )
-        self.assertRegex(c, r)
-
-        r = re.compile(
-            '(?ms)' 'spam'
+            '(?ms)' + re.escape(r'spam')
         )
         self.assertNotRegex(c, r)
+
+        r = re.compile(
+            '(?ms)' + re.escape(r'egg')
+        )
+        self.assertRegex(c, r)
 
     @util.with_text_app(
         testroot='ext-ifconfig',
@@ -454,8 +450,7 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
-            '.*'    'egg'
+            '(?ms)' + re.escape(r'spam') + '.*' + re.escape(r'egg')
         )
         self.assertRegex(c, r)
 
@@ -482,8 +477,7 @@ class TestCaseSphinxExtIfConfig(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'spam'
-            '.*'    'egg'
+            '(?ms)' + re.escape(r'spam') + '.*' + re.escape(r'egg')
         )
         self.assertNotRegex(c, r)
 

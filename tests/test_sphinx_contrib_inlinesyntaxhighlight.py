@@ -63,16 +63,22 @@ class TestCaseSphinxContribInlineSyntaxHighlight(util.TestCasePublishingSphinx):
 
         # check inline syntax highlighting
         r = re.compile(
-            '(?ms)' '<p>This is a address: <.* class=".*code.*highlight.*hexdump.*>'
-            '.*'    '40h</.*></p>'
-            '.*'    '<p>This is a code: <.* class=".*code.*highlight.*hexdump.*>'
-            '.*'    '0C</.*></p>'
-            '.*'    '<p>This is a port: <.* class=".*code.*highlight.*hexdump.*>'
-            '.*'    '20</.*></p>'
-            '.*'    '<p>This is a console output: <.* class=".*code.*highlight.*console.*>'
-            '.*'    'ERROR: not found\.</.*></p>'
-            '.*'    '<p>This is a assembler mnemonic: <.* class=".*code.*highlight.*nasm.*>'
-            '.*'    'NOP</.*></p>'
+            '(?ms)' +
+            re.escape(r'<p>This is a address: ') +
+            re.escape(r'<code class="code highlight hexdump docutils literal highlight-hexdump">') +
+            re.escape(r'<span></span><span class="nl">40h</span></code></p>') + '.*' +
+            re.escape(r'<p>This is a code: ') +
+            re.escape(r'<code class="code highlight hexdump docutils literal highlight-hexdump">') +
+            re.escape(r'<span></span><span class="nl">0C</span></code></p>') + '.*' +
+            re.escape(r'<p>This is a port: ') +
+            re.escape(r'<code class="code highlight hexdump docutils literal highlight-hexdump">') +
+            re.escape(r'<span></span><span class="nl">20</span></code></p>') + '.*' +
+            re.escape(r'<p>This is a console output: ') +
+            re.escape(r'<code class="code highlight console docutils literal highlight-console">') +
+            re.escape(r'<span></span><span class="go">ERROR: not found.</span></code></p>') + '.*' +
+            re.escape(r'<p>This is a assembler mnemonic: ') +
+            re.escape(r'<code class="code highlight nasm docutils literal highlight-nasm">') +
+            re.escape(r'<span></span><span class="nf">NOP</span></code></p>')
         )
         self.assertRegex(c, r)
 
@@ -95,11 +101,12 @@ class TestCaseSphinxContribInlineSyntaxHighlight(util.TestCasePublishingSphinx):
 
         # check inline syntax highlighting
         r = re.compile(
-            '(?ms)' 'This is a address: ..*code\{40h\}'
-            '.*'    'This is a code: ..*code\{0C\}'
-            '.*'    'This is a port: ..*code\{20\}'
-            '.*'    'This is a console output: ..*code\{ERROR: not found\.\}'
-            '.*'    'This is a assembler mnemonic: ..*code\{NOP\}'
+            '(?ms)' +
+            re.escape(r'This is a address: ' + self.get_latex_code() + r'{40h}') + '.*' +
+            re.escape(r'This is a code: ' + self.get_latex_code() + r'{0C}') + '.*' +
+            re.escape(r'This is a port: ' + self.get_latex_code() + r'{20}') + '.*' +
+            re.escape(r'This is a console output: ' + self.get_latex_code() + r'{ERROR: not found.}') + '.*' +
+            re.escape(r'This is a assembler mnemonic: ' + self.get_latex_code() + r'{NOP}')
         )
         self.assertRegex(c, r)
 
@@ -122,11 +129,12 @@ class TestCaseSphinxContribInlineSyntaxHighlight(util.TestCasePublishingSphinx):
 
         # check inline syntax highlighting
         r = re.compile(
-            '(?ms)' 'This is a address: "40h"'
-            '.*'    'This is a code: "0C"'
-            '.*'    'This is a port: "20"'
-            '.*'    'This is a console output: "ERROR: not found."'
-            '.*'    'This is a assembler mnemonic: "NOP"'
+            '(?ms)' +
+            re.escape(r'This is a address: "40h"') + '.*' +
+            re.escape(r'This is a code: "0C"') + '.*' +
+            re.escape(r'This is a port: "20"') + '.*' +
+            re.escape(r'This is a console output: "ERROR: not found."') + '.*' +
+            re.escape(r'This is a assembler mnemonic: "NOP"')
         )
         self.assertRegex(c, r)
 

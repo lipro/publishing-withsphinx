@@ -66,9 +66,10 @@ class TestCaseSphinxContribAnsi(util.TestCasePublishingSphinx):
 
         # check ANSI text block
         r = re.compile(
-            '(?ms)' '<pre class="ansi-block literal-block">'
-            '.*'    'This is a <span class="ansi-red ansi-bold">ANSI</span> control sequence\.'
-            '.*'    '</pre>'
+            '(?ms)' +
+            re.escape(r'<pre class="ansi-block literal-block">') + '.*' +
+            re.escape(r'This is a <span class="ansi-red ansi-bold">ANSI</span> control sequence.') + '.*' +
+            re.escape(r'</pre>')
         )
         self.assertRegex(c, r)
 
@@ -95,9 +96,11 @@ class TestCaseSphinxContribAnsi(util.TestCasePublishingSphinx):
         # check ANSI text block
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' '.begin\{Verbatim\}\[commandchars=...\{.\}\]'
-            '.*'    'This.*is.*a.*ANSI.*control.*sequence.*\.'
-            '.*'    '.end\{Verbatim\}'
+            '(?ms)' +
+            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}') + '.*' +
+            re.escape(r'This') + '.*' + re.escape(r'is') + '.*' + re.escape(r'a') + '.*' +
+            re.escape(r'ANSI') + '.*' + re.escape(r'control') + '.*' + re.escape(r'sequence') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
         )
         self.assertRegex(c, r)
 
@@ -123,7 +126,7 @@ class TestCaseSphinxContribAnsi(util.TestCasePublishingSphinx):
 
         # check ANSI text block
         r = re.compile(
-            '(?ms)' 'This is a ANSI control sequence\.'
+            '(?ms)' + re.escape(r'This is a ANSI control sequence.')
         )
         self.assertRegex(c, r)
 

@@ -94,15 +94,17 @@ class TestCaseSphinxExtCoverage(util.TestCasePublishingSphinx):
         # FIXME: disable the false positive test here because of unknown
         # race conditions or any other side effencts with
         # TestCaseSphinxBasics:test_build_coverage()
-        # - only observed inside a isolated tox environment
+        # - only observed inside some isolated tox environments with
+        #   Sphinx 1.2 and 1.3
         # - only observed when TestCaseSphinxBasics will be executed before
         #   TestCaseSphinxExtCoverage
-        # r = re.compile(
-        #     '(?ms)' '^an_example_pypi_project$'
-        #     '.*'    '^an_example_pypi_project\.useful_1$'
-        #     '.*'    '^an_example_pypi_project\.useful_2$'
-        # )
-        # self.assertNotRegex(c, r)
+        if self.is_sphinx_coverage_not_affected():
+            r = re.compile(
+                '(?ms)' '^an_example_pypi_project$'
+                '.*'    '^an_example_pypi_project\.useful_1$'
+                '.*'    '^an_example_pypi_project\.useful_2$'
+            )
+            self.assertNotRegex(c, r)
 
 
 if __name__ == "__main__":

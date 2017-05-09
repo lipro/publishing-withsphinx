@@ -62,12 +62,17 @@ class TestCaseSphinxExtExtLinks(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' '<li><a class="reference external" '
-            'href="http://datasheet\.datasheetarchive\.com/originals/scans/Scans-048/DSAGER000371\.pdf">'
-            'Datasheet Archive \(IDXF\): Scans-048/DSAGER000371</a></li>'
-            '.*'    '<li><a class="reference external" '
-            'href="http://datasheet\.datasheetarchive\.com/originals/distributors/Datasheets-AE/DSA5GERT0000353\.pdf">'
-            'Datasheet Archive \(MAIN\): Datasheets-AE/DSA5GERT0000353</a></li>'
+            '(?ms)' +
+            re.escape(r'<ul class="simple">') + '.*' + re.escape(r'<li>The Datasheet Archive:<ul>') + '.*' +
+            re.escape(r'<li><a class="reference external"') + '.*' +
+            re.escape(r'href="http://datasheet.datasheetarchive.com/originals') +
+            re.escape(r'/scans/Scans-048/DSAGER000371.pdf">') +
+            re.escape(r'Datasheet Archive (IDXF): Scans-048/DSAGER000371</a></li>') + '.*' +
+            re.escape(r'<li><a class="reference external"') + '.*' +
+            re.escape(r'href="http://datasheet.datasheetarchive.com/originals') +
+            re.escape(r'/distributors/Datasheets-AE/DSA5GERT0000353.pdf">') +
+            re.escape(r'Datasheet Archive (MAIN): Datasheets-AE/DSA5GERT0000353</a></li>') + '.*' +
+            re.escape(r'</ul>') + '.*' + re.escape(r'</li>') + '.*' + re.escape(r'</ul>')
         )
         self.assertRegex(c, r)
 
@@ -90,12 +95,18 @@ class TestCaseSphinxExtExtLinks(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' '.item.*\{\}' '.*'
-            '.href\{http://datasheet\.datasheetarchive\.com/originals/scans/Scans-048/DSAGER000371\.pdf\}'
-            '\{Datasheet Archive \(IDXF\): Scans-048/DSAGER000371\}'
-            '.*'    '.item.*\{\}' '.*'
-            '.href\{http://datasheet\.datasheetarchive\.com/originals/distributors/Datasheets-AE/DSA5GERT0000353\.pdf\}'
-            '\{Datasheet Archive \(MAIN\): Datasheets-AE/DSA5GERT0000353\}'
+            '(?ms)' +
+            re.escape(r'\begin{itemize}') + '.*' + re.escape(r'\item {}') + '.*' +
+            re.escape(r'The Datasheet Archive:') + '.*' + re.escape(r'\begin{itemize}') + '.*' +
+            re.escape(r'\item {}') + '.*' + re.escape(self.get_latex_href()) +
+            re.escape('{http://datasheet.datasheetarchive.com/originals') +
+            re.escape(r'/scans/Scans-048/DSAGER000371.pdf}') +
+            re.escape(r'{Datasheet Archive (IDXF): Scans-048/DSAGER000371}') + '.*' +
+            re.escape(r'\item {}') + '.*' + re.escape(self.get_latex_href()) +
+            re.escape('{http://datasheet.datasheetarchive.com/originals') +
+            re.escape(r'/distributors/Datasheets-AE/DSA5GERT0000353.pdf}') +
+            re.escape(r'{Datasheet Archive (MAIN): Datasheets-AE/DSA5GERT0000353}') + '.*' +
+            re.escape(r'\end{itemize}') + '.*' + re.escape(r'\end{itemize}')
         )
         self.assertRegex(c, r)
 
@@ -118,8 +129,10 @@ class TestCaseSphinxExtExtLinks(util.TestCasePublishingSphinx):
 
         # check external links
         r = re.compile(
-            '(?ms)' 'Datasheet Archive \(IDXF\): Scans-048/DSAGER000371'
-            '.*'    'Datasheet Archive \(MAIN\): Datasheets-AE/DSA5GERT0000353'
+            '(?ms)' +
+            re.escape(r'* The Datasheet Archive:') + '.*' +
+            re.escape(r'  * Datasheet Archive (IDXF): Scans-048/DSAGER000371') + '.*' +
+            re.escape(r'  * Datasheet Archive (MAIN): Datasheets-AE/DSA5GERT0000353')
         )
         self.assertRegex(c, r)
 

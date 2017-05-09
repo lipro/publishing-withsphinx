@@ -68,17 +68,12 @@ class TestCaseSphinxContribAutoProgram(util.TestCasePublishingSphinx):
         #           '.*'    'usage: cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
         #           '.*'    'usage: cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
         r = re.compile(
-            '(?ms)' 'cmdargs'
-            '.*'    'usage: cmdargs \[-h\] \{apply,game\} \.\.\.'
-            '.*'    'cmdargs apply'
-            '.*'    'usage: cmdargs .*\[-h\] '
-            '.*'    '--tree'
-            '.*'    '--dry'
-            '.*'    '--force'
-            '.*'    'cmdargs game'
-            '.*'    'usage: cmdargs .*\[-h\] '
-            '.*'    '--opt'
-            '.*'    '\{rock,paper,scissors\}'
+            '(?ms)' +
+            re.escape(r'cmdargs') + '.*' + re.escape(r'usage: cmdargs [-h] {apply,game} ...') + '.*' +
+            re.escape(r'cmdargs apply') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'[-h] ') + '.*' +
+            re.escape(r'--tree') + '.*' + re.escape(r'--dry') + '.*' + re.escape(r'--force') + '.*' +
+            re.escape(r'cmdargs game') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'[-h] ') + '.*' +
+            re.escape(r'--opt') + '.*' + re.escape(r'{rock,paper,scissors}')
         )
         self.assertRegex(c, r)
 
@@ -107,17 +102,11 @@ class TestCaseSphinxContribAutoProgram(util.TestCasePublishingSphinx):
         #           '.*'    'usage: cmdargs apply .*tree.* .*dry.* .*force.* .*path.*'
         #           '.*'    'usage: cmdargs game .*opt.* .*rock,paper,scissors.* .*rock,paper,scissors'
         r = re.compile(
-            '(?ms)' 'cmdargs'
-            '.*'    'usage: cmdargs .*apply,game.* \.\.\.'
-            '.*'    'cmdargs apply'
-            '.*'    'usage: cmdargs .* '
-            '.*'    'tree'
-            '.*'    'dry'
-            '.*'    'force'
-            '.*'    'cmdargs game'
-            '.*'    'usage: cmdargs .* '
-            '.*'    'opt'
-            '.*'    'rock,paper,scissors'
+            '(?ms)' +
+            re.escape(r'cmdargs') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'apply,game') + '.*' +
+            re.escape(r'cmdargs apply') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'tree') + '.*' +
+            re.escape(r'dry') + '.*' + re.escape(r'force') + '.*' + re.escape(r'cmdargs game') + '.*' +
+            re.escape(r'usage: cmdargs') + '.*' + re.escape(r'opt') + '.*' + re.escape(r'rock,paper,scissors')
         )
         self.assertRegex(c, r)
 
@@ -146,16 +135,12 @@ class TestCaseSphinxContribAutoProgram(util.TestCasePublishingSphinx):
         #           '.*'    'usage: cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
         #           '.*'    'usage: cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
         r = re.compile(
-            '(?ms)' 'cmdargs'
-            '.*'    'usage: cmdargs \[-h\] \{apply,game\} \.\.\.'
-            '.*'    'cmdargs apply'
-            '.*'    'usage: cmdargs .*\[-h\] '
-            '.*'    '--tree'
-            '.*'    '--dry'
-            '.*'    '--force'
-            '.*'    'cmdargs game'
-            '.*'    'usage: cmdargs .*\[-h\] '
-            '.*'    '--opt \{rock,paper,scissors\}'
+            '(?ms)' +
+            re.escape(r'cmdargs') + '.*' + re.escape(r'usage: cmdargs [-h] {apply,game} ...') + '.*' +
+            re.escape(r'cmdargs apply') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'[-h] ') + '.*' +
+            re.escape(r'--tree') + '.*' + re.escape(r'--dry') + '.*' + re.escape(r'--force') + '.*' +
+            re.escape(r'cmdargs game') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'[-h] ') + '.*' +
+            re.escape(r'--opt {rock,paper,scissors}')
         )
         self.assertRegex(c, r)
 

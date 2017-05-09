@@ -46,7 +46,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_epub_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -102,7 +102,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_devhelp_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -160,7 +160,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         buildername='html',
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -218,7 +218,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_htmlhelp_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -276,7 +276,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_json_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -333,7 +333,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_latex_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -357,7 +357,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_manpage_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -376,7 +376,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_pseudoxml_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -429,7 +429,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_qthelp_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -441,7 +441,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         app.builder.build_all()
 
         # check file
-        for f in [
+        for f in filter(self.can_found_this_qthelp_file, [
                 'index.qhcp',
                 'index.qhp',
                 'index.html',
@@ -479,7 +479,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/index.html',
                 'test-ext-todo/foo.html',
                 'test-ext-todo/bar.html',
-        ]:
+        ]):
             p = util.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
@@ -487,7 +487,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_texinfo_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -510,7 +510,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_text_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -563,7 +563,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_xml_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -616,7 +616,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_coverage_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -693,7 +693,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_doctest_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
@@ -737,7 +737,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
     @util.with_spelling_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '6fed632213d44dcb98cb860fabb33e7f',
+            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
             'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
             'spelling_lang': 'en_US',
@@ -763,23 +763,24 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
 
         # validate expected misspelled words
         r = re.compile(
-            '(?ms)' '\(mispelled\)' '.*' '"misspelled"'
-            '.*'    '\(txt\)' '.*' '"text"'
-            '.*'    '\(Speeling\)' '.*' '"Spelling"'
+            '(?ms)' +
+            re.escape(r'(mispelled)') + '.*' + re.escape(r'"misspelled"') + '.*' +
+            re.escape(r'(txt)') + '.*' + re.escape(r'"text"') + '.*' +
+            re.escape(r'(Speeling)') + '.*' + re.escape(r'"Spelling"')
         )
         self.assertRegex(c, r)
 
         # validate misspelled words expected to ignore
         r = re.compile(
-            '(?ms)' '\(ignoreed\)'
-            '.*'    '\(litterals\)'
+            '(?ms)' +
+            re.escape(r'(ignoreed)') + '.*' + re.escape(r'(litterals)')
         )
         self.assertNotRegex(c, r)
 
         # validate unknown words expected to set valid by word list
-        r = re.compile('\(sphinxcontrib\)')
+        r = re.compile(re.escape('(sphinxcontrib)'))
         self.assertNotRegex(c, r)
-        r = re.compile('\(Inline\)')
+        r = re.compile(re.escape('(Inline)'))
         self.assertNotRegex(c, r)
 
 

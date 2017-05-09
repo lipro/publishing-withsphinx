@@ -43,6 +43,21 @@ from tests import util
 
 class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
 
+    # TODO: Remove ANSI code sequencies when programoutput will
+    #       support the Sphinx extension sphinxcontrib-ansi again.
+    #
+    # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
+    #   'ANSI'
+    #
+    # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
+    #   '\x1b\[31;1mANSI\x1b\[0m'
+    #
+    def _get_ansi_string(self):
+        if util.sphinx_version < '1.3.5':
+            return r'ANSI'
+        else:
+            return r'\x1b\[31;1mANSI\x1b\[0m'
+
     # TODO: Evaluate the specific option 'programoutput_use_ansi'
     #       when programoutput will support the Sphinx extension
     #       sphinxcontrib-ansi again.
@@ -67,25 +82,19 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(c)
 
         # check program output documentation
-        #
-        # TODO: Remove ANSI code sequencies when programoutput will
-        #       support the Sphinx extension sphinxcontrib-ansi again.
-        #
-        # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
-        #
-        #   '.*'    'This is a ANSI control sequence\.'
-        #
-        # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
-        #
-        #   '.*'    'This is a \x1b\[31;1mANSI\x1b\[0m control sequence\.'
-        #
         r = re.compile(
-            '(?ms)' 'cat.*ansi.*rst'
-            '.*'    '\.\. ansi-block::'
-            '.*'    'This is a (|\x1b\[31;1m)ANSI(|\x1b\[0m) control sequence\.'
-            '.*'    'python --help'
-            '.*'    'usage: python'
-            '.*'    'Options and arguments'
+            '(?ms)' +
+            re.escape(r'<p>Include the output of command in the documentation:</p>') + '.*' +
+            re.escape(r'<pre>') + '.*' + re.escape(r'.. ansi-block::') + '.*' +
+            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
+            re.escape(r'</pre>') + '.*' + re.escape(r'usage: python') + '.*' +
+            re.escape(r'Options and arguments') + '.*' +
+            re.escape(r'<p>Same, but with enabled prompt option:</p>') + '.*' + re.escape(r'<pre>') + '.*' +
+            re.escape(r'$ cat ${TEST_FIXTURES_ROOTS}/test-contrib-ansi/index.rst') + '.*' +
+            re.escape(r'.. ansi-block::') + '.*' +
+            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
+            re.escape(r'</pre>') + '.*' + re.escape(r'<pre>') + '.*' + re.escape(r'$ python --help') + '.*' +
+            re.escape(r'usage: python') + '.*' + re.escape(r'Options and arguments') + '.*' + re.escape(r'</pre>')
         )
         self.assertRegex(c, r)
 
@@ -113,26 +122,25 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(c)
 
         # check program output documentation
-        #
-        # TODO: Remove ANSI code sequencies when programoutput will
-        #       support the Sphinx extension sphinxcontrib-ansi again.
-        #
-        # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
-        #
-        #   '.*'    'This is a ANSI control sequence\.'
-        #
-        # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
-        #
-        #   '.*'    'This is a \x1b\[31;1mANSI\x1b\[0m control sequence\.'
-        #
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' 'cat.*ansi.*rst'
-            '.*'    '\.\. ansi.*block::'
-            '.*'    'This is a (|\x1b\[31;1m)ANSI(|\x1b\[0m) control sequence\.'
-            '.*'    'python .*help'
-            '.*'    'usage: python'
-            '.*'    'Options and arguments'
+            '(?ms)' +
+            re.escape(r'Include the output of command in the documentation:') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*' +
+            re.escape(r'.. ansi\PYGZhy{}block::') + '.*' +
+            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim() + r'}') + '.*' + re.escape(r'usage: python') + '.*' +
+            re.escape(r'Options and arguments') + '.*' + re.escape(r'Same, but with enabled prompt option:') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*' +
+            re.escape(r'\PYGZdl{} cat \PYGZdl{}\PYGZob{}TEST\PYGZus{}FIXTURES\PYGZus{}ROOTS\PYGZcb{}') +
+            re.escape(r'/test\PYGZhy{}contrib\PYGZhy{}ansi/index.rst') + '.*' +
+            re.escape(r'.. ansi\PYGZhy{}block::') + '.*' +
+            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim() + r'}') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*' +
+            re.escape(r'\PYGZdl{} python \PYGZhy{}\PYGZhy{}help') + '.*' +
+            re.escape(r'usage: python') + '.*' + re.escape(r'Options and arguments') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
         )
         self.assertRegex(c, r)
 
@@ -160,25 +168,20 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(c)
 
         # check program output documentation
-        #
-        # TODO: Remove ANSI code sequencies when programoutput will
-        #       support the Sphinx extension sphinxcontrib-ansi again.
-        #
-        # sphinxcontrib-programoutput v0.8.0 with ANSI supported:
-        #
-        #   '.*'    'This is a ANSI control sequence\.'
-        #
-        # sphinxcontrib-programoutput v0.10.0 w/o ANSI support anymore:
-        #
-        #   '.*'    'This is a \x1b\[31;1mANSI\x1b\[0m control sequence\.'
-        #
         r = re.compile(
-            '(?ms)' 'cat.*ansi.*rst'
-            '.*'    '\.\. ansi-block::'
-            '.*'    'This is a (|\x1b\[31;1m)ANSI(|\x1b\[0m) control sequence\.'
-            '.*'    'python --help'
-            '.*'    'usage: python'
-            '.*'    'Options and arguments'
+            '(?ms)' +
+            re.escape(r'Include the output of command in the documentation:') + '.*' +
+            re.escape(r'   .. ansi-block::') + '.*' +
+            re.escape(r'      This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
+            re.escape(r'   usage: python') + '.*' +
+            re.escape(r'   Options and arguments') + '.*' +
+            re.escape(r'Same, but with enabled prompt option:') + '.*' +
+            re.escape(r'   $ cat ${TEST_FIXTURES_ROOTS}/test-contrib-ansi/index.rst') + '.*' +
+            re.escape(r'   .. ansi-block::') + '.*' +
+            re.escape(r'      This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
+            re.escape(r'   $ python --help') + '.*' +
+            re.escape(r'   usage: python') + '.*' +
+            re.escape(r'   Options and arguments')
         )
         self.assertRegex(c, r)
 

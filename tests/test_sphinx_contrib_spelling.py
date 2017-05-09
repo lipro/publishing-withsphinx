@@ -67,24 +67,29 @@ class TestCaseSphinxContribSpelling(util.TestCasePublishingSphinx):
         print(c)
 
         # validate expected misspelled words
+        #   re.escape(r'\(mispelled\)' '.*' '"misspelled"') +
+        #   '.*' +
+        #   re.escape(r'\(txt\)' '.*' '"text"') +
+        #   '.*' +
         r = re.compile(
-            '(?ms)' '\(mispelled\)' '.*' '"misspelled"'
-            '.*'    '\(txt\)' '.*' '"text"'
-            '.*'    '\(Speeling\)' '.*' '"Spelling"'
+            '(?ms)' +
+            re.escape(r'(mispelled)') + '.*' + re.escape(r'"misspelled"') + '.*' +
+            re.escape(r'(txt)') + '.*' + re.escape(r'"text"') + '.*' +
+            re.escape(r'(Speeling)') + '.*' + re.escape(r'"Spelling"')
         )
         self.assertRegex(c, r)
 
         # validate misspelled words expected to ignore
         r = re.compile(
-            '(?ms)' '\(ignoreed\)'
-            '.*'    '\(litterals\)'
+            '(?ms)' +
+            re.escape(r'(ignoreed)') + '.*' + re.escape(r'(litterals)')
         )
         self.assertNotRegex(c, r)
 
         # validate unknown words expected to set valid by word list
-        r = re.compile('\(sphinxcontrib\)')
+        r = re.compile(re.escape('(sphinxcontrib)'))
         self.assertNotRegex(c, r)
-        r = re.compile('\(Inline\)')
+        r = re.compile(re.escape('(Inline)'))
         self.assertNotRegex(c, r)
 
 
