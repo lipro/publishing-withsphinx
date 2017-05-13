@@ -33,6 +33,7 @@ from __future__ import absolute_import
 
 import types
 import pkg_resources
+from . import backports
 from . import required
 
 __author__ = 'Stephan Linz'
@@ -54,6 +55,9 @@ def setup(app):
     '''
     if isinstance(app, types.ModuleType):
         return
+
+    # Load all required backports
+    backports.sphinx15(app)
 
     # Load all required extensions
     required.extensions(app)

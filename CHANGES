@@ -12,6 +12,7 @@ Incompatible changes
 Features added
 --------------
 
+* #14: Add backports from Sphinx 1.5 into the implementation.
 * #7: Split documentation into different parts.
 
 Bugs fixed
