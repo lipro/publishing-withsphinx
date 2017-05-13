@@ -41,14 +41,7 @@ The backports are:
 '''
 
 from __future__ import absolute_import
-
-# avoid errors from setuptools (chicken-or-egg question) when the module
-# will be load to fetch module meta data (version, author, ...)
-try:
-    from sphinx.errors import SphinxError
-except ImportError:
-    class SphinxError(Exception):
-        pass
+from sphinx.errors import SphinxError
 
 
 def default_latex_engine(config):
