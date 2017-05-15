@@ -21,5 +21,6 @@ This section provides some further information about internals of the module.
 .. index:: ! Application Programming Interface
 
 .. automodule:: publishing.withsphinx
+.. automodule:: publishing.withsphinx.backports
 .. automodule:: publishing.withsphinx.required
 .. autodata:: publishing.withsphinx.required._REQUIRED

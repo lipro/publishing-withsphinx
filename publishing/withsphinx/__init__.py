@@ -33,7 +33,6 @@ from __future__ import absolute_import
 
 import types
 import pkg_resources
-from . import required
 
 __author__ = 'Stephan Linz'
 __author_email__ = 'linz@li-pro.net'
@@ -52,8 +51,17 @@ def setup(app):
               extension.
     :rtype: Dictionary
     '''
+
+    # Import package modules here to avoid errors from setuptools when the
+    # package will be load to fetch meta data (version, author, ...).
+    from . import backports
+    from . import required
+
     if isinstance(app, types.ModuleType):
         return
+
+    # Load all required backports
+    backports.sphinx15(app)
 
     # Load all required extensions
     required.extensions(app)
