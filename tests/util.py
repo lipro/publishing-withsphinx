@@ -50,10 +50,16 @@ from sphinx_testing.util import sphinx_version
 import logging
 import logging.handlers
 
+import mock
+import nose
+
 if sys.version_info < (2, 7):
     import unittest2 as unittest
 else:
     import unittest
+
+assert mock  # silence pyflake
+assert nose  # silence pyflake
 
 rootdir = path(os.path.dirname(__file__) or '.').abspath()
 
