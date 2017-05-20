@@ -32,7 +32,6 @@ This module provides the extended publishing support for the |Sphinx_dsc|.
 from __future__ import absolute_import
 
 import types
-import pkg_resources
 
 __author__ = 'Stephan Linz'
 __author_email__ = 'linz@li-pro.net'
@@ -69,7 +68,7 @@ def setup(app):
     # Return a dictionary, that is treated by Sphinx as metadata of the extension.
     return {
         # it is used for extension version requirement checking (needs_extensions)
-        'version': pkg_resources.require('publishing-withsphinx')[0].version,
+        'version': __version__,
         # parallel reading of source files when the extension is loaded
         'parallel_read_safe': True,
         # parallel writing of output files when the extension is loaded
