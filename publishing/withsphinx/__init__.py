@@ -56,6 +56,12 @@ def setup(app):
     from . import backports
     from . import required
 
+    # Fast return without any action and empty result if the argument is a
+    # module, not a Sphinx application object. For details, see Sphinx online
+    # documentaion, the part "Developing extensions for Sphinx" -- refered by:
+    #
+    #   http://www.sphinx-doc.org/en/stable/extdev/
+    #
     if isinstance(app, types.ModuleType):
         return
 
