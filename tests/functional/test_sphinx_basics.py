@@ -37,13 +37,14 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
+class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_epub_app(
+    @fixtures.with_epub_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -95,11 +96,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         #       'test-ext-todo/foo.xhtml',  # NOQA
         #       'test-ext-todo/bar.xhtml',  # NOQA
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_devhelp_app(
+    @fixtures.with_devhelp_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -152,11 +153,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.html',
                 'test-ext-todo/bar.html',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_testroot_app(
+    @fixtures.with_testroot_app(
         buildername='html',
         confoverrides={
             'autosummary_generate': True,
@@ -211,11 +212,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/bar.html',
 
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_htmlhelp_app(
+    @fixtures.with_htmlhelp_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -269,11 +270,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.html',
                 'test-ext-todo/bar.html',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_json_app(
+    @fixtures.with_json_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -326,11 +327,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.fjson',
                 'test-ext-todo/bar.fjson',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_latex_app(
+    @fixtures.with_latex_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -350,11 +351,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'sphinx.sty',
                 'Makefile',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_manpage_app(
+    @fixtures.with_manpage_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -369,11 +370,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         app.builder.build_all()
 
         # check files
-        p = util.path(app.outdir / 'index.7')
+        p = fixtures.path(app.outdir / 'index.7')
         self.logger.debug('check is file: %r', p)
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_pseudoxml_app(
+    @fixtures.with_pseudoxml_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -422,11 +423,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.pseudoxml',
                 'test-ext-todo/bar.pseudoxml',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_qthelp_app(
+    @fixtures.with_qthelp_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -480,11 +481,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.html',
                 'test-ext-todo/bar.html',
         ]):
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_texinfo_app(
+    @fixtures.with_texinfo_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -503,11 +504,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'index.texi',
                 'Makefile',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_text_app(
+    @fixtures.with_text_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -556,11 +557,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.txt',
                 'test-ext-todo/bar.txt',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_xml_app(
+    @fixtures.with_xml_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -609,11 +610,11 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
                 'test-ext-todo/foo.xml',
                 'test-ext-todo/bar.xml',
         ]:
-            p = util.path(app.outdir / f)
+            p = fixtures.path(app.outdir / f)
             self.logger.debug('check is file: %r', p)
             self.assertTrue(p.isfile(), 'missing file ' + p)
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -630,7 +631,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         print(warning.getvalue())
 
         # check file for C/C++ coverage results
-        p = util.path(app.outdir / 'c.txt')
+        p = fixtures.path(app.outdir / 'c.txt')
         self.logger.debug('check is file: %r', p)
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
@@ -650,7 +651,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         self.assertNotRegex(c, r)
 
         # check file for Python coverage results
-        p = util.path(app.outdir / 'python.txt')
+        p = fixtures.path(app.outdir / 'python.txt')
         self.logger.debug('check is file: %r', p)
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
@@ -690,7 +691,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         )
         self.assertNotRegex(c, r)
 
-    @util.with_doctest_app(
+    @fixtures.with_doctest_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -707,7 +708,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         print(warning.getvalue())
 
         # check file for doctest results
-        p = util.path(app.outdir / 'output.txt')
+        p = fixtures.path(app.outdir / 'output.txt')
         self.logger.debug('check is file: %r', p)
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
@@ -734,7 +735,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         )
         self.assertNotRegex(c, r)
 
-    @util.with_spelling_app(
+    @fixtures.with_spelling_app(
         confoverrides={
             'autosummary_generate': True,
             'embedly_key': '899ef656b46c11e099364040d3dc5c07',
@@ -754,7 +755,7 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
         print(warning.getvalue())
 
         # check file for doctest results
-        p = util.path(app.outdir / 'output.txt')
+        p = fixtures.path(app.outdir / 'output.txt')
         self.logger.debug('check is file: %r', p)
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
@@ -785,4 +786,4 @@ class TestCaseSphinxBasics(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

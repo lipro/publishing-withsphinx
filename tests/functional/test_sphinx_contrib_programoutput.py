@@ -37,11 +37,12 @@ extension as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
+class TestCaseSphinxContribProgramOutput(fixtures.TestCaseFunctionalPublishingSphinx):
 
     # TODO: Remove ANSI code sequencies when programoutput will
     #       support the Sphinx extension sphinxcontrib-ansi again.
@@ -53,7 +54,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
     #   '\x1b\[31;1mANSI\x1b\[0m'
     #
     def _get_ansi_string(self):
-        if util.sphinx_version < '1.3.5':
+        if fixtures.sphinx_version < '1.3.5':
             return r'ANSI'
         else:
             return r'\x1b\[31;1mANSI\x1b\[0m'
@@ -61,7 +62,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
     # TODO: Evaluate the specific option 'programoutput_use_ansi'
     #       when programoutput will support the Sphinx extension
     #       sphinxcontrib-ansi again.
-    @util.with_html_app(
+    @fixtures.with_html_app(
         testroot='contrib-programoutput',
         confoverrides={
             'programoutput_use_ansi': True,
@@ -75,7 +76,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -101,7 +102,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
     # TODO: Evaluate the specific option 'programoutput_use_ansi'
     #       when programoutput will support the Sphinx extension
     #       sphinxcontrib-ansi again.
-    @util.with_latex_app(
+    @fixtures.with_latex_app(
         testroot='contrib-programoutput',
         confoverrides={
             'programoutput_use_ansi': True,
@@ -115,7 +116,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -147,7 +148,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
     # TODO: Evaluate the specific option 'programoutput_use_ansi'
     #       when programoutput will support the Sphinx extension
     #       sphinxcontrib-ansi again.
-    @util.with_text_app(
+    @fixtures.with_text_app(
         testroot='contrib-programoutput',
         confoverrides={
             'programoutput_use_ansi': True,
@@ -161,7 +162,7 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.txt')
+        p = fixtures.path(app.outdir / 'index.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -187,4 +188,4 @@ class TestCaseSphinxContribProgramOutput(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

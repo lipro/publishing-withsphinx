@@ -37,7 +37,7 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
-from tests import util
+from tests.functional import fixtures
 
 from sphinx.errors import SphinxError
 
@@ -52,9 +52,9 @@ _EXPECT_LATEX_ENGINE_VALIDS = [
 ]
 
 
-class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
+class TestPublishingWithSphinxBackports(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='module-backports',
     )
     def test_latex_engine_defaults(self, app, status, warning):
@@ -64,7 +64,7 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_NONE)
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
             'language': 'ja',
@@ -77,7 +77,7 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_JA)
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
             'latex_engine': _EXPECT_LATEX_ENGINE_CONFOVERRIDES,
@@ -90,8 +90,8 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_CONFOVERRIDES)
 
-    @util.nose.tools.raises(SphinxError)
-    @util.with_coverage_app(
+    @fixtures.util.nose.tools.raises(SphinxError)
+    @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
             'latex_engine': 'invalid latex engine',
@@ -105,4 +105,4 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()
