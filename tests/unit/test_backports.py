@@ -25,11 +25,11 @@
 #
 
 '''
-test_module_backports
-~~~~~~~~~~~~~~~~~~~~~
+test_backports
+~~~~~~~~~~~~~~
 
-This module contains basic unit and functional tests over all supported
-backports as part of the publishing.withsphinx package.
+This module contains basic unit tests over all supported backports
+as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2017 by Li-Pro.Net, see AUTHORS.
 :license: MIT, see LICENSE for details.
@@ -52,7 +52,7 @@ _EXPECT_LATEX_ENGINE_VALIDS = [
 ]
 
 
-class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
+class TestBackports(util.TestCasePublishingSphinx):
 
     def test_package_has_return_latex_engine_defaults(self):
         '''
@@ -131,55 +131,6 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         pwsb.sphinx15(app)
         app.add_config_value.assert_not_called()
         app.connect.assert_not_called()
-
-    @util.with_coverage_app(
-        testroot='module-backports',
-    )
-    def test_latex_engine_defaults(self, app, status, warning):
-        '''
-        FUNCTIONAL TEST: backport 'latex_engine' defaults
-        '''
-        self.assertTrue(isinstance(app.config.latex_engine, str))
-        self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_NONE)
-
-    @util.with_coverage_app(
-        testroot='module-backports',
-        confoverrides={
-            'language': 'ja',
-        },
-    )
-    def test_latex_engine_defaults_lang_ja(self, app, status, warning):
-        '''
-        FUNCTIONAL TEST: backport 'latex_engine' with 'language' set to 'ja'
-        '''
-        self.assertTrue(isinstance(app.config.latex_engine, str))
-        self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_JA)
-
-    @util.with_coverage_app(
-        testroot='module-backports',
-        confoverrides={
-            'latex_engine': _EXPECT_LATEX_ENGINE_CONFOVERRIDES,
-        },
-    )
-    def test_latex_engine_valid(self, app, status, warning):
-        '''
-        FUNCTIONAL TEST: backport 'latex_engine' with valid setup from confoverrides
-        '''
-        self.assertTrue(isinstance(app.config.latex_engine, str))
-        self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_CONFOVERRIDES)
-
-    @util.nose.tools.raises(SphinxError)
-    @util.with_coverage_app(
-        testroot='module-backports',
-        confoverrides={
-            'latex_engine': 'invalid latex engine',
-        },
-    )
-    def test_latex_engine_invalid(self, app, status, warning):
-        '''
-        FUNCTIONAL TEST: backport 'latex_engine' with invalid setup from confoverrides
-        '''
-        pass
 
 
 if __name__ == "__main__":

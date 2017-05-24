@@ -25,8 +25,8 @@
 #
 
 '''
-test_module_meta
-~~~~~~~~~~~~~~~~
+test_meta_data
+~~~~~~~~~~~~~~
 
 This module contains meta data units tests for the publishing.withsphinx
 extensions as part of the publishing.withsphinx package.
@@ -54,7 +54,7 @@ _EXPECT_SPHINX_EXTENSION_METADATA = {
 }
 
 
-class TestPublishingWithSphinxMetaData(util.TestCasePublishingSphinx):
+class TestMetaData(util.TestCasePublishingSphinx):
 
     def test_package_has_extension_name_string(self):
         '''

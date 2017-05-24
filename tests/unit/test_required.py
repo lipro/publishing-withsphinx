@@ -25,11 +25,11 @@
 #
 
 '''
-test_module_required
-~~~~~~~~~~~~~~~~~~~~
+test_required
+~~~~~~~~~~~~~
 
-This module contains basic unit and functional tests over all handled
-requirements as part of the publishing.withsphinx package.
+This module contains basic unit tests over all handled requirements
+as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2017 by Li-Pro.Net, see AUTHORS.
 :license: MIT, see LICENSE for details.
@@ -62,7 +62,7 @@ _EXPECT_REQUIRED = [
 ]
 
 
-class TestPublishingWithSphinxRequired(util.TestCasePublishingSphinx):
+class TestRequired(util.TestCasePublishingSphinx):
 
     def test_package_has_list_of_required_extensions(self):
         '''
