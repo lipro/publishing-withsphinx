@@ -25,10 +25,10 @@
 #
 
 '''
-test_sphinx_ext_mathjax
-~~~~~~~~~~~~~~~~~~~~~~~
+test_sphinx_ext_todo
+~~~~~~~~~~~~~~~~~~~~
 
-This module contains basic functional tests of the sphinx.ext.mathjax extension
+This module contains basic functional tests of the sphinx.ext.todo extension
 as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2016 by Li-Pro.Net, see AUTHORS.
@@ -37,100 +37,105 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxExtMathJax(util.TestCasePublishingSphinx):
+class TestCaseSphinxExtTodo(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_html_app(
-        testroot='ext-math',
+    @fixtures.with_html_app(
+        testroot='ext-todo',
         confoverrides={
-            'math_number_all': True,
+            'todo_include_todos': True,
         },
     )
     def test_build_html(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinx.ext.mathjax: can build html
+        FUNCTIONAL TEST: sphinx.ext.todo: can build html
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check mathematic equastions
+        # check todolist
         r = re.compile(
             '(?ms)' +
-            re.escape(r'<h2>Test math extensions <span class="math">\(E = m c^2\)</span>') +
-            re.escape(r'<a class="headerlink"') + '.*' + re.escape(r'</a></h2>') + '.*' +
-            re.escape(r'<div class="math"') + '.*' + re.escape(r'\[a^2+b^2=c^2\]</div>') + '.*' +
-            re.escape(r'<p>Inline <span class="math">\(E=mc^2\)</span></p>')
+            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
+            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
+            re.escape(r'<p class="last">todo in bar</p>') + '.*' +
+            re.escape(r'</div>') + '.*' +
+            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>') + '.*' +
+            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
+            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
+            re.escape(r'<p class="last">todo in foo</p>') + '.*' +
+            re.escape(r'</div>') + '.*' +
+            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>')
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
-        testroot='ext-math',
+    @fixtures.with_latex_app(
+        testroot='ext-todo',
         confoverrides={
-            'math_number_all': True,
+            'todo_include_todos': True,
         },
     )
     def test_build_latex(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinx.ext.mathjax: can build latex
+        FUNCTIONAL TEST: sphinx.ext.todo: can build latex
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check mathematic equastions
+        # check todolist
         r = re.compile(
             '(?ms)' +
-            re.escape(r'\chapter{Test math extensions ' + self.get_latex_protect()) +
-            re.escape(r'\(E = m c^2' + self.get_latex_protect() + r'\)}') + '.*' +
-            re.escape(r'\begin{split}a^2 + b^2 = c^2\end{split}') + '.*' +
-            re.escape(r'Inline \(E=mc^2\)')
+            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
+            re.escape(r'todo in bar') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*' +
+            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
+            re.escape(r'todo in foo') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
         )
         self.assertRegex(c, r)
 
-    @util.with_text_app(
-        testroot='ext-math',
+    @fixtures.with_text_app(
+        testroot='ext-todo',
         confoverrides={
-            'math_number_all': True,
+            'todo_include_todos': True,
         },
     )
     def test_build_text(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinx.ext.mathjax: can build text
+        FUNCTIONAL TEST: sphinx.ext.todo: can build text
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.txt')
+        p = fixtures.path(app.outdir / 'index.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check mathematic equastions
+        # check todolist
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'Test math extensions E = m c^2') + '.*' +
-            re.escape(r'a^2+b^2=c^2') + '.*' + re.escape(r'Inline E=mc^2')
+            '(?ms)' + re.escape(r'Todo: todo in bar') + '.*' + re.escape(r'Todo: todo in foo')
         )
         self.assertRegex(c, r)
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

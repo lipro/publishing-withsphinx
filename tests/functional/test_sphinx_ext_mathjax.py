@@ -25,10 +25,10 @@
 #
 
 '''
-test_sphinx_contrib_ansi
-~~~~~~~~~~~~~~~~~~~~~~~~
+test_sphinx_ext_mathjax
+~~~~~~~~~~~~~~~~~~~~~~~
 
-This module contains basic functional tests of the sphinxcontrib.ansi extension
+This module contains basic functional tests of the sphinx.ext.mathjax extension
 as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2016 by Li-Pro.Net, see AUTHORS.
@@ -37,99 +37,101 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxContribAnsi(util.TestCasePublishingSphinx):
+class TestCaseSphinxExtMathJax(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_testroot_app(
-        testroot='contrib-ansi',
+    @fixtures.with_html_app(
+        testroot='ext-math',
         confoverrides={
-            'html_ansi_stylesheet': None,
+            'math_number_all': True,
         },
-        buildername='html',  # TODO: add support for singlehtml backend of this extention
     )
     def test_build_html(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinxcontrib.ansi: can build html
+        FUNCTIONAL TEST: sphinx.ext.mathjax: can build html
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check ANSI text block
+        # check mathematic equastions
         r = re.compile(
             '(?ms)' +
-            re.escape(r'<pre class="ansi-block literal-block">') + '.*' +
-            re.escape(r'This is a <span class="ansi-red ansi-bold">ANSI</span> control sequence.') + '.*' +
-            re.escape(r'</pre>')
+            re.escape(r'<h2>Test math extensions <span class="math">\(E = m c^2\)</span>') +
+            re.escape(r'<a class="headerlink"') + '.*' + re.escape(r'</a></h2>') + '.*' +
+            re.escape(r'<div class="math"') + '.*' + re.escape(r'\[a^2+b^2=c^2\]</div>') + '.*' +
+            re.escape(r'<p>Inline <span class="math">\(E=mc^2\)</span></p>')
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
-        testroot='contrib-ansi',
+    @fixtures.with_latex_app(
+        testroot='ext-math',
         confoverrides={
-            'html_ansi_stylesheet': None,
+            'math_number_all': True,
         },
     )
     def test_build_latex(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinxcontrib.ansi: can build latex
+        FUNCTIONAL TEST: sphinx.ext.mathjax: can build latex
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check ANSI text block
-        # TODO: add support for latex backend of this extention
+        # check mathematic equastions
         r = re.compile(
             '(?ms)' +
-            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}') + '.*' +
-            re.escape(r'This') + '.*' + re.escape(r'is') + '.*' + re.escape(r'a') + '.*' +
-            re.escape(r'ANSI') + '.*' + re.escape(r'control') + '.*' + re.escape(r'sequence') + '.*' +
-            re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
+            re.escape(r'\chapter{Test math extensions ' + self.get_latex_protect()) +
+            re.escape(r'\(E = m c^2' + self.get_latex_protect() + r'\)}') + '.*' +
+            re.escape(r'\begin{split}a^2 + b^2 = c^2\end{split}') + '.*' +
+            re.escape(r'Inline \(E=mc^2\)')
         )
         self.assertRegex(c, r)
 
-    @util.with_text_app(
-        testroot='contrib-ansi',
+    @fixtures.with_text_app(
+        testroot='ext-math',
         confoverrides={
-            'html_ansi_stylesheet': None,
+            'math_number_all': True,
         },
     )
     def test_build_text(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinxcontrib.ansi: can build text
+        FUNCTIONAL TEST: sphinx.ext.mathjax: can build text
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.txt')
+        p = fixtures.path(app.outdir / 'index.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check ANSI text block
+        # check mathematic equastions
         r = re.compile(
-            '(?ms)' + re.escape(r'This is a ANSI control sequence.')
+            '(?ms)' +
+            re.escape(r'Test math extensions E = m c^2') + '.*' +
+            re.escape(r'a^2+b^2=c^2') + '.*' + re.escape(r'Inline E=mc^2')
         )
         self.assertRegex(c, r)
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

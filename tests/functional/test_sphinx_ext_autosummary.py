@@ -37,13 +37,14 @@ extension as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
+class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_testroot_app(
+    @fixtures.with_testroot_app(
         testroot='ext-autosummary',
         confoverrides={
             'autosummary_generate': True,
@@ -58,7 +59,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'autosummary.html')
+        p = fixtures.path(app.outdir / 'autosummary.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -78,7 +79,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-        p = util.path(app.outdir / 'autosummary' / 'an_example_pypi_project.html')
+        p = fixtures.path(app.outdir / 'autosummary' / 'an_example_pypi_project.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -92,7 +93,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-        p = util.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_1.html')
+        p = fixtures.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_1.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -117,7 +118,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-        p = util.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_2.html')
+        p = fixtures.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_2.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -142,7 +143,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
+    @fixtures.with_latex_app(
         testroot='ext-autosummary',
         confoverrides={
             'autosummary_generate': True,
@@ -156,7 +157,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -195,7 +196,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_text_app(
+    @fixtures.with_text_app(
         testroot='ext-autosummary',
         confoverrides={
             'autosummary_generate': True,
@@ -209,7 +210,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'autosummary.txt')
+        p = fixtures.path(app.outdir / 'autosummary.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -226,7 +227,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-        p = util.path(app.outdir / 'autosummary' / 'an_example_pypi_project.txt')
+        p = fixtures.path(app.outdir / 'autosummary' / 'an_example_pypi_project.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -241,7 +242,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-        p = util.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_1.txt')
+        p = fixtures.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_1.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -258,7 +259,7 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-        p = util.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_2.txt')
+        p = fixtures.path(app.outdir / 'autosummary' / 'an_example_pypi_project.useful_2.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -277,4 +278,4 @@ class TestCaseSphinxExtAutoSummary(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

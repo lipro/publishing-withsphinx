@@ -25,10 +25,10 @@
 #
 
 '''
-test_sphinx_ext_todo
-~~~~~~~~~~~~~~~~~~~~
+test_sphinx_contrib_ansi
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module contains basic functional tests of the sphinx.ext.todo extension
+This module contains basic functional tests of the sphinxcontrib.ansi extension
 as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2016 by Li-Pro.Net, see AUTHORS.
@@ -37,104 +37,100 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxExtTodo(util.TestCasePublishingSphinx):
+class TestCaseSphinxContribAnsi(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_html_app(
-        testroot='ext-todo',
+    @fixtures.with_testroot_app(
+        testroot='contrib-ansi',
         confoverrides={
-            'todo_include_todos': True,
+            'html_ansi_stylesheet': None,
         },
+        buildername='html',  # TODO: add support for singlehtml backend of this extention
     )
     def test_build_html(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinx.ext.todo: can build html
+        FUNCTIONAL TEST: sphinxcontrib.ansi: can build html
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check todolist
+        # check ANSI text block
         r = re.compile(
             '(?ms)' +
-            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
-            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
-            re.escape(r'<p class="last">todo in bar</p>') + '.*' +
-            re.escape(r'</div>') + '.*' +
-            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>') + '.*' +
-            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
-            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
-            re.escape(r'<p class="last">todo in foo</p>') + '.*' +
-            re.escape(r'</div>') + '.*' +
-            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>')
+            re.escape(r'<pre class="ansi-block literal-block">') + '.*' +
+            re.escape(r'This is a <span class="ansi-red ansi-bold">ANSI</span> control sequence.') + '.*' +
+            re.escape(r'</pre>')
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
-        testroot='ext-todo',
+    @fixtures.with_latex_app(
+        testroot='contrib-ansi',
         confoverrides={
-            'todo_include_todos': True,
+            'html_ansi_stylesheet': None,
         },
     )
     def test_build_latex(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinx.ext.todo: can build latex
+        FUNCTIONAL TEST: sphinxcontrib.ansi: can build latex
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check todolist
+        # check ANSI text block
+        # TODO: add support for latex backend of this extention
         r = re.compile(
             '(?ms)' +
-            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
-            re.escape(r'todo in bar') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*' +
-            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
-            re.escape(r'todo in foo') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
+            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}') + '.*' +
+            re.escape(r'This') + '.*' + re.escape(r'is') + '.*' + re.escape(r'a') + '.*' +
+            re.escape(r'ANSI') + '.*' + re.escape(r'control') + '.*' + re.escape(r'sequence') + '.*' +
+            re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
         )
         self.assertRegex(c, r)
 
-    @util.with_text_app(
-        testroot='ext-todo',
+    @fixtures.with_text_app(
+        testroot='contrib-ansi',
         confoverrides={
-            'todo_include_todos': True,
+            'html_ansi_stylesheet': None,
         },
     )
     def test_build_text(self, app, status, warning):
         '''
-        FUNCTIONAL TEST: sphinx.ext.todo: can build text
+        FUNCTIONAL TEST: sphinxcontrib.ansi: can build text
         '''
         app.builder.build_update()
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.txt')
+        p = fixtures.path(app.outdir / 'index.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
         print(c)
 
-        # check todolist
+        # check ANSI text block
         r = re.compile(
-            '(?ms)' + re.escape(r'Todo: todo in bar') + '.*' + re.escape(r'Todo: todo in foo')
+            '(?ms)' + re.escape(r'This is a ANSI control sequence.')
         )
         self.assertRegex(c, r)
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

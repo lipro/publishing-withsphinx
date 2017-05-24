@@ -37,13 +37,14 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxExtDocTest(util.TestCasePublishingSphinx):
+class TestCaseSphinxExtDocTest(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_doctest_app(
+    @fixtures.with_doctest_app(
         testroot='ext-doctest',
     )
     def test_build_doctest(self, app, status, warning):
@@ -55,7 +56,7 @@ class TestCaseSphinxExtDocTest(util.TestCasePublishingSphinx):
         print(warning.getvalue())
 
         # check file for doctest results
-        p = util.path(app.outdir / 'output.txt')
+        p = fixtures.path(app.outdir / 'output.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -81,4 +82,4 @@ class TestCaseSphinxExtDocTest(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

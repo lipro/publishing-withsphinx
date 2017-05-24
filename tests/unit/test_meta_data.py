@@ -25,8 +25,8 @@
 #
 
 '''
-test_module_meta
-~~~~~~~~~~~~~~~~
+test_meta_data
+~~~~~~~~~~~~~~
 
 This module contains meta data units tests for the publishing.withsphinx
 extensions as part of the publishing.withsphinx package.
@@ -47,10 +47,16 @@ _EXPECT_DATE = '2016-10-11'
 _EXPECT_AUTHOR = 'Stephan Linz'
 _EXPECT_AUTHOR_EMAIL = 'linz@li-pro.net'
 
+_EXPECT_SPHINX_EXTENSION_METADATA = {
+    'version': _EXPECT_VERSION,
+    'parallel_read_safe': True,
+    'parallel_write_safe': True,
+}
 
-class TestPublishingWithSphinxMetaData(util.TestCasePublishingSphinx):
 
-    def test_package_has_name_string(self):
+class TestMetaData(util.TestCasePublishingSphinx):
+
+    def test_package_has_extension_name_string(self):
         '''
         UNIT TEST: package has name string
         '''
@@ -58,7 +64,7 @@ class TestPublishingWithSphinxMetaData(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(pws.__name__, str))
         self.assertEqual(pws.__name__, _EXPECT_NAME)
 
-    def test_package_has_version_string(self):
+    def test_package_has_extension_version_string(self):
         '''
         UNIT TEST: package has version string
         '''
@@ -66,7 +72,7 @@ class TestPublishingWithSphinxMetaData(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(pws.__version__, str))
         self.assertEqual(pws.__version__, _EXPECT_VERSION)
 
-    def test_package_has_date_string(self):
+    def test_package_has_extension_date_string(self):
         '''
         UNIT TEST: package has date string
         '''
@@ -74,7 +80,7 @@ class TestPublishingWithSphinxMetaData(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(pws.__date__, str))
         self.assertEqual(pws.__date__, _EXPECT_DATE)
 
-    def test_package_has_author_string(self):
+    def test_package_has_extension_author_string(self):
         '''
         UNIT TEST: package has author string
         '''
@@ -82,13 +88,21 @@ class TestPublishingWithSphinxMetaData(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(pws.__author__, str))
         self.assertEqual(pws.__author__, _EXPECT_AUTHOR)
 
-    def test_package_has_author_email_string(self):
+    def test_package_has_extension_author_email_string(self):
         '''
         UNIT TEST: package has author email string
         '''
         import publishing.withsphinx as pws
         self.assertTrue(isinstance(pws.__author_email__, str))
         self.assertEqual(pws.__author_email__, _EXPECT_AUTHOR_EMAIL)
+
+    def test_package_has_setup_returns_with_meta(self):
+        '''
+        UNIT TEST: package has setup returns with meta data
+        '''
+        import publishing.withsphinx as pws
+        app = util.mock.MagicMock()
+        self.assertEqual(pws.setup(app), _EXPECT_SPHINX_EXTENSION_METADATA)
 
 
 if __name__ == "__main__":

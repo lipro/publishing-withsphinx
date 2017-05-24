@@ -37,13 +37,14 @@ extension as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxExtCoverage(util.TestCasePublishingSphinx):
+class TestCaseSphinxExtCoverage(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='ext-coverage',
     )
     def test_build_coverage(self, app, status, warning):
@@ -55,7 +56,7 @@ class TestCaseSphinxExtCoverage(util.TestCasePublishingSphinx):
         print(warning.getvalue())
 
         # check file for C/C++ coverage results
-        p = util.path(app.outdir / 'c.txt')
+        p = fixtures.path(app.outdir / 'c.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -74,7 +75,7 @@ class TestCaseSphinxExtCoverage(util.TestCasePublishingSphinx):
         self.assertNotRegex(c, r)
 
         # check file for Python coverage results
-        p = util.path(app.outdir / 'python.txt')
+        p = fixtures.path(app.outdir / 'python.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -108,4 +109,4 @@ class TestCaseSphinxExtCoverage(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()
