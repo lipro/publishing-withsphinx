@@ -46,7 +46,7 @@ next subsections will explain how to install all needed Python versions in
 parallel including a functioning Virtual Environment on a recent Ubuntu LTS
 standard Linux system.
 
-Python 2 and 3 on Ubuntu 12.04 (and onwards LTS)
+Python 2 and 3 on Ubuntu 14.04 (and onwards LTS)
 ------------------------------------------------------------------------------
 
 .. index:: Python
@@ -54,15 +54,16 @@ Python 2 and 3 on Ubuntu 12.04 (and onwards LTS)
    pair: Python; Install
 
 A third party launchpad
-`PPA <https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes>`_,
-the DeadSnakes PPA by
-`Felix Krull <https://launchpad.net/~fkrull>`_,
-maintains older and newer Python version for Ubuntu not included in the systems
-package management. For Python 2.7 security and feature updates he is
-maintainig a dedicated
-`2.7 PPA <https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes-python2.7>`_
-(see PPA home page for the reasons). All the needed Python releases are
-available in the PPA for Ubuntu 16.04 and down to Ubuntu 12.04.
+`PPA <https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa>`_,
+the *New Python Versions* PPA by the
+`DeadSnakes <https://launchpad.net/~deadsnakes>`_ team,
+maintains older and newer Python version for current Ubuntu LTS releases that
+not included in the systems package management. Supported Ubuntu versions with
+its system Python versions are:
+
+- Ubuntu 18.04 LTS (Bionic Beaver), comes with Python 2.7 (default) and 3.6
+- Ubuntu 16.04 LTS (Xenial Xerus), comes with Python 2.7 (default) and 3.5
+- Ubuntu 14.04 LTS (Trusty Tahr), comes with Python 2.7 (default) and 3.4
 
 Python 3 Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -73,10 +74,10 @@ Python 3 Installation
 Add the DeadSnakes repository and run update:
    .. code-block:: bash
 
-      sudo add-apt-repository ppa:fkrull/deadsnakes
+      sudo add-apt-repository ppa:deadsnakes/ppa
       sudo apt-get update
 
-   See: https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes
+   See: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
 
 Install all versions of Python 3:
    .. code-block:: bash
@@ -127,10 +128,10 @@ Python 2 Installation
 Add the DeadSnakes repository and run update:
    .. code-block:: bash
 
-      sudo add-apt-repository ppa:fkrull/deadsnakes-python2.7
+      sudo add-apt-repository ppa:deadsnakes/ppa
       sudo apt-get update
 
-   See: https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes-python2.7
+   See: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
 
 Install all versions of Python 2:
    .. code-block:: bash
