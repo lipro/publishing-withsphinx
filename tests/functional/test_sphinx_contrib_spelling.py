@@ -37,13 +37,14 @@ extension as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxContribSpelling(util.TestCasePublishingSphinx):
+class TestCaseSphinxContribSpelling(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_spelling_app(
+    @fixtures.with_spelling_app(
         testroot='contrib-spelling',
         confoverrides={
             'spelling_lang': 'en_US',
@@ -60,7 +61,7 @@ class TestCaseSphinxContribSpelling(util.TestCasePublishingSphinx):
         print(warning.getvalue())
 
         # check file for spelling results
-        p = util.path(app.outdir / 'output.txt')
+        p = fixtures.path(app.outdir / 'output.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -94,4 +95,4 @@ class TestCaseSphinxContribSpelling(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

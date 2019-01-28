@@ -37,13 +37,14 @@ extension as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
+class TestCaseSphinxContribBlockdiag(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_html_app(
+    @fixtures.with_html_app(
         testroot='contrib-blockdiag',
         confoverrides={
             'blockdiag_antialias': True,
@@ -59,7 +60,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -75,7 +76,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_html_app(
+    @fixtures.with_html_app(
         testroot='contrib-blockdiag',
         confoverrides={
             'blockdiag_antialias': True,
@@ -91,7 +92,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -121,7 +122,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
+    @fixtures.with_latex_app(
         testroot='contrib-blockdiag',
         confoverrides={
             'blockdiag_antialias': True,
@@ -137,7 +138,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -154,7 +155,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
+    @fixtures.with_latex_app(
         testroot='contrib-blockdiag',
         confoverrides={
             'blockdiag_antialias': True,
@@ -170,7 +171,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -187,7 +188,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_text_app(
+    @fixtures.with_text_app(
         testroot='contrib-blockdiag',
         confoverrides={
             'blockdiag_antialias': True,
@@ -202,7 +203,7 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.txt')
+        p = fixtures.path(app.outdir / 'index.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -217,4 +218,4 @@ class TestCaseSphinxContribBlockdiag(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

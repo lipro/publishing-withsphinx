@@ -25,11 +25,11 @@
 #
 
 '''
-test_module_backports
-~~~~~~~~~~~~~~~~~~~~~
+test_publishing_withsphinx_backports
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module contains basic functional tests over all supported extensions
-as part of the publishing.withsphinx package to evaluate all backports.
+This module contains basic functional tests over all supported backports
+as part of the publishing.withsphinx package.
 
 :copyright: Copyright 2014-2017 by Li-Pro.Net, see AUTHORS.
 :license: MIT, see LICENSE for details.
@@ -37,19 +37,24 @@ as part of the publishing.withsphinx package to evaluate all backports.
 
 from __future__ import absolute_import
 
-from tests import util
+from tests.functional import fixtures
 
-from nose.tools import raises
 from sphinx.errors import SphinxError
 
 _EXPECT_LATEX_ENGINE_DEFAULT_LANG_NONE = 'pdflatex'
 _EXPECT_LATEX_ENGINE_DEFAULT_LANG_JA = 'platex'
 _EXPECT_LATEX_ENGINE_CONFOVERRIDES = 'xelatex'
+_EXPECT_LATEX_ENGINE_VALIDS = [
+    _EXPECT_LATEX_ENGINE_DEFAULT_LANG_NONE,
+    _EXPECT_LATEX_ENGINE_DEFAULT_LANG_JA,
+    _EXPECT_LATEX_ENGINE_CONFOVERRIDES,
+    'lualatex',
+]
 
 
-class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
+class TestPublishingWithSphinxBackports(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='module-backports',
     )
     def test_latex_engine_defaults(self, app, status, warning):
@@ -59,7 +64,7 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_NONE)
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
             'language': 'ja',
@@ -72,7 +77,7 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_JA)
 
-    @util.with_coverage_app(
+    @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
             'latex_engine': _EXPECT_LATEX_ENGINE_CONFOVERRIDES,
@@ -85,8 +90,8 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_CONFOVERRIDES)
 
-    @raises(SphinxError)
-    @util.with_coverage_app(
+    @fixtures.util.nose.tools.raises(SphinxError)
+    @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
             'latex_engine': 'invalid latex engine',
@@ -100,4 +105,4 @@ class TestPublishingWithSphinxBackports(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()

@@ -37,13 +37,14 @@ as part of the publishing.withsphinx package.
 
 from __future__ import absolute_import
 
+from tests.functional import fixtures
+
 import re
-from tests import util
 
 
-class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
+class TestCaseSphinxContribTikz(fixtures.TestCaseFunctionalPublishingSphinx):
 
-    @util.with_html_app(
+    @fixtures.with_html_app(
         testroot='contrib-tikz',
         confoverrides={
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
@@ -59,7 +60,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -77,7 +78,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_html_app(
+    @fixtures.with_html_app(
         testroot='contrib-tikz',
         confoverrides={
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
@@ -93,7 +94,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.html')
+        p = fixtures.path(app.outdir / 'index.html')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -111,7 +112,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_latex_app(
+    @fixtures.with_latex_app(
         testroot='contrib-tikz',
         confoverrides={
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
@@ -127,7 +128,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.tex')
+        p = fixtures.path(app.outdir / 'index.tex')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -144,7 +145,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         )
         self.assertRegex(c, r)
 
-    @util.with_text_app(
+    @fixtures.with_text_app(
         testroot='contrib-tikz',
         confoverrides={
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
@@ -160,7 +161,7 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
         print(status.getvalue())
         print(warning.getvalue())
 
-        p = util.path(app.outdir / 'index.txt')
+        p = fixtures.path(app.outdir / 'index.txt')
         self.assertTrue(p.isfile(), 'missing file ' + p)
 
         c = p.read_text(encoding='utf-8')
@@ -175,4 +176,4 @@ class TestCaseSphinxContribTikz(util.TestCasePublishingSphinx):
 
 
 if __name__ == "__main__":
-    util.main()
+    fixtures.main()
