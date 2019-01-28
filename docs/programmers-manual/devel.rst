@@ -137,8 +137,11 @@ Install all versions of Python 2:
    .. code-block:: bash
 
       sudo apt-get install python-virtualenv
-      sudo apt-get install python2.6 python2.6-dev
       sudo apt-get install python2.7 python2.7-dev
+      sudo apt-get install python2.6 python2.6-dev
+      sudo apt-get install python2.5 python2.5-dev
+      sudo apt-get install python2.4 python2.4-dev
+      sudo apt-get install python2.3 python2.3-dev
 
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
