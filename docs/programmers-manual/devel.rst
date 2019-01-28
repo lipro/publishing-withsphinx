@@ -83,27 +83,28 @@ Install all versions of Python 3:
    .. code-block:: bash
 
       sudo apt-get install python-virtualenv
-      sudo apt-get install python3.1 python3.1-dev
-      sudo apt-get install python3.2 python3.2-dev
-      sudo apt-get install python3.3 python3.3-dev
-      sudo apt-get install python3.4 python3.4-dev python3.4-venv
-      sudo apt-get install python3.5 python3.5-dev python3.5-venv
+      sudo apt-get install python3.7 python3.7-dev python3.7-venv
       sudo apt-get install python3.6 python3.6-dev python3.6-venv
+      sudo apt-get install python3.5 python3.5-dev python3.5-venv
+      sudo apt-get install python3.4 python3.4-dev python3.4-venv
+      sudo apt-get install python3.3 python3.3-dev
+      sudo apt-get install python3.2 python3.2-dev
+      sudo apt-get install python3.1 python3.1-dev
 
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
-Python 3.6 Virtual Environment
+Python 3.7 Virtual Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 3; Virtual Environment
    single: Virtual Environment; Python 3
 
-Activate Python 3.6 Virtual Environment:
+Activate Python 3.7 Virtual Environment:
    .. code-block:: bash
 
-      python3.6 -m venv .py36env
-      source .py36env/bin/activate
+      python3.7 -m venv .py37env
+      source .py37env/bin/activate
 
    See: https://wiki.ubuntuusers.de/virtualenv/#venv-aus-Python-3
 
