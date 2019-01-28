@@ -32,8 +32,6 @@ This module provides the extended publishing support for the |Sphinx_dsc|.
 from __future__ import absolute_import
 
 import types
-import pkg_resources
-from . import required
 
 __author__ = 'Stephan Linz'
 __author_email__ = 'linz@li-pro.net'
@@ -52,8 +50,23 @@ def setup(app):
               extension.
     :rtype: Dictionary
     '''
+
+    # Import package modules here to avoid errors from setuptools when the
+    # package will be load to fetch meta data (version, author, ...).
+    from . import backports
+    from . import required
+
+    # Fast return without any action and empty result if the argument is a
+    # module, not a Sphinx application object. For details, see Sphinx online
+    # documentaion, the part "Developing extensions for Sphinx" -- refered by:
+    #
+    #   http://www.sphinx-doc.org/en/stable/extdev/
+    #
     if isinstance(app, types.ModuleType):
         return
+
+    # Load all required backports
+    backports.sphinx15(app)
 
     # Load all required extensions
     required.extensions(app)
@@ -61,7 +74,7 @@ def setup(app):
     # Return a dictionary, that is treated by Sphinx as metadata of the extension.
     return {
         # it is used for extension version requirement checking (needs_extensions)
-        'version': pkg_resources.require('publishing-withsphinx')[0].version,
+        'version': __version__,
         # parallel reading of source files when the extension is loaded
         'parallel_read_safe': True,
         # parallel writing of output files when the extension is loaded

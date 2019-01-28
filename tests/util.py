@@ -40,154 +40,21 @@ publishing.withsphinx package.
 
 from __future__ import absolute_import
 
-import os
 import sys
-
-from sphinx_testing import with_app
-from sphinx_testing.path import path
 
 import logging
 import logging.handlers
+
+import mock
+import nose
 
 if sys.version_info < (2, 7):
     import unittest2 as unittest
 else:
     import unittest
 
-rootdir = path(os.path.dirname(__file__) or '.').abspath()
-
-
-def with_testroot_app(*args, **kw):
-    default_kw = {
-        'verbosity': 2,
-    }
-    if 'testroot' not in kw:
-        default_kw['srcdir'] = rootdir / 'roots'
-    else:
-        default_kw['srcdir'] = rootdir / 'roots' / ('test-' + kw['testroot'])
-        del kw['testroot']
-    default_kw.update(kw)
-    return with_app(*args, **default_kw)
-
-
-def with_coverage_app(*args, **kw):
-    default_kw = {
-        'buildername': 'coverage',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_doctest_app(*args, **kw):
-    default_kw = {
-        'buildername': 'doctest',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_devhelp_app(*args, **kw):
-    default_kw = {
-        'buildername': 'devhelp',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_epub_app(*args, **kw):
-    default_kw = {
-        'buildername': 'epub',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_html_app(*args, **kw):
-    default_kw = {
-        'buildername': 'singlehtml',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_htmlhelp_app(*args, **kw):
-    default_kw = {
-        'buildername': 'htmlhelp',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_json_app(*args, **kw):
-    default_kw = {
-        'buildername': 'json',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_latex_app(*args, **kw):
-    default_kw = {
-        'buildername': 'latex',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_manpage_app(*args, **kw):
-    default_kw = {
-        'buildername': 'man',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_pseudoxml_app(*args, **kw):
-    default_kw = {
-        'buildername': 'pseudoxml',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_qthelp_app(*args, **kw):
-    default_kw = {
-        'buildername': 'qthelp',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_spelling_app(*args, **kw):
-    default_kw = {
-        'buildername': 'spelling',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_texinfo_app(*args, **kw):
-    default_kw = {
-        'buildername': 'texinfo',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_text_app(*args, **kw):
-    default_kw = {
-        'buildername': 'text',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
-
-
-def with_xml_app(*args, **kw):
-    default_kw = {
-        'buildername': 'xml',
-    }
-    default_kw.update(kw)
-    return with_testroot_app(*args, **default_kw)
+assert mock  # silence pyflake
+assert nose  # silence pyflake
 
 
 if sys.version_info < (3,):
