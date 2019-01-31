@@ -54,7 +54,7 @@ from sys import version_info
 import publishing.withsphinx as pubwsphinx
 
 _INSTALL_REQUIRES = [
-    'Sphinx>=1.2.0,<=1.4.9999',
+    'Sphinx>=1.3.0,<=1.4.9999',
     'sphinx-argparse>=0.2.0,<=0.2.0',
     'sphinxcontrib-ansi @ ' +
     'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip' +
