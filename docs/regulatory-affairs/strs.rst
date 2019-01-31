@@ -279,13 +279,28 @@ For all foreign Python packages needed for the extension development this
 |publishing-withsphinx| extension should install additional Python packages
 and its dependencies automatically.
 
-The Python package installation with :literal:`pip` should support the
+The Python package installation with :literal:`pip` **should support** the
 following current versions of Python:
 
-- `Python 2.7.x <https://www.python.org/dev/peps/pep-0373/>`_ until December 2020
-- `Python 3.6.x <https://www.python.org/dev/peps/pep-0494/>`_ until December 2021
-- `Python 3.5.x <https://www.python.org/dev/peps/pep-0478/>`_
-- `Python 3.4.x <https://www.python.org/dev/peps/pep-0429/>`_
+- `Status of Python branches <https://devguide.python.org/#branchstatus>`_:
+
+  - `Python 3.7.x <https://www.python.org/dev/peps/pep-0537/>`_ until June 2023
+  - `Python 3.6.x <https://www.python.org/dev/peps/pep-0494/>`_ until December 2021
+  - `Python 3.5.x <https://www.python.org/dev/peps/pep-0478/>`_ until September 2020
+  - `Python 3.4.x <https://www.python.org/dev/peps/pep-0429/>`_ until March 2019
+  - `Python 2.7.x <https://www.python.org/dev/peps/pep-0373/>`_,
+    `Update Python 2.7 EOL date <https://github.com/python/devguide/pull/344>`_ until December 2019
+
+The Python package installation with :literal:`pip` **have not to support** the
+following current versions of Python:
+
+- `End-of-life branches <https://devguide.python.org/#branchstatus>`_
+
+  - `Python 3.3.x <https://www.python.org/dev/peps/pep-0398/>`_ since September 2017
+  - `Python 3.2.x <https://www.python.org/dev/peps/pep-0392/>`_ since February 2016
+  - `Python 3.1.x <https://www.python.org/dev/peps/pep-0375/>`_ since April 2012
+  - `Python 3.0.x <https://www.python.org/dev/peps/pep-0361/>`_ since January 2009
+  - `Python 2.6.x <https://www.python.org/dev/peps/pep-0361/>`_ since October 2013
 
 .. traceable-graph::
    :tags: STRQ-PIPINSTALL
@@ -310,7 +325,10 @@ extension should:
 The Sphinx configuration and setup functionality should support the following
 current versions of Sphinx:
 
-- `Sphinx 1.5.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-5-5-released-apr-03-2017>`_
+- `Sphinx 1.8.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-8-3-released-dec-26-2018>`_
+- `Sphinx 1.7.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-7-9-released-sep-05-2018>`_
+- `Sphinx 1.6.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-6-7-released-feb-04-2018>`_
+- `Sphinx 1.5.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-5-6-released-may-15-2017>`_
 - `Sphinx 1.4.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-4-9-released-nov-23-2016>`_
 - `Sphinx 1.3.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-3-6-released-feb-29-2016>`_
 - `Sphinx 1.2.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-2-3-released-sep-1-2014>`_

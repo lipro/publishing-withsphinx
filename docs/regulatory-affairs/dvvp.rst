@@ -304,7 +304,7 @@ Functional test cases of contributed Sphinx extensions
    :members:
    :undoc-members:
 
-.. automodule:: test_sphinx_contrib_bibtex
+.. automodule:: functional.test_sphinx_contrib_bibtex
    :members:
    :undoc-members:
 

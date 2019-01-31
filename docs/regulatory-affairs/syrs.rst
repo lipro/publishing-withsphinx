@@ -114,6 +114,28 @@ Sphinx versions.
 
 .. ----------------------------------------------------------------------------
 
+.. traceable:: REQ-WORKSON-PY37
+   :title: Python version 3.7.x can be used to install this extension
+   :category: SysReq
+   :parents: STRQ-PIPINSTALL
+   :sibling: REQ-TESTS-CI
+   :requirement_type: configuration-python
+   :verification_method: ci-test
+
+.. .. index::
+      single: Python; Python 3; REQ-WORKSON-PY37
+
+It must be possible to install this |publishing-withsphinx| extension in a
+Python 3.7.x environment and write documentation with one of the required
+Sphinx versions.
+
+.. traceable-graph::
+   :tags: REQ-WORKSON-PY37
+   :relationships: parents:2, children:1
+   :caption: Traces to the system requirement REQ-WORKSON-PY37
+
+.. ----------------------------------------------------------------------------
+
 .. traceable:: REQ-WORKSON-PY36
    :title: Python version 3.6.x can be used to install this extension
    :category: SysReq
@@ -180,6 +202,81 @@ Sphinx versions.
 
 Sphinx Version Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. traceable:: REQ-WORKSON-SP18
+   :title: Sphinx version 1.8.x can be used to write documentation
+   :category: SysReq
+   :parents: STRQ-EXTSETUP
+   :sibling: REQ-TESTS-CI
+   :requirement_type: configuration-sphinx
+   :verification_method: ci-test
+
+.. .. index::
+      single: Sphinx; Sphinx 1.x; REQ-WORKSON-SP18
+
+It must be possible to install this |publishing-withsphinx| extension in a
+Sphinx 1.8.x environment and write documentation with this version of Sphinx.
+
+Refer to the prerequisites [#sp18-pr]_ of the Sphinx 1.8 documentation builder:
+
+   "Sphinx needs at least Python 2.7 or Python 3.4 to run, ..."
+
+.. traceable-graph::
+   :tags: REQ-WORKSON-SP18
+   :relationships: parents:2, children:1
+   :caption: Traces to the system requirement REQ-WORKSON-SP18
+
+.. ----------------------------------------------------------------------------
+
+.. traceable:: REQ-WORKSON-SP17
+   :title: Sphinx version 1.7.x can be used to write documentation
+   :category: SysReq
+   :parents: STRQ-EXTSETUP
+   :sibling: REQ-TESTS-CI
+   :requirement_type: configuration-sphinx
+   :verification_method: ci-test
+
+.. .. index::
+      single: Sphinx; Sphinx 1.x; REQ-WORKSON-SP17
+
+It must be possible to install this |publishing-withsphinx| extension in a
+Sphinx 1.7.x environment and write documentation with this version of Sphinx.
+
+Refer to the prerequisites [#sp17-pr]_ of the Sphinx 1.7 documentation builder:
+
+   "Sphinx needs at least Python 2.7 or Python 3.4 to run, ..."
+
+.. traceable-graph::
+   :tags: REQ-WORKSON-SP17
+   :relationships: parents:2, children:1
+   :caption: Traces to the system requirement REQ-WORKSON-SP17
+
+.. ----------------------------------------------------------------------------
+
+.. traceable:: REQ-WORKSON-SP16
+   :title: Sphinx version 1.6.x can be used to write documentation
+   :category: SysReq
+   :parents: STRQ-EXTSETUP
+   :sibling: REQ-TESTS-CI
+   :requirement_type: configuration-sphinx
+   :verification_method: ci-test
+
+.. .. index::
+      single: Sphinx; Sphinx 1.x; REQ-WORKSON-SP16
+
+It must be possible to install this |publishing-withsphinx| extension in a
+Sphinx 1.6.x environment and write documentation with this version of Sphinx.
+
+Refer to the prerequisites [#sp16-pr]_ of the Sphinx 1.6 documentation builder:
+
+   "Sphinx needs at least Python 2.7 or Python 3.4 to run, ..."
+
+.. traceable-graph::
+   :tags: REQ-WORKSON-SP16
+   :relationships: parents:2, children:1
+   :caption: Traces to the system requirement REQ-WORKSON-SP16
+
+.. ----------------------------------------------------------------------------
 
 .. traceable:: REQ-WORKSON-SP15
    :title: Sphinx version 1.5.x can be used to write documentation
@@ -592,3 +689,12 @@ List of system requirements
 
 .. [#sp15-pr] :traceable:`REQ-WORKSON-SP15` prerequisites:
               http://www.sphinx-doc.org/en/1.5/intro.html#prerequisites
+
+.. [#sp16-pr] :traceable:`REQ-WORKSON-SP16` prerequisites:
+              http://www.sphinx-doc.org/en/1.6/intro.html#prerequisites
+
+.. [#sp17-pr] :traceable:`REQ-WORKSON-SP17` prerequisites:
+              http://www.sphinx-doc.org/en/1.7/intro.html#prerequisites
+
+.. [#sp18-pr] :traceable:`REQ-WORKSON-SP18` prerequisites:
+              http://www.sphinx-doc.org/en/1.8/intro.html#prerequisites

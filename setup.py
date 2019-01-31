@@ -56,26 +56,33 @@ import publishing.withsphinx as pubwsphinx
 _INSTALL_REQUIRES = [
     'Sphinx>=1.2.0,<=1.4.9999',
     'sphinx-argparse>=0.2.0,<=0.2.0',
-    'sphinxcontrib-ansi>=0.6.dev0',
+    'sphinxcontrib-ansi @ ' +
+    'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip' +
+    '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb' +
+    '&subdirectory=ansi' +
+    '&egg=sphinxcontrib-ansi-0.6.dev0',
     'sphinxcontrib-bibtex>=0.3.5,<=0.3.5',
     'sphinxcontrib-blockdiag>=1.5.5,<=1.5.5',
-    'sphinxcontrib-email>=0.2.dev0',
+    'sphinxcontrib-email @ ' +
+    'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip' +
+    '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb' +
+    '&subdirectory=email' +
+    '&egg=sphinxcontrib-email-0.2.dev0',
     'sphinxcontrib-embedly>=0.2.0,<=0.2.0',
     'sphinxcontrib-inlinesyntaxhighlight>=0.2.0,<=0.2.0',
     'sphinxcontrib-programoutput>=0.8.0,<=0.10.0',
     'sphinxcontrib-spelling>=2.3.0,<=2.3.0',
     'sphinxcontrib-tikz>=0.4.2,<=0.4.4',
     'reportlab>=3.4.0,<=3.4.9999',
-]
-
-_DEPENDENCY_LINKS = [
-    'hg+https://bitbucket.org/rexut/sphinx-contrib@default#subdirectory=ansi&egg=sphinxcontrib-ansi-0.6.dev0',
-    'hg+https://bitbucket.org/rexut/sphinx-contrib@default#subdirectory=email&egg=sphinxcontrib-email-0.2.dev0',
-    'git+https://github.com/rexut/sphinxcontrib-traceables.git@py2to3-devel#egg=sphinxcontrib-traceables-0.1.5.dev0',
+    'CommonMark>=0.5.6,<=0.7.9999',
 ]
 
 _EXTRAS_REQUIRE_DEV = [
-    'sphinxcontrib-traceables>=0.1.5.dev0',
+    'sphinxcontrib-traceables @ ' +
+    'https://github.com/rexut/sphinxcontrib-traceables/archive/py2to3-devel.zip' +
+    '#sha1=3084d8b356230723e0fa93758a7bbc9c9bd2f3c2' +
+    '&subdirectory=' +
+    '&egg=sphinxcontrib-traceables-0.1.5.dev1',
     'sphinxcontrib-traceability>=0.1.2,<=0.1.2',
     'sphinx-rtd-theme>=0.2.4,<=0.2.4',
     'check-manifest>=0.35.0,<=0.35.9999',
@@ -321,7 +328,6 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=_INSTALL_REQUIRES,
-    dependency_links=_DEPENDENCY_LINKS,
 
     test_suite='nose.collector',
     tests_require=_EXTRAS_REQUIRE_TEST,
