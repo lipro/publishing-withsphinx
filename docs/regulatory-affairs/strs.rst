@@ -325,7 +325,10 @@ extension should:
 The Sphinx configuration and setup functionality should support the following
 current versions of Sphinx:
 
-- `Sphinx 1.5.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-5-5-released-apr-03-2017>`_
+- `Sphinx 1.8.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-8-3-released-dec-26-2018>`_
+- `Sphinx 1.7.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-7-9-released-sep-05-2018>`_
+- `Sphinx 1.6.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-6-7-released-feb-04-2018>`_
+- `Sphinx 1.5.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-5-6-released-may-15-2017>`_
 - `Sphinx 1.4.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-4-9-released-nov-23-2016>`_
 - `Sphinx 1.3.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-3-6-released-feb-29-2016>`_
 - `Sphinx 1.2.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-2-3-released-sep-1-2014>`_
