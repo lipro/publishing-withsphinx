@@ -44,6 +44,7 @@ import re
 
 class TestCaseSphinxContribEmbedly(fixtures.TestCaseFunctionalPublishingSphinx):
 
+    @fixtures.util.unittest.skip('build invalid html, remove embed.ly support soon, see issue #17')
     @fixtures.with_html_app(
         testroot='contrib-embedly',
         confoverrides={
