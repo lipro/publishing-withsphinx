@@ -25,6 +25,9 @@
 #
 
 '''
+test_sphinx_contrib_bibtex
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. traceable:: VFY-SPHINXCONTRIB-BIBTEX
    :title: Verify sphinxcontrib-bibtex
    :category: SysVerify
