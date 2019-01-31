@@ -114,6 +114,28 @@ Sphinx versions.
 
 .. ----------------------------------------------------------------------------
 
+.. traceable:: REQ-WORKSON-PY37
+   :title: Python version 3.7.x can be used to install this extension
+   :category: SysReq
+   :parents: STRQ-PIPINSTALL
+   :sibling: REQ-TESTS-CI
+   :requirement_type: configuration-python
+   :verification_method: ci-test
+
+.. .. index::
+      single: Python; Python 3; REQ-WORKSON-PY37
+
+It must be possible to install this |publishing-withsphinx| extension in a
+Python 3.7.x environment and write documentation with one of the required
+Sphinx versions.
+
+.. traceable-graph::
+   :tags: REQ-WORKSON-PY37
+   :relationships: parents:2, children:1
+   :caption: Traces to the system requirement REQ-WORKSON-PY37
+
+.. ----------------------------------------------------------------------------
+
 .. traceable:: REQ-WORKSON-PY36
    :title: Python version 3.6.x can be used to install this extension
    :category: SysReq
