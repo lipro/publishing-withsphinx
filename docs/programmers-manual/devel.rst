@@ -115,7 +115,7 @@ Upgrade :program:`pip` and install required packages:
    .. code-block:: bash
 
       pip install --upgrade pip
-      pip install --process-dependency-links -e .[dev,test]
+      pip install -e .[dev,test]
 
    Within the virtual Python 3.6 runtime environment upgrade and install all
    required Python packages.
