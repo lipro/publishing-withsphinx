@@ -207,13 +207,13 @@ Run a specific colection of unit tests using nosetests:
    .. code-block:: bash
 
       python setup.py nosetests \
-        --tests tests/test_module_meta.py:TestPublishingWithSphinxMetaData
+        --tests tests/unit/test_meta_data.py:TestMetaData
 
 Run a specific unit test using nosetests:
    .. code-block:: bash
 
       python setup.py nosetests \
-        --tests tests/test_sphinx_ext_todo.py:TestCaseSphinxExtTodo.test_build_text
+        --tests tests/functional/test_sphinx_ext_todo.py:TestCaseSphinxExtTodo.test_build_text
 
 Build Sphinx documentation:
    .. code-block:: bash
