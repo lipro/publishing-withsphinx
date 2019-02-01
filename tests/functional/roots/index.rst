@@ -16,7 +16,6 @@ Content
    test-contrib-bibtex/index
    test-contrib-blockdiag/index
    test-contrib-email/index
-   test-contrib-embedly/index
    test-contrib-inlinesyntaxhighlight/index
    test-contrib-programoutput/index
    test-contrib-spelling/index

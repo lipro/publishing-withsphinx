@@ -25,7 +25,6 @@ needs_extensions = {
 #   'sphinxcontrib.bibtex':                     '0.3',  # NOQA
     'sphinxcontrib.blockdiag':                  '1.5',  # NOQA
 #   'sphinxcontrib.email':                      '0.3',  # NOQA
-#   'sphinxcontrib.embedly':                    '0.2',  # NOQA
 #   'sphinxcontrib.inlinesyntaxhighlight':      '0.2',  # NOQA
 #   'sphinxcontrib.programoutput':              '0.10',  # NOQA
 #   'sphinxcontrib.spelling':                   '2.3',  # NOQA

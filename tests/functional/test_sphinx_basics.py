@@ -47,8 +47,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_epub_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -72,7 +70,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
         #       'test-contrib-bibtex/index.xhtml',  # NOQA
         #       'test-contrib-blockdiag/index.xhtml',  # NOQA
         #       'test-contrib-email/index.xhtml',  # NOQA
-        #       'test-contrib-embedly/index.xhtml',  # NOQA
         #       'test-contrib-inlinesyntaxhighlight/index.xhtml',  # NOQA
         #       'test-contrib-programoutput/index.xhtml',  # NOQA
         #       'test-contrib-spelling/index.xhtml',  # NOQA
@@ -103,8 +100,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_devhelp_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -129,7 +124,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.html',
                 'test-contrib-blockdiag/index.html',
                 'test-contrib-email/index.html',
-                'test-contrib-embedly/index.html',
                 'test-contrib-inlinesyntaxhighlight/index.html',
                 'test-contrib-programoutput/index.html',
                 'test-contrib-spelling/index.html',
@@ -161,8 +155,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
         buildername='html',
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -187,7 +179,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.html',
                 'test-contrib-blockdiag/index.html',
                 'test-contrib-email/index.html',
-                'test-contrib-embedly/index.html',
                 'test-contrib-inlinesyntaxhighlight/index.html',
                 'test-contrib-programoutput/index.html',
                 'test-contrib-spelling/index.html',
@@ -219,8 +210,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_htmlhelp_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -246,7 +235,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.html',
                 'test-contrib-blockdiag/index.html',
                 'test-contrib-email/index.html',
-                'test-contrib-embedly/index.html',
                 'test-contrib-inlinesyntaxhighlight/index.html',
                 'test-contrib-programoutput/index.html',
                 'test-contrib-spelling/index.html',
@@ -277,8 +265,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_json_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -303,7 +289,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.fjson',
                 'test-contrib-blockdiag/index.fjson',
                 'test-contrib-email/index.fjson',
-                'test-contrib-embedly/index.fjson',
                 'test-contrib-inlinesyntaxhighlight/index.fjson',
                 'test-contrib-programoutput/index.fjson',
                 'test-contrib-spelling/index.fjson',
@@ -334,8 +319,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_latex_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -358,8 +341,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_manpage_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -377,8 +358,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_pseudoxml_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -399,7 +378,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.pseudoxml',
                 'test-contrib-blockdiag/index.pseudoxml',
                 'test-contrib-email/index.pseudoxml',
-                'test-contrib-embedly/index.pseudoxml',
                 'test-contrib-inlinesyntaxhighlight/index.pseudoxml',
                 'test-contrib-programoutput/index.pseudoxml',
                 'test-contrib-spelling/index.pseudoxml',
@@ -430,8 +408,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_qthelp_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -457,7 +433,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.html',
                 'test-contrib-blockdiag/index.html',
                 'test-contrib-email/index.html',
-                'test-contrib-embedly/index.html',
                 'test-contrib-inlinesyntaxhighlight/index.html',
                 'test-contrib-programoutput/index.html',
                 'test-contrib-spelling/index.html',
@@ -488,8 +463,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_texinfo_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -511,8 +484,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_text_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -533,7 +504,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.txt',
                 'test-contrib-blockdiag/index.txt',
                 'test-contrib-email/index.txt',
-                'test-contrib-embedly/index.txt',
                 'test-contrib-inlinesyntaxhighlight/index.txt',
                 'test-contrib-programoutput/index.txt',
                 'test-contrib-spelling/index.txt',
@@ -564,8 +534,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_xml_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -586,7 +554,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
                 'test-contrib-bibtex/index.xml',
                 'test-contrib-blockdiag/index.xml',
                 'test-contrib-email/index.xml',
-                'test-contrib-embedly/index.xml',
                 'test-contrib-inlinesyntaxhighlight/index.xml',
                 'test-contrib-programoutput/index.xml',
                 'test-contrib-spelling/index.xml',
@@ -617,8 +584,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_coverage_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -694,8 +659,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_doctest_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
         },
     )
@@ -738,8 +701,6 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
     @fixtures.with_spelling_app(
         confoverrides={
             'autosummary_generate': True,
-            'embedly_key': '899ef656b46c11e099364040d3dc5c07',
-            'embedly_timeout': 120,
             'tikz_tikzlibraries': 'arrows,matrix,calendar,folding',
             'spelling_lang': 'en_US',
             'spelling_word_list_filename': 'test-contrib-spelling/spelling_wordlist.txt',
