@@ -640,13 +640,13 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # validate C/C++ coverage results
         r = re.compile(
-            '(?ms)' '^Undocumented C API elements$'
-            '.*'    '^===========================$'
+            '(?ms)' r'^Undocumented C API elements$'
+            '.*'    r'^===========================$'
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' '^hello$'
+            '(?ms)' r'^hello$'
         )
         self.assertNotRegex(c, r)
 
@@ -660,34 +660,34 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # validate Python coverage results
         r = re.compile(
-            '(?ms)' '^Undocumented Python objects$'
-            '.*'    '^===========================$'
-            '.*'    '^an_example_pypi_project$'
-            '.*'    '^-----------------------$'
-            '.*'    '^Functions:$'
-            '.*'    '^ \* start$'
-            '.*'    '^an_example_pypi_project\.useful_1$'
-            '.*'    '^--------------------------------$'
-            '.*'    '^Functions:$'
-            '.*'    '^ \* public_fn_without_docstring$'
-            '.*'    '^an_example_pypi_project\.useful_2$'
-            '.*'    '^--------------------------------$'
-            '.*'    '^Functions:$'
-            '.*'    '^ \* public_fn_with_googley_docstring$'
-            '.*'    '^ \* public_fn_without_docstring$'
-            '.*'    '^hello$'
-            '.*'    '^-----$'
-            '.*'    '^Functions:$'
-            '.*'    '^ \* hello$'
-            '.*'    '^useful_1$'
-            '.*'    '^--------$'
-            '.*'    '^Classes:$'
-            '.*'    '^ \* MyPublicClass'
+            '(?ms)' r'^Undocumented Python objects$'
+            '.*'    r'^===========================$'
+            '.*'    r'^an_example_pypi_project$'
+            '.*'    r'^-----------------------$'
+            '.*'    r'^Functions:$'
+            '.*'    r'^ \* start$'
+            '.*'    r'^an_example_pypi_project\.useful_1$'
+            '.*'    r'^--------------------------------$'
+            '.*'    r'^Functions:$'
+            '.*'    r'^ \* public_fn_without_docstring$'
+            '.*'    r'^an_example_pypi_project\.useful_2$'
+            '.*'    r'^--------------------------------$'
+            '.*'    r'^Functions:$'
+            '.*'    r'^ \* public_fn_with_googley_docstring$'
+            '.*'    r'^ \* public_fn_without_docstring$'
+            '.*'    r'^hello$'
+            '.*'    r'^-----$'
+            '.*'    r'^Functions:$'
+            '.*'    r'^ \* hello$'
+            '.*'    r'^useful_1$'
+            '.*'    r'^--------$'
+            '.*'    r'^Classes:$'
+            '.*'    r'^ \* MyPublicClass'
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' '^useful_2$'
+            '(?ms)' r'^useful_2$'
         )
         self.assertNotRegex(c, r)
 
@@ -717,21 +717,21 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # validate doctest results
         r = re.compile(
-            '(?ms)' '^Document: test-ext-autodoc/index$'
-            '.*'    '^--------------------------------$'
-            '.*'    '^Document: test-ext-doctest/index$'
-            '.*'    '^--------------------------------$'
-            '.*'    '^Doctest summary$'
-            '.*'    '^===============$'
-            '.*'    '[1-9][0-9]*\s+tests'
-            '.*'    '0\s+failures\s+in\s+tests'
-            '.*'    '0\s+failures\s+in\s+setup\s+code'
-            '.*'    '0\s+failures\s+in\s+cleanup\s+code'
+            '(?ms)' r'^Document: test-ext-autodoc/index$'
+            '.*'    r'^--------------------------------$'
+            '.*'    r'^Document: test-ext-doctest/index$'
+            '.*'    r'^--------------------------------$'
+            '.*'    r'^Doctest summary$'
+            '.*'    r'^===============$'
+            '.*'    r'[1-9][0-9]*\s+tests'
+            '.*'    r'0\s+failures\s+in\s+tests'
+            '.*'    r'0\s+failures\s+in\s+setup\s+code'
+            '.*'    r'0\s+failures\s+in\s+cleanup\s+code'
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' '0\s+tests'
+            '(?ms)' r'0\s+tests'
         )
         self.assertNotRegex(c, r)
 
@@ -764,24 +764,24 @@ class TestCaseSphinxBasics(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # validate expected misspelled words
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'(mispelled)') + '.*' + re.escape(r'"misspelled"') + '.*' +
-            re.escape(r'(txt)') + '.*' + re.escape(r'"text"') + '.*' +
-            re.escape(r'(Speeling)') + '.*' + re.escape(r'"Spelling"')
+            '(?ms)'
+            + re.escape(r'(mispelled)') + '.*' + re.escape(r'"misspelled"') + '.*'
+            + re.escape(r'(txt)') + '.*' + re.escape(r'"text"') + '.*'
+            + re.escape(r'(Speeling)') + '.*' + re.escape(r'"Spelling"')
         )
         self.assertRegex(c, r)
 
         # validate misspelled words expected to ignore
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'(ignoreed)') + '.*' + re.escape(r'(litterals)')
+            '(?ms)'
+            + re.escape(r'(ignoreed)') + '.*' + re.escape(r'(litterals)')
         )
         self.assertNotRegex(c, r)
 
         # validate unknown words expected to set valid by word list
-        r = re.compile(re.escape('(sphinxcontrib)'))
+        r = re.compile(re.escape(r'(sphinxcontrib)'))
         self.assertNotRegex(c, r)
-        r = re.compile(re.escape('(Inline)'))
+        r = re.compile(re.escape(r'(Inline)'))
         self.assertNotRegex(c, r)
 
 

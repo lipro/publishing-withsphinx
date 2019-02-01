@@ -84,18 +84,18 @@ class TestCaseSphinxContribProgramOutput(fixtures.TestCaseFunctionalPublishingSp
 
         # check program output documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<p>Include the output of command in the documentation:</p>') + '.*' +
-            re.escape(r'<pre>') + '.*' + re.escape(r'.. ansi-block::') + '.*' +
-            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
-            re.escape(r'</pre>') + '.*' + re.escape(r'usage: python') + '.*' +
-            re.escape(r'Options and arguments') + '.*' +
-            re.escape(r'<p>Same, but with enabled prompt option:</p>') + '.*' + re.escape(r'<pre>') + '.*' +
-            re.escape(r'$ cat ${TEST_FIXTURES_ROOTS}/test-contrib-ansi/index.rst') + '.*' +
-            re.escape(r'.. ansi-block::') + '.*' +
-            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
-            re.escape(r'</pre>') + '.*' + re.escape(r'<pre>') + '.*' + re.escape(r'$ python --help') + '.*' +
-            re.escape(r'usage: python') + '.*' + re.escape(r'Options and arguments') + '.*' + re.escape(r'</pre>')
+            '(?ms)'
+            + re.escape(r'<p>Include the output of command in the documentation:</p>') + '.*'
+            + re.escape(r'<pre>') + '.*' + re.escape(r'.. ansi-block::') + '.*'
+            + re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*'
+            + re.escape(r'</pre>') + '.*' + re.escape(r'usage: python') + '.*'
+            + re.escape(r'Options and arguments') + '.*'
+            + re.escape(r'<p>Same, but with enabled prompt option:</p>') + '.*' + re.escape(r'<pre>') + '.*'
+            + re.escape(r'$ cat ${TEST_FIXTURES_ROOTS}/test-contrib-ansi/index.rst') + '.*'
+            + re.escape(r'.. ansi-block::') + '.*'
+            + re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*'
+            + re.escape(r'</pre>') + '.*' + re.escape(r'<pre>') + '.*' + re.escape(r'$ python --help') + '.*'
+            + re.escape(r'usage: python') + '.*' + re.escape(r'Options and arguments') + '.*' + re.escape(r'</pre>')
         )
         self.assertRegex(c, r)
 
@@ -125,23 +125,23 @@ class TestCaseSphinxContribProgramOutput(fixtures.TestCaseFunctionalPublishingSp
         # check program output documentation
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'Include the output of command in the documentation:') + '.*' +
-            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*' +
-            re.escape(r'.. ansi\PYGZhy{}block::') + '.*' +
-            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
-            re.escape(r'\end{' + self.get_latex_verbatim() + r'}') + '.*' + re.escape(r'usage: python') + '.*' +
-            re.escape(r'Options and arguments') + '.*' + re.escape(r'Same, but with enabled prompt option:') + '.*' +
-            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*' +
-            re.escape(r'\PYGZdl{} cat \PYGZdl{}\PYGZob{}TEST\PYGZus{}FIXTURES\PYGZus{}ROOTS\PYGZcb{}') +
-            re.escape(r'/test\PYGZhy{}contrib\PYGZhy{}ansi/index.rst') + '.*' +
-            re.escape(r'.. ansi\PYGZhy{}block::') + '.*' +
-            re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
-            re.escape(r'\end{' + self.get_latex_verbatim() + r'}') + '.*' +
-            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*' +
-            re.escape(r'\PYGZdl{} python \PYGZhy{}\PYGZhy{}help') + '.*' +
-            re.escape(r'usage: python') + '.*' + re.escape(r'Options and arguments') + '.*' +
-            re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
+            '(?ms)'
+            + re.escape(r'Include the output of command in the documentation:') + '.*'
+            + re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*'
+            + re.escape(r'.. ansi\PYGZhy{}block::') + '.*'
+            + re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*'
+            + re.escape(r'\end{' + self.get_latex_verbatim() + r'}') + '.*' + re.escape(r'usage: python') + '.*'
+            + re.escape(r'Options and arguments') + '.*' + re.escape(r'Same, but with enabled prompt option:') + '.*'
+            + re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*'
+            + re.escape(r'\PYGZdl{} cat \PYGZdl{}\PYGZob{}TEST\PYGZus{}FIXTURES\PYGZus{}ROOTS\PYGZcb{}')
+            + re.escape(r'/test\PYGZhy{}contrib\PYGZhy{}ansi/index.rst') + '.*'
+            + re.escape(r'.. ansi\PYGZhy{}block::') + '.*'
+            + re.escape(r'This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*'
+            + re.escape(r'\end{' + self.get_latex_verbatim() + r'}') + '.*'
+            + re.escape(r'\begin{' + self.get_latex_verbatim() + r'}[commandchars=\\\{\}]') + '.*'
+            + re.escape(r'\PYGZdl{} python \PYGZhy{}\PYGZhy{}help') + '.*'
+            + re.escape(r'usage: python') + '.*' + re.escape(r'Options and arguments') + '.*'
+            + re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
         )
         self.assertRegex(c, r)
 
@@ -170,19 +170,19 @@ class TestCaseSphinxContribProgramOutput(fixtures.TestCaseFunctionalPublishingSp
 
         # check program output documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'Include the output of command in the documentation:') + '.*' +
-            re.escape(r'   .. ansi-block::') + '.*' +
-            re.escape(r'      This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
-            re.escape(r'   usage: python') + '.*' +
-            re.escape(r'   Options and arguments') + '.*' +
-            re.escape(r'Same, but with enabled prompt option:') + '.*' +
-            re.escape(r'   $ cat ${TEST_FIXTURES_ROOTS}/test-contrib-ansi/index.rst') + '.*' +
-            re.escape(r'   .. ansi-block::') + '.*' +
-            re.escape(r'      This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*' +
-            re.escape(r'   $ python --help') + '.*' +
-            re.escape(r'   usage: python') + '.*' +
-            re.escape(r'   Options and arguments')
+            '(?ms)'
+            + re.escape(r'Include the output of command in the documentation:') + '.*'
+            + re.escape(r'   .. ansi-block::') + '.*'
+            + re.escape(r'      This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*'
+            + re.escape(r'   usage: python') + '.*'
+            + re.escape(r'   Options and arguments') + '.*'
+            + re.escape(r'Same, but with enabled prompt option:') + '.*'
+            + re.escape(r'   $ cat ${TEST_FIXTURES_ROOTS}/test-contrib-ansi/index.rst') + '.*'
+            + re.escape(r'   .. ansi-block::') + '.*'
+            + re.escape(r'      This is a ') + self._get_ansi_string() + re.escape(r' control sequence.') + '.*'
+            + re.escape(r'   $ python --help') + '.*'
+            + re.escape(r'   usage: python') + '.*'
+            + re.escape(r'   Options and arguments')
         )
         self.assertRegex(c, r)
 

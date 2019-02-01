@@ -67,15 +67,15 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<tr class="row-odd"><td><a class="reference internal"') + '.*' +
-            re.escape(r'an_example_pypi_project</tt></a></td>') + '.*' +
-            re.escape(r'<td>A pypi demonstration vehicle.</td>') + '.*' +
-            re.escape(r'<tr class="row-even"><td><a class="reference internal"') + '.*' +
-            re.escape(r'an_example_pypi_project.useful_1</tt></a></td>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><a class="reference internal"') + '.*' +
-            re.escape(r'an_example_pypi_project.useful_2</tt></a></td>') + '.*' +
-            re.escape(r'<td>A very useful module indeed.</td>')
+            '(?ms)'
+            + re.escape(r'<tr class="row-odd"><td><a class="reference internal"') + '.*'
+            + re.escape(r'an_example_pypi_project</tt></a></td>') + '.*'
+            + re.escape(r'<td>A pypi demonstration vehicle.</td>') + '.*'
+            + re.escape(r'<tr class="row-even"><td><a class="reference internal"') + '.*'
+            + re.escape(r'an_example_pypi_project.useful_1</tt></a></td>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><a class="reference internal"') + '.*'
+            + re.escape(r'an_example_pypi_project.useful_2</tt></a></td>') + '.*'
+            + re.escape(r'<td>A very useful module indeed.</td>')
         )
         self.assertRegex(c, r)
 
@@ -87,9 +87,9 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' + re.escape('">start</tt>()</td>') + '.*' +
-            re.escape(r'<td>This starts this module running ...</td>')
+            '(?ms)'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' + re.escape(r'">start</tt>()</td>') + '.*'
+            + re.escape(r'<td>This starts this module running ...</td>')
         )
         self.assertRegex(c, r)
 
@@ -101,20 +101,20 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<p class="rubric">Functions</p>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' +
-            re.escape(r'">public_fn_with_googley_docstring</tt>(name[,&nbsp;state])</td>') + '.*' +
-            re.escape(r'<td>This function does something.</td>') + '.*' +
-            re.escape(r'<tr class="row-even"><td><tt class="') + '.*' +
-            re.escape(r'">public_fn_with_sphinxy_docstring</tt>(name[,&nbsp;state])</td>') + '.*' +
-            re.escape(r'<td>This function does something.</td>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' +
-            re.escape(r'">public_fn_without_docstring</tt>()</td>') + '.*' +
-            re.escape(r'<td></td>') + '.*' + re.escape(r'<p class="rubric">Classes</p>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' +
-            re.escape(r'">MyPublicClass</tt>(foo[,&nbsp;bar])</td>') + '.*' +
-            re.escape(r'<td>We use this as a public class example class.</td>')
+            '(?ms)'
+            + re.escape(r'<p class="rubric">Functions</p>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*'
+            + re.escape(r'">public_fn_with_googley_docstring</tt>(name[,&nbsp;state])</td>') + '.*'
+            + re.escape(r'<td>This function does something.</td>') + '.*'
+            + re.escape(r'<tr class="row-even"><td><tt class="') + '.*'
+            + re.escape(r'">public_fn_with_sphinxy_docstring</tt>(name[,&nbsp;state])</td>') + '.*'
+            + re.escape(r'<td>This function does something.</td>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*'
+            + re.escape(r'">public_fn_without_docstring</tt>()</td>') + '.*'
+            + re.escape(r'<td></td>') + '.*' + re.escape(r'<p class="rubric">Classes</p>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*'
+            + re.escape(r'">MyPublicClass</tt>(foo[,&nbsp;bar])</td>') + '.*'
+            + re.escape(r'<td>We use this as a public class example class.</td>')
         )
         self.assertRegex(c, r)
 
@@ -126,20 +126,20 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<p class="rubric">Functions</p>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' +
-            re.escape(r'">public_fn_with_googley_docstring</tt>(name[,&nbsp;state])</td>') + '.*' +
-            re.escape(r'<td>This function does something.</td>') + '.*' +
-            re.escape(r'<tr class="row-even"><td><tt class="') + '.*' +
-            re.escape(r'">public_fn_with_sphinxy_docstring</tt>(name[,&nbsp;state])</td>') + '.*' +
-            re.escape(r'<td>This function does something.</td>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' +
-            re.escape(r'">public_fn_without_docstring</tt>()</td>') + '.*' +
-            re.escape(r'<td></td>') + '.*' + re.escape(r'<p class="rubric">Classes</p>') + '.*' +
-            re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' +
-            re.escape(r'">MyPublicClass</tt>(foo[,&nbsp;bar])</td>') + '.*' +
-            re.escape(r'<td>We use this as a public class example class.</td>')
+            '(?ms)'
+            + re.escape(r'<p class="rubric">Functions</p>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*'
+            + re.escape(r'">public_fn_with_googley_docstring</tt>(name[,&nbsp;state])</td>') + '.*'
+            + re.escape(r'<td>This function does something.</td>') + '.*'
+            + re.escape(r'<tr class="row-even"><td><tt class="') + '.*'
+            + re.escape(r'">public_fn_with_sphinxy_docstring</tt>(name[,&nbsp;state])</td>') + '.*'
+            + re.escape(r'<td>This function does something.</td>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*'
+            + re.escape(r'">public_fn_without_docstring</tt>()</td>') + '.*'
+            + re.escape(r'<td></td>') + '.*' + re.escape(r'<p class="rubric">Classes</p>') + '.*'
+            + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*'
+            + re.escape(r'">MyPublicClass</tt>(foo[,&nbsp;bar])</td>') + '.*'
+            + re.escape(r'<td>We use this as a public class example class.</td>')
         )
         self.assertRegex(c, r)
 
@@ -165,34 +165,34 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(self.get_latex_code() + '{an\_example\_pypi\_project}') + '.*' +
-            re.escape(r'A pypi demonstration vehicle.') + '.*' +
-            re.escape(self.get_latex_code() + '{an\_example\_pypi\_project.useful\_1}') + '.*' +
-            re.escape(self.get_latex_code() + '{an\_example\_pypi\_project.useful\_2}') + '.*' +
-            re.escape(r'A very useful module indeed.') + '.*' +
-            re.escape(self.get_latex_code() + '{start}()') + '.*' +
-            re.escape(r'This starts this module running ...') + '.*' +
-            re.escape(r'\section{an\_example\_pypi\_project.useful\_1}') + '.*' +
-            re.escape(r'\paragraph{Functions}') + '.*' +
-            re.escape(self.get_latex_code() + '{public\_fn\_with\_googley\_docstring}(name{[}, state{]})') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(self.get_latex_code() + '{public\_fn\_with\_sphinxy\_docstring}(name{[}, state{]})') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(self.get_latex_code() + '{public\_fn\_without\_docstring}()') + '.*' +
-            re.escape(r'\paragraph{Classes}') + '.*' +
-            re.escape(self.get_latex_code() + '{MyPublicClass}(foo{[}, bar{]})') + '.*' +
-            re.escape(r'We use this as a public class example class.') + '.*' +
-            re.escape(r'\section{an\_example\_pypi\_project.useful\_2}') + '.*' +
-            re.escape(r'\paragraph{Functions}') + '.*' +
-            re.escape(self.get_latex_code() + '{public\_fn\_with\_googley\_docstring}(name{[}, state{]})') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(self.get_latex_code() + '{public\_fn\_with\_sphinxy\_docstring}(name{[}, state{]})') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(self.get_latex_code() + '{public\_fn\_without\_docstring}()') + '.*' +
-            re.escape(r'\paragraph{Classes}') + '.*' +
-            re.escape(self.get_latex_code() + '{MyPublicClass}(foo{[}, bar{]})') + '.*' +
-            re.escape(r'We use this as a public class example class.')
+            '(?ms)'
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project}') + '.*'
+            + re.escape(r'A pypi demonstration vehicle.') + '.*'
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1}') + '.*'
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2}') + '.*'
+            + re.escape(r'A very useful module indeed.') + '.*'
+            + re.escape(self.get_latex_code() + r'{start}()') + '.*'
+            + re.escape(r'This starts this module running ...') + '.*'
+            + re.escape(r'\section{an\_example\_pypi\_project.useful\_1}') + '.*'
+            + re.escape(r'\paragraph{Functions}') + '.*'
+            + re.escape(self.get_latex_code() + r'{public\_fn\_with\_googley\_docstring}(name{[}, state{]})') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(self.get_latex_code() + r'{public\_fn\_with\_sphinxy\_docstring}(name{[}, state{]})') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(self.get_latex_code() + r'{public\_fn\_without\_docstring}()') + '.*'
+            + re.escape(r'\paragraph{Classes}') + '.*'
+            + re.escape(self.get_latex_code() + r'{MyPublicClass}(foo{[}, bar{]})') + '.*'
+            + re.escape(r'We use this as a public class example class.') + '.*'
+            + re.escape(r'\section{an\_example\_pypi\_project.useful\_2}') + '.*'
+            + re.escape(r'\paragraph{Functions}') + '.*'
+            + re.escape(self.get_latex_code() + r'{public\_fn\_with\_googley\_docstring}(name{[}, state{]})') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(self.get_latex_code() + r'{public\_fn\_with\_sphinxy\_docstring}(name{[}, state{]})') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(self.get_latex_code() + r'{public\_fn\_without\_docstring}()') + '.*'
+            + re.escape(r'\paragraph{Classes}') + '.*'
+            + re.escape(self.get_latex_code() + r'{MyPublicClass}(foo{[}, bar{]})') + '.*'
+            + re.escape(r'We use this as a public class example class.')
         )
         self.assertRegex(c, r)
 
@@ -218,12 +218,12 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'A pypi demonstration vehicle.') + '.*' +
-            re.escape(r'A very useful module indeed.') + '.*' +
-            re.escape(r'an_example_pypi_project') + '.*' +
-            re.escape(r'an_example_pypi_project.useful_1') + '.*' +
-            re.escape(r'an_example_pypi_project.useful_2')
+            '(?ms)'
+            + re.escape(r'A pypi demonstration vehicle.') + '.*'
+            + re.escape(r'A very useful module indeed.') + '.*'
+            + re.escape(r'an_example_pypi_project') + '.*'
+            + re.escape(r'an_example_pypi_project.useful_1') + '.*'
+            + re.escape(r'an_example_pypi_project.useful_2')
         )
         self.assertRegex(c, r)
 
@@ -235,10 +235,10 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'-[ Functions ]-') + '.*' +
-            re.escape(r'"start"()') + '.*' +
-            re.escape(r'This starts this module running ...')
+            '(?ms)'
+            + re.escape(r'-[ Functions ]-') + '.*'
+            + re.escape(r'"start"()') + '.*'
+            + re.escape(r'This starts this module running ...')
         )
         self.assertRegex(c, r)
 
@@ -250,12 +250,12 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'-[ Functions ]-') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(r'-[ Classes ]-') + '.*' +
-            re.escape(r'We use this as a public class example class.')
+            '(?ms)'
+            + re.escape(r'-[ Functions ]-') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(r'-[ Classes ]-') + '.*'
+            + re.escape(r'We use this as a public class example class.')
         )
         self.assertRegex(c, r)
 
@@ -267,12 +267,12 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check API auto-documentation
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'-[ Functions ]-') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(r'This function does something.') + '.*' +
-            re.escape(r'-[ Classes ]-') + '.*' +
-            re.escape(r'We use this as a public class example class.')
+            '(?ms)'
+            + re.escape(r'-[ Functions ]-') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(r'This function does something.') + '.*'
+            + re.escape(r'-[ Classes ]-') + '.*'
+            + re.escape(r'We use this as a public class example class.')
         )
         self.assertRegex(c, r)
 

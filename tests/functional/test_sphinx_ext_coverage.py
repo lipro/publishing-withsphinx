@@ -83,12 +83,12 @@ class TestCaseSphinxExtCoverage(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # validate Python coverage results
         r = re.compile(
-            '(?ms)' '^Undocumented Python objects$'
-            '.*'    '^===========================$'
-            '.*'    '^hello$'
-            '.*'    '^-----$'
-            '.*'    '^Functions:$'
-            '.*'    '^ \* hello$'
+            '(?ms)' r'^Undocumented Python objects$'
+            '.*'    r'^===========================$'
+            '.*'    r'^hello$'
+            '.*'    r'^-----$'
+            '.*'    r'^Functions:$'
+            '.*'    r'^ \* hello$'
         )
         self.assertRegex(c, r)
 
@@ -101,9 +101,9 @@ class TestCaseSphinxExtCoverage(fixtures.TestCaseFunctionalPublishingSphinx):
         #   TestCaseSphinxExtCoverage
         if self.is_sphinx_coverage_not_affected():
             r = re.compile(
-                '(?ms)' '^an_example_pypi_project$'
-                '.*'    '^an_example_pypi_project\.useful_1$'
-                '.*'    '^an_example_pypi_project\.useful_2$'
+                '(?ms)' r'^an_example_pypi_project$'
+                '.*'    r'^an_example_pypi_project\.useful_1$'
+                '.*'    r'^an_example_pypi_project\.useful_2$'
             )
             self.assertNotRegex(c, r)
 

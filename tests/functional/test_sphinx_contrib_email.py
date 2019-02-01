@@ -63,15 +63,15 @@ class TestCaseSphinxContribEmail(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check email encryption
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<p><script type="text/javascript">document.write(') + '.*' +
-            re.escape(r'"<n uers=\"znvygb:n\100op\056qr\">N Op <\057n>".replace(/[a-zA-Z]/g,') + '.*' +
-            re.escape(r'function(c){') + '.*' +
-            re.escape(r'return String.fromCharCode(') + '.*' +
-            re.escape(r'(c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));') + '.*' +
-            re.escape(r'</script></p>') + '.*' +
-            re.escape(r'<p>A Bc &lt;<a class="reference external" href="mailto:a&#37;&#52;&#48;bc&#46;de">') +
-            re.escape(r'a<span>&#64;</span>bc<span>&#46;</span>de</a>&gt;</p>')
+            '(?ms)'
+            + re.escape(r'<p><script type="text/javascript">document.write(') + '.*'
+            + re.escape(r'"<n uers=\"znvygb:n\100op\056qr\">N Op <\057n>".replace(/[a-zA-Z]/g,') + '.*'
+            + re.escape(r'function(c){') + '.*'
+            + re.escape(r'return String.fromCharCode(') + '.*'
+            + re.escape(r'(c<="Z"?90:122)>=(c=c.charCodeAt(0)+13)?c:c-26);}));') + '.*'
+            + re.escape(r'</script></p>') + '.*'
+            + re.escape(r'<p>A Bc &lt;<a class="reference external" href="mailto:a&#37;&#52;&#48;bc&#46;de">')
+            + re.escape(r'a<span>&#64;</span>bc<span>&#46;</span>de</a>&gt;</p>')
         )
         self.assertRegex(c, r)
 
@@ -95,10 +95,10 @@ class TestCaseSphinxContribEmail(fixtures.TestCaseFunctionalPublishingSphinx):
         # check email encryption
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'A Bc \textless{}') +
-            re.escape(self.get_latex_href() + r'{mailto:a@bc.de}{a@bc.de}') +
-            re.escape(r'\textgreater{}')
+            '(?ms)'
+            + re.escape(r'A Bc \textless{}')
+            + re.escape(self.get_latex_href() + r'{mailto:a@bc.de}{a@bc.de}')
+            + re.escape(r'\textgreater{}')
         )
         self.assertRegex(c, r)
 

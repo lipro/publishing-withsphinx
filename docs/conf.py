@@ -27,7 +27,7 @@ sphinx.environment.BuildEnvironment.warn_node = _warn_node
 
 try:
     pkg_metadata = get_distribution('publishing-withsphinx').get_metadata('METADATA')
-except:
+except IOError:
     pkg_metadata = get_distribution('publishing-withsphinx').get_metadata('PKG-INFO')
 
 pkg_messages = message_from_string(pkg_metadata)
