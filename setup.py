@@ -68,7 +68,6 @@ _INSTALL_REQUIRES = [
     + '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb'
     + '&subdirectory=email'
     + '&egg=sphinxcontrib-email-0.2.dev0',
-    'sphinxcontrib-embedly>=0.2.0,<=0.2.0',
     'sphinxcontrib-inlinesyntaxhighlight>=0.2.0,<=0.2.0',
     'sphinxcontrib-programoutput>=0.8.0,<=0.10.0',
     'sphinxcontrib-spelling>=2.3.0,<=2.3.0',
