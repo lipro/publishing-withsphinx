@@ -111,6 +111,41 @@ The compatibility matrix is an result of the following tox test environments:
 
    \newpage
 
+.. traceable:: py37-sphinx1.5
+   :title: Python 3.7 with Sphinx 1.5
+   :category: compatibility-matrix
+   :parents: py37
+
+   .. command-output:: tox --showconfig -e py37-sphinx1.5
+
+.. raw:: latex
+
+   \newpage
+
+.. traceable:: py37-sphinx1.4
+   :title: Python 3.7 with Sphinx 1.4
+   :category: compatibility-matrix
+   :parents: py37
+
+   .. command-output:: tox --showconfig -e py37-sphinx1.4
+
+.. raw:: latex
+
+   \newpage
+
+.. traceable:: py37-sphinx1.3
+   :title: Python 3.7 with Sphinx 1.3
+   :category: compatibility-matrix
+   :parents: py37
+
+   .. command-output:: tox --showconfig -e py37-sphinx1.3
+
+.. ----------------------------------------------------------------------------
+
+.. raw:: latex
+
+   \newpage
+
 .. traceable:: py36-sphinx1.5
    :title: Python 3.6 with Sphinx 1.5
    :category: compatibility-matrix
@@ -240,6 +275,13 @@ The compatibility matrix is an result of the following tox test environments:
    :title: Python 2.7
    :category: compatibility-python
    :sibling: REQ-WORKSON-PY27
+   :parents: sphinx1.3, sphinx1.4
+   :format: hidden
+
+.. traceable:: py37
+   :title: Python 3.7
+   :category: compatibility-python
+   :sibling: REQ-WORKSON-PY37
    :parents: sphinx1.3, sphinx1.4
    :format: hidden
 

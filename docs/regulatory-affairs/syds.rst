@@ -51,7 +51,7 @@ Configuration Implementations
    :category: SysImpl
    :parents: REQ-TESTS-CI,
              REQ-WORKSON-PY27,
-             REQ-WORKSON-PY36, REQ-WORKSON-PY35, REQ-WORKSON-PY34
+             REQ-WORKSON-PY37, REQ-WORKSON-PY36, REQ-WORKSON-PY35, REQ-WORKSON-PY34
    :implementation_type: configuration
    :verification_method: ci-review
 
