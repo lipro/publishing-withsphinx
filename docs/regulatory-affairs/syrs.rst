@@ -351,31 +351,6 @@ Refer to the prerequisites [#sp13-pr]_ of the Sphinx 1.3 documentation builder:
    :relationships: parents:2, children:1
    :caption: Traces to the system requirement REQ-WORKSON-SP13
 
-.. ----------------------------------------------------------------------------
-
-.. traceable:: REQ-WORKSON-SP12
-   :title: Sphinx version 1.2.x can be used to write documentation
-   :category: SysReq
-   :parents: STRQ-EXTSETUP
-   :sibling: REQ-TESTS-CI
-   :requirement_type: configuration-sphinx
-   :verification_method: ci-test
-
-.. .. index::
-      single: Sphinx; Sphinx 1.x; REQ-WORKSON-SP12
-
-It must be possible to install this |publishing-withsphinx| extension in a
-Sphinx 1.2.x environment and write documentation with this version of Sphinx.
-
-Refer to the prerequisites [#sp12-pr]_ of the Sphinx 1.2 documentation builder:
-
-   "Sphinx needs at least Python 2.5 or Python 3.1 to run, ..."
-
-.. traceable-graph::
-   :tags: REQ-WORKSON-SP12
-   :relationships: parents:2, children:1
-   :caption: Traces to the system requirement REQ-WORKSON-SP12
-
 Functional Requirements
 -------------------------------------------------------------------------------
 
@@ -677,9 +652,6 @@ List of system requirements
 .. ----------------------------------------------------------------------------
 
 .. rubric:: Footnotes
-
-.. [#sp12-pr] :traceable:`REQ-WORKSON-SP12` prerequisites:
-              http://www.sphinx-doc.org/en/1.2/intro.html#prerequisites
 
 .. [#sp13-pr] :traceable:`REQ-WORKSON-SP13` prerequisites:
               http://www.sphinx-doc.org/en/1.3/intro.html#prerequisites

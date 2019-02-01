@@ -331,7 +331,6 @@ current versions of Sphinx:
 - `Sphinx 1.5.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-5-6-released-may-15-2017>`_
 - `Sphinx 1.4.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-4-9-released-nov-23-2016>`_
 - `Sphinx 1.3.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-3-6-released-feb-29-2016>`_
-- `Sphinx 1.2.x <http://www.sphinx-doc.org/en/latest/changes.html#release-1-2-3-released-sep-1-2014>`_
 
 .. traceable-graph::
    :tags: STRQ-EXTSETUP
