@@ -316,10 +316,6 @@ Functional test cases of contributed Sphinx extensions
    :members:
    :undoc-members:
 
-.. .. automodule:: test_sphinx_contrib_embedly
-   :members:
-   :undoc-members:
-
 .. .. automodule:: test_sphinx_contrib_inlinesyntaxhighlight
    :members:
    :undoc-members:
