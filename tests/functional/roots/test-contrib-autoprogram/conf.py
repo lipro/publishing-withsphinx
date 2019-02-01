@@ -5,7 +5,7 @@ import sys
 
 sys.path.insert(0, os.path.abspath('../../samples'))
 
-needs_sphinx = '1.2'
+needs_sphinx = '1.3'
 # FIXME: needs_extensions = {'sphinxcontrib.autoprogram': '0.1'}
 extensions = ['publishing.withsphinx']
 master_doc = 'index'

@@ -2,7 +2,7 @@
 
 import os
 
-needs_sphinx = '1.2'
+needs_sphinx = '1.3'
 needs_extensions = {'sphinxcontrib.blockdiag': '1.5'}
 extensions = ['publishing.withsphinx']
 master_doc = 'index'

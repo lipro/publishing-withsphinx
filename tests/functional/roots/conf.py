@@ -8,17 +8,17 @@ sys.path.insert(0, os.path.abspath('../samples/an_example_pypi_project'))
 
 os.environ["TEST_FIXTURES_ROOTS"] = os.path.abspath('.')
 
-needs_sphinx = '1.2'
+needs_sphinx = '1.3'
 needs_extensions = {
     'publishing.withsphinx':                    '0.0',  # NOQA
-    'sphinx.ext.autodoc':                       '1.2',  # NOQA
-    'sphinx.ext.autosummary':                   '1.2',  # NOQA
-    'sphinx.ext.coverage':                      '1.2',  # NOQA
-    'sphinx.ext.extlinks':                      '1.2',  # NOQA
-    'sphinx.ext.doctest':                       '1.2',  # NOQA
-    'sphinx.ext.ifconfig':                      '1.2',  # NOQA
-    'sphinx.ext.mathjax':                       '1.2',  # NOQA
-    'sphinx.ext.todo':                          '1.2',  # NOQA
+    'sphinx.ext.autodoc':                       '1.3',  # NOQA
+    'sphinx.ext.autosummary':                   '1.3',  # NOQA
+    'sphinx.ext.coverage':                      '1.3',  # NOQA
+    'sphinx.ext.extlinks':                      '1.3',  # NOQA
+    'sphinx.ext.doctest':                       '1.3',  # NOQA
+    'sphinx.ext.ifconfig':                      '1.3',  # NOQA
+    'sphinx.ext.mathjax':                       '1.3',  # NOQA
+    'sphinx.ext.todo':                          '1.3',  # NOQA
 #   'sphinxarg.ext':                            '0.2',  # NOQA
 #   'sphinxcontrib.ansi':                       '0.6',  # NOQA
 #   'sphinxcontrib.autoprogram':                '0.1',  # NOQA
