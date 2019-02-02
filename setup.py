@@ -73,7 +73,7 @@ _INSTALL_REQUIRES = [
     'sphinxcontrib-spelling>=2.3.0,<=4.2.0',
     'sphinxcontrib-tikz>=0.4.2,<=0.4.6',
     'reportlab>=3.4.0,<=3.5.9999',
-    'CommonMark>=0.5.6,<=0.7.9999',
+    'CommonMark>=0.5.6,<=0.8.9999',
 ]
 
 _EXTRAS_REQUIRE_DEV = [
