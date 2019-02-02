@@ -84,7 +84,7 @@ _EXTRAS_REQUIRE_DEV = [
     + '&egg=sphinxcontrib-traceables-0.1.5.dev1',
     'sphinxcontrib-traceability>=0.1.2,<=0.1.2',
     'sphinx-rtd-theme>=0.4.2,<=0.4.2',
-    'check-manifest>=0.35.0,<=0.35.9999',
+    'check-manifest>=0.37.0,<=0.37.9999',
     'webob>=1.7.2,<=1.7.2',
     'wheel>=0.29.0,<=0.29.0',
 ]
