@@ -90,7 +90,7 @@ _EXTRAS_REQUIRE_DEV = [
 ]
 
 _EXTRAS_REQUIRE_TEST = [
-    'sphinx-testing>=0.7.1,<=0.7.1',
+    'sphinx-testing>=1.0.0,<=1.0.0',
     'tox>=2.0.0,<=2.7.0',
     'nose>=1.3.7,<=1.3.7',
     'mock>=2.0.0,<=2.0.0',
