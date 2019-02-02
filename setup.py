@@ -86,7 +86,7 @@ _EXTRAS_REQUIRE_DEV = [
     'sphinx-rtd-theme>=0.4.2,<=0.4.2',
     'check-manifest>=0.37.0,<=0.37.9999',
     'webob>=1.8.5,<=1.8.5',
-    'wheel>=0.29.0,<=0.29.0',
+    'wheel>=0.32.3,<=0.32.3',
 ]
 
 _EXTRAS_REQUIRE_TEST = [
