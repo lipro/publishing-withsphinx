@@ -55,7 +55,7 @@ import publishing.withsphinx as pubwsphinx
 
 _INSTALL_REQUIRES = [
     'Sphinx>=1.3.0,<=1.5.9999',
-    'sphinx-argparse>=0.2.0,<=0.2.0',
+    'sphinx-argparse>=0.2.0,<=0.2.5',
     'sphinxcontrib-ansi @ '
     + 'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip'
     + '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb'
