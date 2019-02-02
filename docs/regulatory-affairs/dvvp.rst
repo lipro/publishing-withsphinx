@@ -378,21 +378,29 @@ Traceability
 The following system verifications (:literal:`VFY-*`) fulfill the related
 system implementations (:literal:`IMP-*`):
 
-.. raw:: latex
+.. only:: html
 
-   \begin{minipage}[t]{0.5\textwidth}\scriptsize
+   .. raw:: latex
 
-.. traceable-matrix::
-   :filter-primaries: category == "SysImpl"
-   :filter-secondaries: category == "SysVerify"
-   :split-primaries: 25
-   :split-secondaries: 10
-   :relationship: children
-   :format: table
+      \begin{minipage}[t]{0.5\textwidth}\scriptsize
 
-.. raw:: latex
+   .. traceable-matrix::
+      :filter-primaries: category == "SysImpl"
+      :filter-secondaries: category == "SysVerify"
+      :split-primaries: 25
+      :split-secondaries: 10
+      :relationship: children
+      :format: table
 
-   \end{minipage}
+   .. raw:: latex
+
+      \end{minipage}
+
+.. only:: latex
+
+   .. error:: Mal formatted LaTeX sequence in :code:`traceable-matrix`
+
+      See issue #24 for details an ongoing fixes.
 
 List of system verifications
 -------------------------------------------------------------------------------

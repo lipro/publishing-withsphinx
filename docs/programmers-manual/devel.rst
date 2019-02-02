@@ -225,6 +225,27 @@ Build Sphinx documentation:
    extension. See main issue tracker or file :literal:`TODO` for more
    details.
 
+   The command above will build the default HTML pages in directory
+   :literal:`docs/_build/html`. That is equal to following execution:
+
+   .. code-block:: bash
+
+      python setup.py build_sphinx -b html
+
+   To generate the LaTeX output in directory :literal:`docs/_build/latex`
+   do this:
+
+   .. code-block:: bash
+
+      python setup.py build_sphinx -b latex
+   
+   Now it's possible to generate from teh LaTeX output an printable document
+   in PDF format:
+
+   .. code-block:: bash
+
+      make -C docs/_build/latex all-pdf
+
 Cleanup all build artefacts:
    .. code-block:: bash
 

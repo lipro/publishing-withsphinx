@@ -38,7 +38,7 @@ sys.path.insert(0, os.path.abspath('../tests'))  # found local test modules
 
 # -- General configuration ------------------------------------------------
 
-needs_sphinx = '1.4'
+needs_sphinx = '1.5'
 extensions = [
     'publishing.withsphinx',
     'sphinxcontrib.traceables',
@@ -60,7 +60,7 @@ author_email = prj_metadata.get('Author-email')
 url = prj_metadata.get('Home-page')
 download_url = prj_metadata.get('Download-URL')
 # copyright = '2016, ' + author + ' <' + author_email + '>'
-copyright = '2016, ' + author
+copyright = '2016-2019, ' + author
 
 # General content behaviors.
 source_suffix = '.rst'

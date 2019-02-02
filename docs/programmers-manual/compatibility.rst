@@ -32,19 +32,27 @@ Compatibility Matrix
 Within the tox configuration file :literal:`tox.ini` the folloging
 compatibility matrix is defined:
 
-.. raw:: latex
+.. only:: html
 
-   \begin{minipage}[t]{0.75\textwidth}
+   .. raw:: latex
 
-.. traceable-matrix::
-   :filter-primaries: category == "compatibility-sphinx"
-   :filter-secondaries: category == "compatibility-python"
-   :relationship: children
-   :format: table
+      \begin{minipage}[t]{0.75\textwidth}
 
-.. raw:: latex
+   .. traceable-matrix::
+      :filter-primaries: category == "compatibility-sphinx"
+      :filter-secondaries: category == "compatibility-python"
+      :relationship: children
+      :format: table
 
-   \end{minipage}
+   .. raw:: latex
+
+      \end{minipage}
+
+.. only:: latex
+
+   .. error:: Mal formatted LaTeX sequence in :code:`traceable-matrix`
+
+      See issue #24 for details an ongoing fixes.
 
 Compatibility Traces
 ------------------------------------------------------------------------------
