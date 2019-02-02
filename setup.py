@@ -96,7 +96,7 @@ _EXTRAS_REQUIRE_TEST = [
     'mock>=2.0.0,<=2.0.0',
     'coverage>=4.3.0,<=4.3.9999',
     'coveralls>=1.1.0,<=1.1.9999',
-    'flake8>=3.7.0,<=3.7.0',
+    'flake8>=3.7.4,<=3.7.4',
 ]
 
 _EXTRAS_REQUIRE = {
