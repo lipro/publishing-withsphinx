@@ -89,7 +89,7 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
         r = re.compile(
             '(?ms)'
             + re.escape(r'<tr class="row-odd"><td><tt class="') + '.*' + re.escape(r'">start</tt>()</td>') + '.*'
-            + re.escape(r'<td>This starts this module running ...</td>')
+            + re.escape(r'<td>This starts this module running ' + self.get_hellipsis_text() + r'</td>')
         )
         self.assertRegex(c, r)
 
@@ -172,7 +172,7 @@ class TestCaseSphinxExtAutoSummary(fixtures.TestCaseFunctionalPublishingSphinx):
             + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2}') + '.*'
             + re.escape(r'A very useful module indeed.') + '.*'
             + re.escape(self.get_latex_code() + r'{start}()') + '.*'
-            + re.escape(r'This starts this module running ...') + '.*'
+            + re.escape(r'This starts this module running ' + self.get_hellipsis_text()) + '.*'
             + re.escape(r'\section{an\_example\_pypi\_project.useful\_1}') + '.*'
             + re.escape(r'\paragraph{Functions}') + '.*'
             + re.escape(self.get_latex_code() + r'{public\_fn\_with\_googley\_docstring}(name{[}, state{]})') + '.*'

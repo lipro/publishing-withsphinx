@@ -103,10 +103,14 @@ class TestCaseSphinxExtTodo(fixtures.TestCaseFunctionalPublishingSphinx):
         # check todolist
         r = re.compile(
             '(?ms)'
-            + re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*'
-            + re.escape(r'todo in bar') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*'
-            + re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*'
-            + re.escape(r'todo in foo') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
+            + re.escape(r'\begin{' + self.get_latex_admonition() + r'}')
+            + re.escape(r'{note}{' + self.get_latex_todo_node_text() + r'}') + '.*'
+            + re.escape(r'todo in bar') + '.*'
+            + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*'
+            + re.escape(r'\begin{' + self.get_latex_admonition() + r'}')
+            + re.escape(r'{note}{' + self.get_latex_todo_node_text() + r'}') + '.*'
+            + re.escape(r'todo in foo') + '.*'
+            + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
         )
         self.assertRegex(c, r)
 

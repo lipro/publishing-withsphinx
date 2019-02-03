@@ -233,6 +233,15 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'\sphinxcode'
 
     @classmethod
+    def get_latex_code_strong(self):
+        if sphinx_version < '1.4.5':
+            return r'\strong'
+        elif sphinx_version < '1.6':
+            return r'\sphinxstrong'
+        else:
+            return r'\sphinxbfcode'
+
+    @classmethod
     def get_latex_href(self):
         if sphinx_version < '1.5.4':
             return r'\href'
@@ -259,13 +268,6 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r''
         else:
             return r'\protect'
-
-    @classmethod
-    def get_latex_strong(self):
-        if sphinx_version < '1.4.5':
-            return r'\strong'
-        else:
-            return r'\sphinxstrong'
 
     @classmethod
     def get_latex_titleref(self):
@@ -300,6 +302,20 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'Verbatim'
         else:
             return r'sphinxVerbatim'
+
+    @classmethod
+    def get_latex_todo_node_text(self):
+        if sphinx_version < '1.6':
+            return r'Todo'
+        else:
+            return r'Todo:'
+
+    @classmethod
+    def get_hellipsis_text(self):
+        if sphinx_version < '1.6':
+            return r'...'
+        else:
+            return u'\u2026'
 
 
 if __name__ == "__main__":

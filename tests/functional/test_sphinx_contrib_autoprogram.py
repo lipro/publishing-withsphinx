@@ -62,15 +62,10 @@ class TestCaseSphinxContribAutoProgram(fixtures.TestCaseFunctionalPublishingSphi
         print(c)
 
         # check CLI program documentation
-        # TODO: investigate and fix the different behavior of this extension
-        #       under different versions of Python and Sphinx -- the regex
-        #       string should be:
-        #           '(?ms)' 'usage: cmdargs \[-h\] \{apply,game\} \.\.\.'
-        #           '.*'    'usage: cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
-        #           '.*'    'usage: cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
         r = re.compile(
             '(?ms)'
-            + re.escape(r'cmdargs') + '.*' + re.escape(r'usage: cmdargs [-h] {apply,game} ...') + '.*'
+            + re.escape(r'cmdargs') + '.*'
+            + re.escape(r'usage: cmdargs [-h] {apply,game} ...') + '.*'
             + re.escape(r'cmdargs apply') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'[-h] ') + '.*'
             + re.escape(r'--tree') + '.*' + re.escape(r'--dry') + '.*' + re.escape(r'--force') + '.*'
             + re.escape(r'cmdargs game') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'[-h] ') + '.*'
@@ -96,18 +91,20 @@ class TestCaseSphinxContribAutoProgram(fixtures.TestCaseFunctionalPublishingSphi
         print(c)
 
         # check CLI program documentation
-        # TODO: investigate and fix the different behavior of this extension
-        #       under different versions of Python and Sphinx -- the regex
-        #       string should be:
-        #           '(?ms)' 'usage: cmdargs .*apply,game.* \.\.\.'
-        #           '.*'    'usage: cmdargs apply .*tree.* .*dry.* .*force.* .*path.*'
-        #           '.*'    'usage: cmdargs game .*opt.* .*rock,paper,scissors.* .*rock,paper,scissors'
         r = re.compile(
             '(?ms)'
-            + re.escape(r'cmdargs') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'apply,game') + '.*'
-            + re.escape(r'cmdargs apply') + '.*' + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'tree') + '.*'
-            + re.escape(r'dry') + '.*' + re.escape(r'force') + '.*' + re.escape(r'cmdargs game') + '.*'
-            + re.escape(r'usage: cmdargs') + '.*' + re.escape(r'opt') + '.*' + re.escape(r'rock,paper,scissors')
+            + re.escape(r'{cmdargs}') + '.*'
+            + re.escape(r'usage: cmdargs ') + '.*' + re.escape(r'...') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-h}') + '.*'
+            + re.escape(r'{cmdargs apply}') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-h}') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-{-}tree}') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-{-}dry}') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-{-}force}') + '.*'
+            + re.escape(r'{cmdargs game}') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-h}') + '.*'
+            + re.escape(self.get_latex_bfcode() + r'{-{-}opt}') + '.*'
+            + re.escape(self.get_latex_code() + r'{~\{rock,paper,scissors\}}')
         )
         self.assertRegex(c, r)
 
@@ -129,12 +126,6 @@ class TestCaseSphinxContribAutoProgram(fixtures.TestCaseFunctionalPublishingSphi
         print(c)
 
         # check CLI program documentation
-        # TODO: investigate and fix the different behavior of this extension
-        #       under different versions of Python and Sphinx -- the regex
-        #       string should be:
-        #           '(?ms)' 'usage: cmdargs \[-h\] \{apply,game\} \.\.\.'
-        #           '.*'    'usage: cmdargs apply \[-h\] \[-r\] \[--tree\] \[--dry\] \[--force\] path'
-        #           '.*'    'usage: cmdargs game \[-h\] \[--opt \{rock,paper,scissors\}\] \{rock,paper,scissors\}'
         r = re.compile(
             '(?ms)'
             + re.escape(r'cmdargs') + '.*' + re.escape(r'usage: cmdargs [-h] {apply,game} ...') + '.*'
