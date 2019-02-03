@@ -38,12 +38,13 @@ sys.path.insert(0, os.path.abspath('../tests'))  # found local test modules
 
 # -- General configuration ------------------------------------------------
 
-needs_sphinx = '1.5'
+needs_sphinx = '1.6'
 extensions = [
     'publishing.withsphinx',
     'sphinxcontrib.traceables',
     'sphinxcontrib.traceability',
     'sphinx.ext.graphviz',
+    'sphinx.ext.imgconverter',
 ]
 needs_extensions = {'publishing.withsphinx': '0.0'}
 

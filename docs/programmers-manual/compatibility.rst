@@ -65,7 +65,7 @@ environments:
    \begin{minipage}[t]{0.65\textwidth}
 
 .. traceable-graph::
-    :tags: sphinx1.3, sphinx1.4, sphinx1.5
+    :tags: sphinx1.3, sphinx1.4, sphinx1.5, sphinx1.6
     :caption: Traces of the tox test environments
     :relationships: children
 
@@ -83,6 +83,17 @@ Tox test environments
 
 
 The compatibility matrix is an result of the following tox test environments:
+
+.. traceable:: py27-sphinx1.6
+   :title: Python 2.7 with Sphinx 1.6
+   :category: compatibility-matrix
+   :parents: py27
+
+   .. command-output:: tox --showconfig -e py27-sphinx1.6
+
+.. raw:: latex
+
+   \newpage
 
 .. traceable:: py27-sphinx1.5
    :title: Python 2.7 with Sphinx 1.5
@@ -114,6 +125,17 @@ The compatibility matrix is an result of the following tox test environments:
    .. command-output:: tox --showconfig -e py27-sphinx1.3
 
 .. ----------------------------------------------------------------------------
+
+.. raw:: latex
+
+   \newpage
+
+.. traceable:: py37-sphinx1.6
+   :title: Python 3.7 with Sphinx 1.6
+   :category: compatibility-matrix
+   :parents: py37
+
+   .. command-output:: tox --showconfig -e py37-sphinx1.6
 
 .. raw:: latex
 
@@ -154,6 +176,17 @@ The compatibility matrix is an result of the following tox test environments:
 
    \newpage
 
+.. traceable:: py36-sphinx1.6
+   :title: Python 3.6 with Sphinx 1.6
+   :category: compatibility-matrix
+   :parents: py36
+
+   .. command-output:: tox --showconfig -e py36-sphinx1.6
+
+.. raw:: latex
+
+   \newpage
+
 .. traceable:: py36-sphinx1.5
    :title: Python 3.6 with Sphinx 1.5
    :category: compatibility-matrix
@@ -184,6 +217,17 @@ The compatibility matrix is an result of the following tox test environments:
    .. command-output:: tox --showconfig -e py36-sphinx1.3
 
 .. ----------------------------------------------------------------------------
+
+.. raw:: latex
+
+   \newpage
+
+.. traceable:: py35-sphinx1.6
+   :title: Python 3.5 with Sphinx 1.6
+   :category: compatibility-matrix
+   :parents: py35
+
+   .. command-output:: tox --showconfig -e py35-sphinx1.6
 
 .. raw:: latex
 
@@ -224,6 +268,17 @@ The compatibility matrix is an result of the following tox test environments:
 
    \newpage
 
+.. traceable:: py34-sphinx1.6
+   :title: Python 3.4 with Sphinx 1.6
+   :category: compatibility-matrix
+   :parents: py34
+
+   .. command-output:: tox --showconfig -e py34-sphinx1.6
+
+.. raw:: latex
+
+   \newpage
+
 .. traceable:: py34-sphinx1.5
    :title: Python 3.4 with Sphinx 1.5
    :category: compatibility-matrix
@@ -257,6 +312,12 @@ The compatibility matrix is an result of the following tox test environments:
 .. --- hidden traceable items for Sphinx compatibility
 .. ----------------------------------------------------------------------------
 
+.. traceable:: sphinx1.6
+   :title: Sphinx 1.6
+   :category: compatibility-sphinx
+   :sibling: REQ-WORKSON-SP16
+   :format: hidden
+
 .. traceable:: sphinx1.5
    :title: Sphinx 1.5
    :category: compatibility-sphinx
@@ -283,34 +344,34 @@ The compatibility matrix is an result of the following tox test environments:
    :title: Python 2.7
    :category: compatibility-python
    :sibling: REQ-WORKSON-PY27
-   :parents: sphinx1.3, sphinx1.4
+   :parents: sphinx1.3, sphinx1.4, sphinx1.5, sphinx1.6
    :format: hidden
 
 .. traceable:: py37
    :title: Python 3.7
    :category: compatibility-python
    :sibling: REQ-WORKSON-PY37
-   :parents: sphinx1.3, sphinx1.4
+   :parents: sphinx1.3, sphinx1.4, sphinx1.5, sphinx1.6
    :format: hidden
 
 .. traceable:: py36
    :title: Python 3.6
    :category: compatibility-python
    :sibling: REQ-WORKSON-PY36
-   :parents: sphinx1.3, sphinx1.4
+   :parents: sphinx1.3, sphinx1.4, sphinx1.5, sphinx1.6
    :format: hidden
 
 .. traceable:: py35
    :title: Python 3.5
    :category: compatibility-python
    :sibling: REQ-WORKSON-PY35
-   :parents: sphinx1.3, sphinx1.4
+   :parents: sphinx1.3, sphinx1.4, sphinx1.5, sphinx1.6
    :format: hidden
 
 .. traceable:: py34
    :title: Python 3.4
    :category: compatibility-python
    :sibling: REQ-WORKSON-PY34
-   :parents: sphinx1.3, sphinx1.4
+   :parents: sphinx1.3, sphinx1.4, sphinx1.5, sphinx1.6
    :format: hidden
 
