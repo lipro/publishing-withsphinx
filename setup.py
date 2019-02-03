@@ -112,8 +112,8 @@ _EXTRAS_REQUIRE = {
 # Check and respect diferent Python versions
 if version_info < (2, 7):
     exit('Sorry, Python 2 older than 2.7 is not supported')
-elif version_info >= (3, 0) and version_info <= (3, 2):
-    exit('Sorry, Python 3 older than 3.3 is not supported')
+elif version_info >= (3, 0) and version_info <= (3, 3):
+    exit('Sorry, Python 3 older than 3.4 is not supported')
 
 # Get project path absolut
 _HERE = os.path.abspath(os.path.dirname(__file__))
