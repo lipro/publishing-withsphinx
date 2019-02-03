@@ -61,6 +61,7 @@ _INSTALL_REQUIRES = [
     + '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb'
     + '&subdirectory=ansi'
     + '&egg=sphinxcontrib-ansi-0.6.dev0',
+    'sphinxcontrib-autoprogram>=0.1.5,<=0.1.5',
     'sphinxcontrib-bibtex>=0.3.5,<=0.4.0',           # >=0.4.1 needs Sphinx >=1.6
     'sphinxcontrib-blockdiag>=1.5.5,<=1.5.5',
     'sphinxcontrib-email @ '
@@ -113,11 +114,6 @@ if version_info < (2, 7):
     exit('Sorry, Python 2 older than 2.7 is not supported')
 elif version_info >= (3, 0) and version_info <= (3, 2):
     exit('Sorry, Python 3 older than 3.3 is not supported')
-
-if version_info < (3, 0):
-    _INSTALL_REQUIRES.append('sphinxcontrib-autoprogram>=0.1.2,<=0.1.2')
-else:
-    _INSTALL_REQUIRES.append('sphinxcontrib-autoprogram>=0.1.2,<=0.1.3')
 
 # Get project path absolut
 _HERE = os.path.abspath(os.path.dirname(__file__))
