@@ -82,7 +82,11 @@ _EXTRAS_REQUIRE_DEV = [
     + '#sha1=3084d8b356230723e0fa93758a7bbc9c9bd2f3c2'
     + '&subdirectory='
     + '&egg=sphinxcontrib-traceables-0.1.5.dev1',
-    'sphinxcontrib-traceability>=0.1.2,<=0.1.2',
+    'sphinxcontrib-traceability @ '
+    + 'https://github.com/ociu/sphinx-traceability-extension/archive/85db6f4.zip'
+    + '#sha1=74f7fc32cfda699a39d25ef438fda338e0eccc8f'
+    + '&subdirectory='
+    + '&egg=sphinxcontrib-traceability-0.1.2.dev0',
     'sphinx-rtd-theme>=0.4.2,<=0.4.2',
     'check-manifest>=0.37.0,<=0.37.9999',
     'webob>=1.8.5,<=1.8.5',
