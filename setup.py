@@ -62,7 +62,7 @@ _INSTALL_REQUIRES = [
     + '&subdirectory=ansi'
     + '&egg=sphinxcontrib-ansi-0.6.dev0',
     'sphinxcontrib-autoprogram>=0.1.5,<=0.1.5',
-    'sphinxcontrib-bibtex>=0.3.5,<=0.4.0',           # >=0.4.1 needs Sphinx >=1.6
+    'sphinxcontrib-bibtex>=0.3.5,<=0.4.9999',
     'sphinxcontrib-blockdiag>=1.5.5,<=1.5.5',
     'sphinxcontrib-email @ '
     + 'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip'
