@@ -67,10 +67,13 @@ class TestCaseSphinxExtMathJax(fixtures.TestCaseFunctionalPublishingSphinx):
         # check mathematic equastions
         r = re.compile(
             '(?ms)'
-            + re.escape(r'<h2>Test math extensions <span class="math">\(E = m c^2\)</span>')
+            + re.escape(r'<h2>Test math extensions <span class="')
+            + re.escape(self.get_html_class_math() + r'">\(E = m c^2\)</span>')
             + re.escape(r'<a class="headerlink"') + '.*' + re.escape(r'</a></h2>') + '.*'
-            + re.escape(r'<div class="math"') + '.*' + re.escape(r'\[a^2+b^2=c^2\]</div>') + '.*'
-            + re.escape(r'<p>Inline <span class="math">\(E=mc^2\)</span></p>')
+            + re.escape(r'<div class="' + self.get_html_class_math() + r'"') + '.*'
+            + re.escape(r'\[a^2+b^2=c^2\]</div>') + '.*'
+            + re.escape(r'<p>Inline <span class="')
+            + re.escape(self.get_html_class_math() + r'">\(E=mc^2\)</span></p>')
         )
         self.assertRegex(c, r)
 

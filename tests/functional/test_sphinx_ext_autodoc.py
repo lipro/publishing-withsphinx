@@ -143,8 +143,8 @@ class TestCaseSphinxExtAutoDoc(fixtures.TestCaseFunctionalPublishingSphinx):
             '(?ms)'
             + re.escape(r'A pypi demonstration vehicle.') + '.*'
             + re.escape(r'This is something I want to say that is not in the docstring.') + '.*'
-            + re.escape(self.get_latex_code_strong() + r'{class }')
-            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1.}')
+            + re.escape(self.get_latex_code_strong() + r'{class }') + '.*'
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1.}') + '.*'
             + re.escape(self.get_latex_bfcode() + r'{MyPublicClass}') + '.*'
             + re.escape(r"{\emph{foo}, \emph{bar='baz'}}") + '.*'
             + re.escape(r'We use this as a public class example class.') + '.*'
@@ -152,26 +152,26 @@ class TestCaseSphinxExtAutoDoc(fixtures.TestCaseFunctionalPublishingSphinx):
             + re.escape(r'{\emph{foo}, \emph{bar=True}}') + '.*'
             + re.escape(r'This gets the foobar') + '.*'
             + re.escape(r'This really should have a full function definition, but I am too lazy.') + '.*'
-            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1.}')
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1.}') + '.*'
             + re.escape(self.get_latex_bfcode() + r'{public\_fn\_with\_googley\_docstring}') + '.*'
             + re.escape(r'{\emph{name}, \emph{state=None}}') + '.*'
             + re.escape(r'This function does something.') + '.*'
-            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1.}')
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_1.}') + '.*'
             + re.escape(self.get_latex_bfcode() + r'{public\_fn\_with\_sphinxy\_docstring}') + '.*'
             + re.escape(r'{\emph{name}, \emph{state=None}}') + '.*'
             + re.escape(r'This function does something.') + '.*'
             + re.escape(r'This is something I want to say that is not in the docstring.') + '.*'
             + re.escape(r'A very useful module indeed.') + '.*'
-            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2.}')
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2.}') + '.*'
             + re.escape(self.get_latex_bfcode() + r'{public\_fn\_with\_sphinxy\_docstring}') + '.*'
             + re.escape(r'{\emph{name}, \emph{state=None}}') + '.*'
             + re.escape(r'This function does something.') + '.*'
-            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2.}')
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2.}') + '.*'
             + re.escape(self.get_latex_bfcode() + r'{\_private\_fn\_with\_docstring}') + '.*'
             + re.escape(r"{\emph{foo}, \emph{bar='baz'}, \emph{foobarbas=None}}") + '.*'
             + re.escape(r'I have a docstring, but ') + '.*'
-            + re.escape(self.get_latex_code_strong() + r'{class }')
-            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2.}')
+            + re.escape(self.get_latex_code_strong() + r'{class }') + '.*'
+            + re.escape(self.get_latex_code() + r'{an\_example\_pypi\_project.useful\_2.}') + '.*'
             + re.escape(self.get_latex_bfcode() + r'{MyPublicClass}') + '.*'
             + re.escape(r"{\emph{foo}, \emph{bar='baz'}}") + '.*'
             + re.escape(r'We use this as a public class example class.') + '.*'

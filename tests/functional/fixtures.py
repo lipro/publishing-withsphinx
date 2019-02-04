@@ -212,6 +212,13 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'<' + code + args + '>'
 
     @classmethod
+    def get_html_class_math(self):
+        if sphinx_version < '1.7':
+            return r'math'
+        else:
+            return r'math notranslate nohighlight'
+
+    @classmethod
     def get_latex_admonition(self):
         if sphinx_version < '1.5':
             return r'notice'
@@ -222,15 +229,19 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
     def get_latex_bfcode(self):
         if sphinx_version < '1.4.5':
             return r'\bfcode'
-        else:
+        elif sphinx_version < '1.7':
             return r'\sphinxbfcode'
+        else:
+            return r'\sphinxbfcode{\sphinxupquote'
 
     @classmethod
     def get_latex_code(self):
         if sphinx_version < '1.4.5':
             return r'\code'
-        else:
+        elif sphinx_version < '1.7':
             return r'\sphinxcode'
+        else:
+            return r'\sphinxcode{\sphinxupquote'
 
     @classmethod
     def get_latex_code_strong(self):
@@ -238,8 +249,10 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'\strong'
         elif sphinx_version < '1.6':
             return r'\sphinxstrong'
-        else:
+        elif sphinx_version < '1.7':
             return r'\sphinxbfcode'
+        else:
+            return r'\sphinxbfcode{\sphinxupquote'
 
     @classmethod
     def get_latex_href(self):
