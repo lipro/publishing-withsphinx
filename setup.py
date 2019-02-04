@@ -71,7 +71,7 @@ _INSTALL_REQUIRES = [
     + '&egg=sphinxcontrib-email-0.2.dev0',
     'sphinxcontrib-inlinesyntaxhighlight>=0.2.0,<=0.2.0',
     'sphinxcontrib-programoutput>=0.8.0,<=0.13.9999',
-    'sphinxcontrib-spelling>=2.3.0,<=4.2.0',
+    'sphinxcontrib-spelling>=2.3.0,<=4.2.0',  # needs >4.2 for Sphinx 2.0
     'sphinxcontrib-tikz>=0.4.2,<=0.4.6',
     'reportlab>=3.4.0,<=3.5.9999',
     'CommonMark>=0.5.6,<=0.8.9999',
