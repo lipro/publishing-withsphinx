@@ -38,7 +38,7 @@ sys.path.insert(0, os.path.abspath('../tests'))  # found local test modules
 
 # -- General configuration ------------------------------------------------
 
-needs_sphinx = '1.7'
+needs_sphinx = '1.8'
 extensions = [
     'publishing.withsphinx',
     'sphinxcontrib.traceables',

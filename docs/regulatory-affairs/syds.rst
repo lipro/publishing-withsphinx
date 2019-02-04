@@ -80,8 +80,8 @@ test jobs on demand.
    :title: Use tox for automate and standardize testing
    :category: SysImpl
    :parents: REQ-TESTS-CI,
-             REQ-WORKSON-SP17, REQ-WORKSON-SP16, REQ-WORKSON-SP15,
-             REQ-WORKSON-SP14, REQ-WORKSON-SP13
+             REQ-WORKSON-SP18, REQ-WORKSON-SP17, REQ-WORKSON-SP16,
+             REQ-WORKSON-SP15, REQ-WORKSON-SP14, REQ-WORKSON-SP13
    :sibling: IMP-TESTS-TRAVIS-CI
    :implementation_type: configuration
    :verification_method: ci-review
