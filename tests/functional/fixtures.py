@@ -269,11 +269,13 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'\sphinxincludegraphics'
 
     @classmethod
-    def get_latex_idescape(self, id):
+    def get_latex_idescape(self, id, abbr):
         if sphinx_version < '1.5.1':
-            return id
+            return abbr
+        elif sphinx_version < '1.8':
+            return r'\detokenize{' + abbr + r'}'
         else:
-            return r'\detokenize{' + id + r'}'
+            return r'index:' + id
 
     @classmethod
     def get_latex_protect(self):
@@ -315,6 +317,13 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'Verbatim'
         else:
             return r'sphinxVerbatim'
+
+    @classmethod
+    def get_latex_autosummary_subsubnode(self):
+        if sphinx_version < '1.8':
+            return r'\paragraph'
+        else:
+            return r'\subsubsection*'
 
     @classmethod
     def get_latex_todo_node_text(self):

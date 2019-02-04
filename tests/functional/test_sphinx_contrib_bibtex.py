@@ -117,7 +117,7 @@ class TestCaseSphinxContribBibTeX(fixtures.TestCaseFunctionalPublishingSphinx):
         r = re.compile(
             '(?ms)'
             + re.escape(r'\begin{' + self.get_latex_thebibliography() + '}{HB14}') + '.*'
-            + re.escape(r'\bibitem[HB14]{' + self.get_latex_idescape('HB14') + '}') + '.*'
+            + re.escape(r'\bibitem[HB14]{' + self.get_latex_idescape(r'juh2014swdocwspx', r'HB14') + r'}') + '.*'
             + re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*'
             + re.escape(r'Software-Dokumentation mit Sphinx') + '.*' + re.escape(r'ISBN 1497448689') + '.*'
             + re.escape(self.get_latex_url() + r'{http://www.amazon.com/dp/1497448689}') + '.*'

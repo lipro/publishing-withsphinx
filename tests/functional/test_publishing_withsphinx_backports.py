@@ -43,6 +43,7 @@ from sphinx import __version__ as SphinxVersion
 from sphinx.errors import SphinxError
 
 from distutils.version import LooseVersion
+SPHINX_GT_17 = LooseVersion(SphinxVersion) >= LooseVersion('1.8')
 SPHINX_GT_14 = LooseVersion(SphinxVersion) >= LooseVersion('1.5')
 SPHINX_LT_15 = LooseVersion(SphinxVersion) < LooseVersion('1.5')
 
@@ -69,6 +70,7 @@ class TestPublishingWithSphinxBackports(fixtures.TestCaseFunctionalPublishingSph
         self.assertTrue(isinstance(app.config.latex_engine, str))
         self.assertEqual(app.config.latex_engine, _EXPECT_LATEX_ENGINE_DEFAULT_LANG_NONE)
 
+    @fixtures.util.unittest.skipIf(SPHINX_GT_17, 'for Sphinx ' + SphinxVersion + ' > 1.7, due of language side effects')
     @fixtures.with_coverage_app(
         testroot='module-backports',
         confoverrides={
