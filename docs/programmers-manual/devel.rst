@@ -46,6 +46,43 @@ next subsections will explain how to install all needed Python versions in
 parallel including a functioning Virtual Environment on a recent Ubuntu LTS
 standard Linux system.
 
+System Preperation for Development
+==============================================================================
+
+Native C/C++ build environment on Ubuntu 14.04 (and onwards LTS)
+------------------------------------------------------------------------------
+
+Some third party Python packages have to compile their own C/C++ source code
+while they will be installed by the :program:`pip` utility on the development
+host. The following essential packages have to be installed to prepare the
+native build proceeding.
+
+Install all build essential packages:
+   .. code-block:: bash
+
+      sudo apt-get install build-essential
+      sudo apt-get install zlib1g-dev
+      sudo apt-get install libpng-dev
+      sudo apt-get install libjpeg-dev
+      sudo apt-get install libfreetype6-dev
+
+LaTeX runtime environment on Ubuntu 14.04 (and onwards LTS)
+------------------------------------------------------------------------------
+
+In order to be able to go through all development processes, including the
+documentation, a LaTeX runtime environment is required.
+
+Install all required LaTeX packages:
+   .. code-block:: bash
+
+      sudo apt-get install texlive-xetex
+      sudo apt-get install texlive-latex-extra
+      sudo apt-get install texlive-generic-extra
+      sudo apt-get install texlive-extra-utils
+      sudo apt-get install xindy
+      sudo apt-get install latexmk
+      sudo apt-get install graphviz
+
 Python 2 and 3 on Ubuntu 14.04 (and onwards LTS)
 ------------------------------------------------------------------------------
 
@@ -168,7 +205,7 @@ Upgrade :program:`pip` and install required packages:
    .. code-block:: bash
 
       pip install --upgrade pip
-      pip install --process-dependency-links -e .[dev,test]
+      pip install -e .[dev,test]
 
    Within the virtual Python 2.7 runtime environment upgrade and install all
    required Python packages.
