@@ -25,6 +25,9 @@
 #
 
 '''
+test_sphinx_contrib_bibtex
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 .. traceable:: VFY-SPHINXCONTRIB-BIBTEX
    :title: Verify sphinxcontrib-bibtex
    :category: SysVerify
@@ -78,12 +81,12 @@ class TestCaseSphinxContribBibTeX(fixtures.TestCaseFunctionalPublishingSphinx):
         # check BibTeX entry
         # FIXME: avoid &nbsp; as whitespace character: 'Jan&nbsp;Ulrich'
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<tr><td class="label">[HB14]</td>') + '.*' +
-            re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*' +
-            re.escape(r'Software-Dokumentation mit Sphinx') + '.*' + re.escape(r'ISBN 1497448689') + '.*' +
-            re.escape(r'<a class="reference external" href="http://www.amazon.com/dp/1497448689">') +
-            re.escape(r'http://www.amazon.com/dp/1497448689</a>') + '.*' + re.escape(r'</td></tr>')
+            '(?ms)'
+            + re.escape(r'<tr><td class="label">[HB14]</td>') + '.*'
+            + re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*'
+            + re.escape(r'Software-Dokumentation mit Sphinx') + '.*' + re.escape(r'ISBN 1497448689') + '.*'
+            + re.escape(r'<a class="reference external" href="http://www.amazon.com/dp/1497448689">')
+            + re.escape(r'http://www.amazon.com/dp/1497448689</a>') + '.*' + re.escape(r'</td></tr>')
         )
         self.assertRegex(c, r)
 
@@ -112,13 +115,13 @@ class TestCaseSphinxContribBibTeX(fixtures.TestCaseFunctionalPublishingSphinx):
         # check BibTeX entry
         # FIXME: avoid \xa0 as whitespace character: 'Jan\xa0Ulrich'
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'\begin{' + self.get_latex_thebibliography() + '}{HB14}') + '.*' +
-            re.escape(r'\bibitem[HB14]{' + self.get_latex_idescape('HB14') + '}') + '.*' +
-            re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*' +
-            re.escape(r'Software-Dokumentation mit Sphinx') + '.*' + re.escape(r'ISBN 1497448689') + '.*' +
-            re.escape(self.get_latex_url() + r'{http://www.amazon.com/dp/1497448689}') + '.*' +
-            re.escape(r'\end{' + self.get_latex_thebibliography() + '}')
+            '(?ms)'
+            + re.escape(r'\begin{' + self.get_latex_thebibliography() + '}{HB14}') + '.*'
+            + re.escape(r'\bibitem[HB14]{' + self.get_latex_idescape(r'juh2014swdocwspx', r'HB14') + r'}') + '.*'
+            + re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*'
+            + re.escape(r'Software-Dokumentation mit Sphinx') + '.*' + re.escape(r'ISBN 1497448689') + '.*'
+            + re.escape(self.get_latex_url() + r'{http://www.amazon.com/dp/1497448689}') + '.*'
+            + re.escape(r'\end{' + self.get_latex_thebibliography() + '}')
         )
         self.assertRegex(c, r)
 
@@ -147,11 +150,11 @@ class TestCaseSphinxContribBibTeX(fixtures.TestCaseFunctionalPublishingSphinx):
         # check BibTeX entry
         # FIXME: avoid \xa0 as whitespace character: 'Jan\xa0Ulrich'
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'[HB14]') + '.*' +
-            re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*' +
-            re.escape(r'Software-') + '.*' + re.escape(r'Dokumentation mit Sphinx') + '.*' +
-            re.escape(r'ISBN 1497448689') + '.*' + re.escape(r'http://www.amazon.com/dp/1497448689')
+            '(?ms)'
+            + re.escape(r'[HB14]') + '.*'
+            + re.escape(r'Jan') + '.*' + re.escape(r'Ulrich Hasecke and Georg Brandl') + '.*'
+            + re.escape(r'Software-') + '.*' + re.escape(r'Dokumentation mit Sphinx') + '.*'
+            + re.escape(r'ISBN 1497448689') + '.*' + re.escape(r'http://www.amazon.com/dp/1497448689')
         )
         self.assertRegex(c, r)
 

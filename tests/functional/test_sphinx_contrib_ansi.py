@@ -67,10 +67,10 @@ class TestCaseSphinxContribAnsi(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check ANSI text block
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<pre class="ansi-block literal-block">') + '.*' +
-            re.escape(r'This is a <span class="ansi-red ansi-bold">ANSI</span> control sequence.') + '.*' +
-            re.escape(r'</pre>')
+            '(?ms)'
+            + re.escape(r'<pre class="ansi-block literal-block">') + '.*'
+            + re.escape(r'This is a <span class="ansi-red ansi-bold">ANSI</span> control sequence.') + '.*'
+            + re.escape(r'</pre>')
         )
         self.assertRegex(c, r)
 
@@ -97,11 +97,11 @@ class TestCaseSphinxContribAnsi(fixtures.TestCaseFunctionalPublishingSphinx):
         # check ANSI text block
         # TODO: add support for latex backend of this extention
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'\begin{' + self.get_latex_verbatim() + r'}') + '.*' +
-            re.escape(r'This') + '.*' + re.escape(r'is') + '.*' + re.escape(r'a') + '.*' +
-            re.escape(r'ANSI') + '.*' + re.escape(r'control') + '.*' + re.escape(r'sequence') + '.*' +
-            re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
+            '(?ms)'
+            + re.escape(r'\begin{' + self.get_latex_verbatim() + r'}') + '.*'
+            + re.escape(r'This') + '.*' + re.escape(r'is') + '.*' + re.escape(r'a') + '.*'
+            + re.escape(r'ANSI') + '.*' + re.escape(r'control') + '.*' + re.escape(r'sequence') + '.*'
+            + re.escape(r'\end{' + self.get_latex_verbatim() + r'}')
         )
         self.assertRegex(c, r)
 

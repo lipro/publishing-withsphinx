@@ -45,7 +45,6 @@ from sphinx.errors import SphinxError
 
 
 def default_latex_engine(config):
-    # type: (Config) -> unicode
     '''
     Better default |app.config.latex_engine| settings for specific languages.
 

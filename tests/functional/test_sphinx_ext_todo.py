@@ -66,17 +66,17 @@ class TestCaseSphinxExtTodo(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check todolist
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
-            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
-            re.escape(r'<p class="last">todo in bar</p>') + '.*' +
-            re.escape(r'</div>') + '.*' +
-            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>') + '.*' +
-            re.escape(r'<div class="admonition-todo admonition">') + '.*' +
-            re.escape(r'<p class="first admonition-title">Todo</p>') + '.*' +
-            re.escape(r'<p class="last">todo in foo</p>') + '.*' +
-            re.escape(r'</div>') + '.*' +
-            re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>')
+            '(?ms)'
+            + re.escape(r'<div class="admonition-todo admonition">') + '.*'
+            + re.escape(r'<p class="first admonition-title">Todo</p>') + '.*'
+            + re.escape(r'<p class="last">todo in bar</p>') + '.*'
+            + re.escape(r'</div>') + '.*'
+            + re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>') + '.*'
+            + re.escape(r'<div class="admonition-todo admonition">') + '.*'
+            + re.escape(r'<p class="first admonition-title">Todo</p>') + '.*'
+            + re.escape(r'<p class="last">todo in foo</p>') + '.*'
+            + re.escape(r'</div>') + '.*'
+            + re.escape(r'<p class="todo-source">') + '.*' + re.escape(r'</p>')
         )
         self.assertRegex(c, r)
 
@@ -102,11 +102,15 @@ class TestCaseSphinxExtTodo(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # check todolist
         r = re.compile(
-            '(?ms)' +
-            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
-            re.escape(r'todo in bar') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*' +
-            re.escape(r'\begin{' + self.get_latex_admonition() + r'}{note}{Todo}') + '.*' +
-            re.escape(r'todo in foo') + '.*' + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
+            '(?ms)'
+            + re.escape(r'\begin{' + self.get_latex_admonition() + r'}')
+            + re.escape(r'{note}{' + self.get_latex_todo_node_text() + r'}') + '.*'
+            + re.escape(r'todo in bar') + '.*'
+            + re.escape(r'\end{' + self.get_latex_admonition() + r'}') + '.*'
+            + re.escape(r'\begin{' + self.get_latex_admonition() + r'}')
+            + re.escape(r'{note}{' + self.get_latex_todo_node_text() + r'}') + '.*'
+            + re.escape(r'todo in foo') + '.*'
+            + re.escape(r'\end{' + self.get_latex_admonition() + r'}')
         )
         self.assertRegex(c, r)
 

@@ -27,7 +27,7 @@ sphinx.environment.BuildEnvironment.warn_node = _warn_node
 
 try:
     pkg_metadata = get_distribution('publishing-withsphinx').get_metadata('METADATA')
-except:
+except IOError:
     pkg_metadata = get_distribution('publishing-withsphinx').get_metadata('PKG-INFO')
 
 pkg_messages = message_from_string(pkg_metadata)
@@ -38,12 +38,13 @@ sys.path.insert(0, os.path.abspath('../tests'))  # found local test modules
 
 # -- General configuration ------------------------------------------------
 
-needs_sphinx = '1.2'
+needs_sphinx = '1.8'
 extensions = [
     'publishing.withsphinx',
     'sphinxcontrib.traceables',
     'sphinxcontrib.traceability',
     'sphinx.ext.graphviz',
+    'sphinx.ext.imgconverter',
 ]
 needs_extensions = {'publishing.withsphinx': '0.0'}
 
@@ -60,7 +61,7 @@ author_email = prj_metadata.get('Author-email')
 url = prj_metadata.get('Home-page')
 download_url = prj_metadata.get('Download-URL')
 # copyright = '2016, ' + author + ' <' + author_email + '>'
-copyright = '2016, ' + author
+copyright = '2016-2019, ' + author
 
 # General content behaviors.
 source_suffix = '.rst'

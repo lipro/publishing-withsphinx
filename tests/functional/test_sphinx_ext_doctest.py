@@ -64,19 +64,19 @@ class TestCaseSphinxExtDocTest(fixtures.TestCaseFunctionalPublishingSphinx):
 
         # validate doctest results
         r = re.compile(
-            '(?ms)' '^Document: index$'
-            '.*'    '^---------------$'
-            '.*'    '^Doctest summary$'
-            '.*'    '^===============$'
-            '.*'    '[1-9][0-9]*\s+tests'
-            '.*'    '0\s+failures\s+in\s+tests'
-            '.*'    '0\s+failures\s+in\s+setup\s+code'
-            '.*'    '0\s+failures\s+in\s+cleanup\s+code'
+            '(?ms)' r'^Document: index$'
+            '.*'    r'^---------------$'
+            '.*'    r'^Doctest summary$'
+            '.*'    r'^===============$'
+            '.*'    r'[1-9][0-9]*\s+tests'
+            '.*'    r'0\s+failures\s+in\s+tests'
+            '.*'    r'0\s+failures\s+in\s+setup\s+code'
+            '.*'    r'0\s+failures\s+in\s+cleanup\s+code'
         )
         self.assertRegex(c, r)
 
         r = re.compile(
-            '(?ms)' '0\s+tests'
+            '(?ms)' r'0\s+tests'
         )
         self.assertNotRegex(c, r)
 

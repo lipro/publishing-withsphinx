@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-needs_sphinx = '1.2'
+needs_sphinx = '1.3'
 # FIXME: needs_extensions = {'sphinxcontrib.email': '0.3'}
 extensions = ['publishing.withsphinx']
 master_doc = 'index'

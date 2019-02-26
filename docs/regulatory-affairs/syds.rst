@@ -51,7 +51,7 @@ Configuration Implementations
    :category: SysImpl
    :parents: REQ-TESTS-CI,
              REQ-WORKSON-PY27,
-             REQ-WORKSON-PY36, REQ-WORKSON-PY35, REQ-WORKSON-PY34
+             REQ-WORKSON-PY37, REQ-WORKSON-PY36, REQ-WORKSON-PY35, REQ-WORKSON-PY34
    :implementation_type: configuration
    :verification_method: ci-review
 
@@ -80,7 +80,8 @@ test jobs on demand.
    :title: Use tox for automate and standardize testing
    :category: SysImpl
    :parents: REQ-TESTS-CI,
-             REQ-WORKSON-SP15, REQ-WORKSON-SP14, REQ-WORKSON-SP13, REQ-WORKSON-SP12
+             REQ-WORKSON-SP18, REQ-WORKSON-SP17, REQ-WORKSON-SP16,
+             REQ-WORKSON-SP15, REQ-WORKSON-SP14, REQ-WORKSON-SP13
    :sibling: IMP-TESTS-TRAVIS-CI
    :implementation_type: configuration
    :verification_method: ci-review
@@ -226,21 +227,29 @@ Traceability
 The following system implementations (:literal:`IMP-*`) fulfill the related
 system requirements (:literal:`REQ-*`):
 
-.. raw:: latex
+.. only:: html
 
-   \begin{minipage}[t]{0.5\textwidth}\scriptsize
+   .. raw:: latex
 
-.. traceable-matrix::
-   :filter-primaries: category == "SysReq"
-   :filter-secondaries: category == "SysImpl"
-   :split-primaries: 25
-   :split-secondaries: 10
-   :relationship: children
-   :format: table
+      \begin{minipage}[t]{0.5\textwidth}\scriptsize
 
-.. raw:: latex
+   .. traceable-matrix::
+      :filter-primaries: category == "SysReq"
+      :filter-secondaries: category == "SysImpl"
+      :split-primaries: 25
+      :split-secondaries: 10
+      :relationship: children
+      :format: table
 
-   \end{minipage}
+   .. raw:: latex
+
+      \end{minipage}
+
+.. only:: latex
+
+   .. error:: Mal formatted LaTeX sequence in :code:`traceable-matrix`
+
+      See issue #24 for details an ongoing fixes.
 
 List of system implementations
 -------------------------------------------------------------------------------

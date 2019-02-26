@@ -110,9 +110,9 @@ class TestCasePublishingSphinx(unittest.TestCase):
         an error rather than a test failure. The default implementation does
         nothing.
         '''
-        self.handler = h = TestHandler(Matcher())
-        self.logger = l = logging.getLogger()
-        l.addHandler(h)
+        self.handler = handle = TestHandler(Matcher())
+        self.logger = log = logging.getLogger()
+        log.addHandler(handle)
 
     def tearDown(self):
         '''

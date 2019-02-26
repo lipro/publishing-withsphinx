@@ -54,7 +54,6 @@ _EXPECT_REQUIRED = [
     'sphinxcontrib.bibtex',
     'sphinxcontrib.blockdiag',
     'sphinxcontrib.email',
-    'sphinxcontrib.embedly',
     'sphinxcontrib.inlinesyntaxhighlight',
     'sphinxcontrib.programoutput',
     'sphinxcontrib.spelling',

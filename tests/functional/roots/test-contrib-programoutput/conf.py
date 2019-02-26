@@ -4,7 +4,7 @@ import os
 
 os.environ["TEST_FIXTURES_ROOTS"] = os.path.abspath('..')
 
-needs_sphinx = '1.2'
+needs_sphinx = '1.3'
 # FIXME: needs_extensions = {'sphinxcontrib.programoutput': '0.10'}
 extensions = ['publishing.withsphinx']
 master_doc = 'index'

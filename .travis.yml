@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 sudo: true
-dist: trusty
+# workaround for 3.7 not available in default configuration
+# travis-ci/travis-ci#9815#issuecomment-401756442
+dist: xenial
 addons:
   apt:
     packages:
@@ -8,12 +10,14 @@ addons:
       - "graphviz"
       - "pdf2svg"
       - "texlive-full"
+      - "xindy"
 language: python
 python:
   - "2.7"
   - "3.4"
   - "3.5"
   - "3.6"
+  - "3.7"
 cache:
   directories:
     - $HOME/.cache/pip

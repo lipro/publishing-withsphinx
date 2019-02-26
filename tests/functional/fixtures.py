@@ -212,6 +212,13 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'<' + code + args + '>'
 
     @classmethod
+    def get_html_class_math(self):
+        if sphinx_version < '1.7':
+            return r'math'
+        else:
+            return r'math notranslate nohighlight'
+
+    @classmethod
     def get_latex_admonition(self):
         if sphinx_version < '1.5':
             return r'notice'
@@ -222,15 +229,30 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
     def get_latex_bfcode(self):
         if sphinx_version < '1.4.5':
             return r'\bfcode'
-        else:
+        elif sphinx_version < '1.7':
             return r'\sphinxbfcode'
+        else:
+            return r'\sphinxbfcode{\sphinxupquote'
 
     @classmethod
     def get_latex_code(self):
         if sphinx_version < '1.4.5':
             return r'\code'
-        else:
+        elif sphinx_version < '1.7':
             return r'\sphinxcode'
+        else:
+            return r'\sphinxcode{\sphinxupquote'
+
+    @classmethod
+    def get_latex_code_strong(self):
+        if sphinx_version < '1.4.5':
+            return r'\strong'
+        elif sphinx_version < '1.6':
+            return r'\sphinxstrong'
+        elif sphinx_version < '1.7':
+            return r'\sphinxbfcode'
+        else:
+            return r'\sphinxbfcode{\sphinxupquote'
 
     @classmethod
     def get_latex_href(self):
@@ -247,11 +269,13 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'\sphinxincludegraphics'
 
     @classmethod
-    def get_latex_idescape(self, id):
+    def get_latex_idescape(self, id, abbr):
         if sphinx_version < '1.5.1':
-            return id
+            return abbr
+        elif sphinx_version < '1.8':
+            return r'\detokenize{' + abbr + r'}'
         else:
-            return r'\detokenize{' + id + r'}'
+            return r'index:' + id
 
     @classmethod
     def get_latex_protect(self):
@@ -259,13 +283,6 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r''
         else:
             return r'\protect'
-
-    @classmethod
-    def get_latex_strong(self):
-        if sphinx_version < '1.4.5':
-            return r'\strong'
-        else:
-            return r'\sphinxstrong'
 
     @classmethod
     def get_latex_titleref(self):
@@ -300,6 +317,27 @@ class TestCaseFunctionalPublishingSphinx(util.TestCasePublishingSphinx):
             return r'Verbatim'
         else:
             return r'sphinxVerbatim'
+
+    @classmethod
+    def get_latex_autosummary_subsubnode(self):
+        if sphinx_version < '1.8':
+            return r'\paragraph'
+        else:
+            return r'\subsubsection*'
+
+    @classmethod
+    def get_latex_todo_node_text(self):
+        if sphinx_version < '1.6':
+            return r'Todo'
+        else:
+            return r'Todo:'
+
+    @classmethod
+    def get_hellipsis_text(self):
+        if sphinx_version < '1.6':
+            return r'...'
+        else:
+            return u'\u2026'
 
 
 if __name__ == "__main__":

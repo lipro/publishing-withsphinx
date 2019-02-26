@@ -54,43 +54,54 @@ from sys import version_info
 import publishing.withsphinx as pubwsphinx
 
 _INSTALL_REQUIRES = [
-    'Sphinx>=1.2.0,<=1.4.9999',
-    'sphinx-argparse>=0.2.0,<=0.2.0',
-    'sphinxcontrib-ansi>=0.6.dev0',
-    'sphinxcontrib-bibtex>=0.3.5,<=0.3.5',
+    'Sphinx>=1.3.0,<=1.8.9999',
+    'sphinx-argparse>=0.2.0,<=0.2.5',
+    'sphinxcontrib-ansi @ '
+    + 'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip'
+    + '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb'
+    + '&subdirectory=ansi'
+    + '&egg=sphinxcontrib-ansi-0.6.dev0',
+    'sphinxcontrib-autoprogram>=0.1.5,<=0.1.5',
+    'sphinxcontrib-bibtex>=0.3.5,<=0.4.9999',
     'sphinxcontrib-blockdiag>=1.5.5,<=1.5.5',
-    'sphinxcontrib-email>=0.2.dev0',
-    'sphinxcontrib-embedly>=0.2.0,<=0.2.0',
+    'sphinxcontrib-email @ '
+    + 'https://bitbucket.org/rexut/sphinx-contrib/get/default.zip'
+    + '#sha1=f7e2c65d31ad8be7c314cf4379c69101546eb2fb'
+    + '&subdirectory=email'
+    + '&egg=sphinxcontrib-email-0.2.dev0',
     'sphinxcontrib-inlinesyntaxhighlight>=0.2.0,<=0.2.0',
-    'sphinxcontrib-programoutput>=0.8.0,<=0.10.0',
-    'sphinxcontrib-spelling>=2.3.0,<=2.3.0',
-    'sphinxcontrib-tikz>=0.4.2,<=0.4.4',
-    'reportlab>=3.4.0,<=3.4.9999',
-]
-
-_DEPENDENCY_LINKS = [
-    'hg+https://bitbucket.org/rexut/sphinx-contrib@default#subdirectory=ansi&egg=sphinxcontrib-ansi-0.6.dev0',
-    'hg+https://bitbucket.org/rexut/sphinx-contrib@default#subdirectory=email&egg=sphinxcontrib-email-0.2.dev0',
-    'git+https://github.com/rexut/sphinxcontrib-traceables.git@py2to3-devel#egg=sphinxcontrib-traceables-0.1.5.dev0',
+    'sphinxcontrib-programoutput>=0.8.0,<=0.13.9999',
+    'sphinxcontrib-spelling>=2.3.0,<=4.2.0',  # needs >4.2 for Sphinx 2.0
+    'sphinxcontrib-tikz>=0.4.2,<=0.4.6',
+    'reportlab>=3.4.0,<=3.5.9999',
+    'CommonMark>=0.5.6,<=0.8.9999',
 ]
 
 _EXTRAS_REQUIRE_DEV = [
-    'sphinxcontrib-traceables>=0.1.5.dev0',
-    'sphinxcontrib-traceability>=0.1.2,<=0.1.2',
-    'sphinx-rtd-theme>=0.2.4,<=0.2.4',
-    'check-manifest>=0.35.0,<=0.35.9999',
-    'webob>=1.7.2,<=1.7.2',
-    'wheel>=0.29.0,<=0.29.0',
+    'sphinxcontrib-traceables @ '
+    + 'https://github.com/rexut/sphinxcontrib-traceables/archive/py2to3-devel.zip'
+    + '#sha1=3084d8b356230723e0fa93758a7bbc9c9bd2f3c2'
+    + '&subdirectory='
+    + '&egg=sphinxcontrib-traceables-0.1.5.dev1',
+    'sphinxcontrib-traceability @ '
+    + 'https://github.com/ociu/sphinx-traceability-extension/archive/85db6f4.zip'
+    + '#sha1=74f7fc32cfda699a39d25ef438fda338e0eccc8f'
+    + '&subdirectory='
+    + '&egg=sphinxcontrib-traceability-0.1.2.dev0',
+    'sphinx-rtd-theme>=0.4.2,<=0.4.2',
+    'check-manifest>=0.37.0,<=0.37.9999',
+    'webob>=1.8.5,<=1.8.5',
+    'wheel>=0.32.3,<=0.32.3',
 ]
 
 _EXTRAS_REQUIRE_TEST = [
-    'sphinx-testing>=0.7.1,<=0.7.1',
-    'tox>=2.0.0,<=2.7.0',
+    'sphinx-testing>=1.0.0,<=1.0.0',
+    'tox>=2.0.0,<=3.9.9999',
     'nose>=1.3.7,<=1.3.7',
     'mock>=2.0.0,<=2.0.0',
-    'coverage>=4.3.0,<=4.3.9999',
-    'coveralls>=1.1.0,<=1.1.9999',
-    'flake8>=3.3.0,<=3.3.0',
+    'coverage>=4.5.0,<=4.5.9999',
+    'coveralls>=1.5.0,<=1.5.9999',
+    'flake8>=3.7.4,<=3.7.4',
 ]
 
 _EXTRAS_REQUIRE = {
@@ -101,13 +112,8 @@ _EXTRAS_REQUIRE = {
 # Check and respect diferent Python versions
 if version_info < (2, 7):
     exit('Sorry, Python 2 older than 2.7 is not supported')
-elif version_info >= (3, 0) and version_info <= (3, 2):
-    exit('Sorry, Python 3 older than 3.3 is not supported')
-
-if version_info < (3, 0):
-    _INSTALL_REQUIRES.append('sphinxcontrib-autoprogram>=0.1.2,<=0.1.2')
-else:
-    _INSTALL_REQUIRES.append('sphinxcontrib-autoprogram>=0.1.2,<=0.1.3')
+elif version_info >= (3, 0) and version_info <= (3, 3):
+    exit('Sorry, Python 3 older than 3.4 is not supported')
 
 # Get project path absolut
 _HERE = os.path.abspath(os.path.dirname(__file__))
@@ -264,9 +270,10 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
 
         # Indicate who your project is intended for
         'Environment :: Console',
@@ -321,7 +328,6 @@ setup(
     # requirements files see:
     # https://packaging.python.org/en/latest/requirements.html
     install_requires=_INSTALL_REQUIRES,
-    dependency_links=_DEPENDENCY_LINKS,
 
     test_suite='nose.collector',
     tests_require=_EXTRAS_REQUIRE_TEST,

@@ -46,7 +46,44 @@ next subsections will explain how to install all needed Python versions in
 parallel including a functioning Virtual Environment on a recent Ubuntu LTS
 standard Linux system.
 
-Python 2 and 3 on Ubuntu 12.04 (and onwards LTS)
+System Preperation for Development
+==============================================================================
+
+Native C/C++ build environment on Ubuntu 14.04 (and onwards LTS)
+------------------------------------------------------------------------------
+
+Some third party Python packages have to compile their own C/C++ source code
+while they will be installed by the :program:`pip` utility on the development
+host. The following essential packages have to be installed to prepare the
+native build proceeding.
+
+Install all build essential packages:
+   .. code-block:: bash
+
+      sudo apt-get install build-essential
+      sudo apt-get install zlib1g-dev
+      sudo apt-get install libpng-dev
+      sudo apt-get install libjpeg-dev
+      sudo apt-get install libfreetype6-dev
+
+LaTeX runtime environment on Ubuntu 14.04 (and onwards LTS)
+------------------------------------------------------------------------------
+
+In order to be able to go through all development processes, including the
+documentation, a LaTeX runtime environment is required.
+
+Install all required LaTeX packages:
+   .. code-block:: bash
+
+      sudo apt-get install texlive-xetex
+      sudo apt-get install texlive-latex-extra
+      sudo apt-get install texlive-generic-extra
+      sudo apt-get install texlive-extra-utils
+      sudo apt-get install xindy
+      sudo apt-get install latexmk
+      sudo apt-get install graphviz
+
+Python 2 and 3 on Ubuntu 14.04 (and onwards LTS)
 ------------------------------------------------------------------------------
 
 .. index:: Python
@@ -54,15 +91,16 @@ Python 2 and 3 on Ubuntu 12.04 (and onwards LTS)
    pair: Python; Install
 
 A third party launchpad
-`PPA <https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes>`_,
-the DeadSnakes PPA by
-`Felix Krull <https://launchpad.net/~fkrull>`_,
-maintains older and newer Python version for Ubuntu not included in the systems
-package management. For Python 2.7 security and feature updates he is
-maintainig a dedicated
-`2.7 PPA <https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes-python2.7>`_
-(see PPA home page for the reasons). All the needed Python releases are
-available in the PPA for Ubuntu 16.04 and down to Ubuntu 12.04.
+`PPA <https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa>`_,
+the *New Python Versions* PPA by the
+`DeadSnakes <https://launchpad.net/~deadsnakes>`_ team,
+maintains older and newer Python version for current Ubuntu LTS releases that
+not included in the systems package management. Supported Ubuntu versions with
+its system Python versions are:
+
+- Ubuntu 18.04 LTS (Bionic Beaver), comes with Python 2.7 (default) and 3.6
+- Ubuntu 16.04 LTS (Xenial Xerus), comes with Python 2.7 (default) and 3.5
+- Ubuntu 14.04 LTS (Trusty Tahr), comes with Python 2.7 (default) and 3.4
 
 Python 3 Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -73,36 +111,37 @@ Python 3 Installation
 Add the DeadSnakes repository and run update:
    .. code-block:: bash
 
-      sudo add-apt-repository ppa:fkrull/deadsnakes
+      sudo add-apt-repository ppa:deadsnakes/ppa
       sudo apt-get update
 
-   See: https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes
+   See: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
 
 Install all versions of Python 3:
    .. code-block:: bash
 
       sudo apt-get install python-virtualenv
-      sudo apt-get install python3.1 python3.1-dev
-      sudo apt-get install python3.2 python3.2-dev
-      sudo apt-get install python3.3 python3.3-dev
-      sudo apt-get install python3.4 python3.4-dev python3.4-venv
-      sudo apt-get install python3.5 python3.5-dev python3.5-venv
+      sudo apt-get install python3.7 python3.7-dev python3.7-venv
       sudo apt-get install python3.6 python3.6-dev python3.6-venv
+      sudo apt-get install python3.5 python3.5-dev python3.5-venv
+      sudo apt-get install python3.4 python3.4-dev python3.4-venv
+      sudo apt-get install python3.3 python3.3-dev
+      sudo apt-get install python3.2 python3.2-dev
+      sudo apt-get install python3.1 python3.1-dev
 
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
-Python 3.6 Virtual Environment
+Python 3.7 Virtual Environment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. index::
    single: Python; Python 3; Virtual Environment
    single: Virtual Environment; Python 3
 
-Activate Python 3.6 Virtual Environment:
+Activate Python 3.7 Virtual Environment:
    .. code-block:: bash
 
-      python3.6 -m venv .py36env
-      source .py36env/bin/activate
+      python3.7 -m venv .py37env
+      source .py37env/bin/activate
 
    See: https://wiki.ubuntuusers.de/virtualenv/#venv-aus-Python-3
 
@@ -113,7 +152,7 @@ Upgrade :program:`pip` and install required packages:
    .. code-block:: bash
 
       pip install --upgrade pip
-      pip install --process-dependency-links -e .[dev,test]
+      pip install -e .[dev,test]
 
    Within the virtual Python 3.6 runtime environment upgrade and install all
    required Python packages.
@@ -127,17 +166,20 @@ Python 2 Installation
 Add the DeadSnakes repository and run update:
    .. code-block:: bash
 
-      sudo add-apt-repository ppa:fkrull/deadsnakes-python2.7
+      sudo add-apt-repository ppa:deadsnakes/ppa
       sudo apt-get update
 
-   See: https://launchpad.net/~fkrull/+archive/ubuntu/deadsnakes-python2.7
+   See: https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
 
 Install all versions of Python 2:
    .. code-block:: bash
 
       sudo apt-get install python-virtualenv
-      sudo apt-get install python2.6 python2.6-dev
       sudo apt-get install python2.7 python2.7-dev
+      sudo apt-get install python2.6 python2.6-dev
+      sudo apt-get install python2.5 python2.5-dev
+      sudo apt-get install python2.4 python2.4-dev
+      sudo apt-get install python2.3 python2.3-dev
 
    See: https://wiki.ubuntuusers.de/virtualenv/#Installation
 
@@ -163,7 +205,7 @@ Upgrade :program:`pip` and install required packages:
    .. code-block:: bash
 
       pip install --upgrade pip
-      pip install --process-dependency-links -e .[dev,test]
+      pip install -e .[dev,test]
 
    Within the virtual Python 2.7 runtime environment upgrade and install all
    required Python packages.
@@ -202,13 +244,13 @@ Run a specific colection of unit tests using nosetests:
    .. code-block:: bash
 
       python setup.py nosetests \
-        --tests tests/test_module_meta.py:TestPublishingWithSphinxMetaData
+        --tests tests/unit/test_meta_data.py:TestMetaData
 
 Run a specific unit test using nosetests:
    .. code-block:: bash
 
       python setup.py nosetests \
-        --tests tests/test_sphinx_ext_todo.py:TestCaseSphinxExtTodo.test_build_text
+        --tests tests/functional/test_sphinx_ext_todo.py:TestCaseSphinxExtTodo.test_build_text
 
 Build Sphinx documentation:
    .. code-block:: bash
@@ -219,6 +261,27 @@ Build Sphinx documentation:
    well known build issue within the :literal:`sphinxcontrib.traceables`
    extension. See main issue tracker or file :literal:`TODO` for more
    details.
+
+   The command above will build the default HTML pages in directory
+   :literal:`docs/_build/html`. That is equal to following execution:
+
+   .. code-block:: bash
+
+      python setup.py build_sphinx -b html
+
+   To generate the LaTeX output in directory :literal:`docs/_build/latex`
+   do this:
+
+   .. code-block:: bash
+
+      python setup.py build_sphinx -b latex
+   
+   Now it's possible to generate from teh LaTeX output an printable document
+   in PDF format:
+
+   .. code-block:: bash
+
+      make -C docs/_build/latex all-pdf
 
 Cleanup all build artefacts:
    .. code-block:: bash

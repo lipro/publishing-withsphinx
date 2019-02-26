@@ -5,7 +5,15 @@
 
 :implementation:
 
-  * Remove embed.ly extension support (:literal:`sphinxcontrib-embedly`),
+  * #23: Add support for Sphinx 1.8
+  * #22: Add support for Sphinx 1.7
+  * #21: Add support for Sphinx 1.6
+  * #20: Add support for Sphinx 1.5
+
+  * #18: Remove support for Python 2 switch to Python 3. The maintenance of
+    Python 2 will be discontinued in January 2020.
+
+  * #17: Remove embed.ly extension support (:literal:`sphinxcontrib-embedly`),
     because in my eyes it's a kind of "spyware" and not usable without an
     chargeable account. There is no way to use the embed.ly API without
     valid (payed) API key. All the tests fail with error: code 403.
@@ -33,6 +41,12 @@
   * The release process is completely untested.
 
 :documentation:
+
+  * #24: Mal formatted LaTeX sequence in :code:`traceable-matrix`. Currently
+    it's not possible to generate a proper tractability matrix for LaTeX/PDF
+    documents. All roles :code:`.. traceable-matrix::` must be disabled for
+    LaTeX build (negated as :code:`.. only:: html`). The error source seems
+    to be in the related Sphinx extension :literal:`sphinxcontrib-traceables`.
 
   * #4: There is no list of supported Sphinx extensions. A automatically
     representation should be prefered. A appropriate functionality
