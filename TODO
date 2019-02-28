@@ -23,12 +23,6 @@
   * #1: Avoid the deployment of copied DejaVuSans font in
     :literal:`tests/docs/basic/samples/DejaVuSans.ttf`.
 
-  * #3: Because of unknown reason the execution of :literal:`nosetests`
-    fails for each :literal:`tox` environment wich has following
-    constellation: Sphinx 1.2 and any Python 3
-    (:literal:`py{33,34,35}-sphinx1.2`). In a single Python 3 virtual
-    environment all is fine.
-
   * Because of unknown reason the current state of documentation can only
     build inside a Python 2.7 run-time environment. In any Python 3
     environment the used :literal:`sphinxcontrib.traceables` extension
