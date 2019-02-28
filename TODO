@@ -5,29 +5,12 @@
 
 :implementation:
 
-  * #23: Add support for Sphinx 1.8
-  * #22: Add support for Sphinx 1.7
-  * #21: Add support for Sphinx 1.6
-  * #20: Add support for Sphinx 1.5
-
-  * #18: Remove support for Python 2 switch to Python 3. The maintenance of
-    Python 2 will be discontinued in January 2020.
-
-  * #17: Remove embed.ly extension support (:literal:`sphinxcontrib-embedly`),
-    because in my eyes it's a kind of "spyware" and not usable without an
-    chargeable account. There is no way to use the embed.ly API without
-    valid (payed) API key. All the tests fail with error: code 403.
+Nothing known.
 
 :testing:
 
-  * #1: Avoid the deployment of copied DejaVuSans font in
+  * #27: Avoid the deployment of copied DejaVuSans font in
     :literal:`tests/docs/basic/samples/DejaVuSans.ttf`.
-
-  * #3: Because of unknown reason the execution of :literal:`nosetests`
-    fails for each :literal:`tox` environment wich has following
-    constellation: Sphinx 1.2 and any Python 3
-    (:literal:`py{33,34,35}-sphinx1.2`). In a single Python 3 virtual
-    environment all is fine.
 
   * Because of unknown reason the current state of documentation can only
     build inside a Python 2.7 run-time environment. In any Python 3

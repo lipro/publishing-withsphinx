@@ -12,8 +12,17 @@ Incompatible changes
 Features added
 --------------
 
+* #25: Travis-CI fail on documentation build with the new Sphinx 1.8 support.
+* #23: Add support for Sphinx 1.8.
+* #22: Add support for Sphinx 1.7.
+* #21: Add support for Sphinx 1.6.
+* #20: Add support for Sphinx 1.5.
+* #19: Remove support for Sphinx 1.2.
+* #18: Remove support for Python 2 switch to Python 3.
+* #17: Remove support for 'sphinxcontrib-embedly'.
 * #14: Add backports from Sphinx 1.5 into the implementation.
 * #7: Split documentation into different parts.
+* #3: Fix Travis-CI matrix.
 
 Bugs fixed
 ----------
