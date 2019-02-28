@@ -12,6 +12,7 @@ Incompatible changes
 Features added
 --------------
 
+* #25: Travis-CI fail on documentation build with the new Sphinx 1.8 support.
 * #23: Add support for Sphinx 1.8.
 * #22: Add support for Sphinx 1.7.
 * #21: Add support for Sphinx 1.6.
