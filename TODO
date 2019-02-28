@@ -10,9 +10,6 @@
   * #21: Add support for Sphinx 1.6
   * #20: Add support for Sphinx 1.5
 
-  * #18: Remove support for Python 2 switch to Python 3. The maintenance of
-    Python 2 will be discontinued in January 2020.
-
   * #17: Remove embed.ly extension support (:literal:`sphinxcontrib-embedly`),
     because in my eyes it's a kind of "spyware" and not usable without an
     chargeable account. There is no way to use the embed.ly API without

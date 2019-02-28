@@ -13,6 +13,7 @@ Features added
 --------------
 
 * #19: Remove support for Sphinx 1.2.
+* #18: Remove support for Python 2 switch to Python 3.
 * #14: Add backports from Sphinx 1.5 into the implementation.
 * #7: Split documentation into different parts.
 * #3: Fix Travis-CI matrix.
