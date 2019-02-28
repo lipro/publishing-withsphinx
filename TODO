@@ -9,7 +9,7 @@ Nothing known.
 
 :testing:
 
-  * #1: Avoid the deployment of copied DejaVuSans font in
+  * #27: Avoid the deployment of copied DejaVuSans font in
     :literal:`tests/docs/basic/samples/DejaVuSans.ttf`.
 
   * Because of unknown reason the current state of documentation can only
