@@ -12,6 +12,7 @@ Incompatible changes
 Features added
 --------------
 
+* #20: Add support for Sphinx 1.5.
 * #19: Remove support for Sphinx 1.2.
 * #18: Remove support for Python 2 switch to Python 3.
 * #17: Remove support for 'sphinxcontrib-embedly'.
