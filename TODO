@@ -6,7 +6,6 @@
 :implementation:
 
   * #23: Add support for Sphinx 1.8
-  * #22: Add support for Sphinx 1.7
 
 :testing:
 

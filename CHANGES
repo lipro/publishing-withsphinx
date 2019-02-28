@@ -12,6 +12,7 @@ Incompatible changes
 Features added
 --------------
 
+* #22: Add support for Sphinx 1.7.
 * #21: Add support for Sphinx 1.6.
 * #20: Add support for Sphinx 1.5.
 * #19: Remove support for Sphinx 1.2.
